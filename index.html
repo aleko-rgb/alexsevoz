@@ -6,8 +6,15 @@
 <title id="pageTitle">Alex Sevoz — Photographer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=La+Belle+Aurore&family=Barlow+Condensed:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Barlow+Condensed:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+  @font-face{
+    font-family:'Backstreet';
+    src:url('fonts/Backstreet.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+  }
   :root{
     --ink:#0e0e0e;
     --paper:#faf8f4;
@@ -16,97 +23,65 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html,body{height:100%;}
-  body{
-    background:var(--ink);
-    color:var(--paper);
-    font-family:'Jost',sans-serif;
-    overflow:hidden;
-  }
+  body{background:var(--ink);color:var(--paper);font-family:'Jost',sans-serif;overflow:hidden;}
   a{color:inherit;text-decoration:none;}
   img{display:block;max-width:100%;}
-  @media (prefers-reduced-motion: reduce){
-    *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;}
-  }
+  @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;}}
   .masthead{
     position:fixed;top:0;left:0;right:0;z-index:20;
     display:flex;flex-direction:column;align-items:center;
     padding:2.6rem 6vw 1.6rem;
-    text-align:center;
-    pointer-events:none;
+    text-align:center;pointer-events:none;
   }
   .masthead .name{
-    font-family:'Cormorant Garamond',serif;
-    font-size:clamp(3.5rem,8vw,7rem);
-    letter-spacing:0.06em;
+    font-family:'Backstreet','Cormorant Garamond',serif;
+    font-size:clamp(3rem,7vw,6rem);
     color:var(--paper);
-    line-height:1;
+    line-height:1.1;
+    letter-spacing:0.04em;
   }
   .masthead .tagline{
-    margin-top:0.9rem;font-size:0.86rem;line-height:1.6;max-width:34ch;color:rgba(250,248,244,0.72);
+    margin-top:0.9rem;font-size:0.86rem;line-height:1.6;max-width:34ch;
+    color:rgba(250,248,244,0.72);
     opacity:0;animation:fadeIn 1.2s ease 0.5s forwards;
     font-family:'Jost',sans-serif;
   }
   @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
   .lang-switch{
-    position:fixed;top:2.6rem;right:6vw;z-index:21;display:flex;gap:0.6rem;font-size:0.72rem;letter-spacing:0.1em;
+    position:fixed;top:2.6rem;right:6vw;z-index:21;
+    display:flex;gap:0.6rem;font-size:0.72rem;letter-spacing:0.1em;
   }
   .lang-switch button{background:none;border:none;cursor:pointer;color:rgba(250,248,244,0.55);font-family:'Jost',sans-serif;padding:2px 4px;transition:color .3s ease;}
   .lang-switch button.active{color:var(--accent);font-weight:500;}
   .lang-switch span{color:rgba(250,248,244,0.25);}
   @media(max-width:640px){.lang-switch{top:auto;bottom:1.4rem;right:0;left:0;justify-content:center;}}
   .split{position:relative;height:100svh;display:flex;}
-  .door{
-    position:relative;flex:1;overflow:hidden;cursor:pointer;
-    transition:flex 0.6s cubic-bezier(.6,0,.2,1);
-    display:flex;align-items:flex-end;
-  }
+  .door{position:relative;flex:1;overflow:hidden;cursor:pointer;transition:flex 0.6s cubic-bezier(.6,0,.2,1);display:flex;align-items:flex-end;}
   .split:hover .door{flex:0.82;}
   .split .door:hover{flex:1.18;}
   .door-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 1s ease;}
   .door:hover .door-bg{transform:scale(1.05);}
-  .door-wedding .door-bg{
-    background-image:url('images/home/home-wedding.jpg');
-    filter:saturate(0.85);
-  }
-  .door-wedding::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(109,31,44,0.18), rgba(14,14,14,0.72));}
-  .door-dogs .door-bg{
-    background-image:url('images/home/home-dogs.jpg');
-    filter:saturate(1.05) contrast(1.05);
-  }
-  .door-dogs::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(38,36,31,0.15), rgba(38,36,31,0.68));}
+  .door-wedding .door-bg{background-image:url('images/home/home-wedding.jpg');filter:saturate(0.85);}
+  .door-wedding::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(109,31,44,0.18),rgba(14,14,14,0.72));}
+  .door-dogs .door-bg{background-image:url('images/home/home-dogs.jpg');filter:saturate(1.05) contrast(1.05);}
+  .door-dogs::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(38,36,31,0.15),rgba(38,36,31,0.68));}
   .door-content{position:relative;z-index:2;padding:0 5vw 5.5rem;width:100%;}
   .door-eyebrow{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.9rem;opacity:0.85;}
   .door-wedding .door-eyebrow{color:#d99aa4;font-family:'Jost',sans-serif;}
   .door-dogs .door-eyebrow{color:var(--accent);font-family:'Jost',sans-serif;}
-  .door-wedding h2{
-    font-family:'Cormorant Garamond',serif;font-weight:400;font-style:italic;
-    font-size:clamp(2rem,5.2vw,3.6rem);line-height:1.05;color:#fff;
-  }
-  .door-dogs h2{
-    font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;font-weight:400;
-    letter-spacing:0.03em;
-    font-size:clamp(1.7rem,4.4vw,3rem);line-height:1;color:#fff;
-  }
+  .door-wedding h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-style:italic;font-size:clamp(2rem,5.2vw,3.6rem);line-height:1.05;color:#fff;}
+  .door-dogs h2{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;font-weight:400;letter-spacing:0.03em;font-size:clamp(1.7rem,4.4vw,3rem);line-height:1;color:#fff;}
   .door-sub{margin-top:1rem;max-width:32ch;font-size:0.9rem;line-height:1.6;color:rgba(255,255,255,0.78);}
-  .door-cta{
-    margin-top:1.8rem;display:inline-flex;align-items:center;gap:10px;
-    font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;
-    border-bottom:1px solid rgba(255,255,255,0.4);padding-bottom:6px;
-  }
-  .divider{
-    position:absolute;top:0;bottom:0;left:50%;width:1px;
-    background:rgba(255,255,255,0.15);z-index:3;transform:translateX(-0.5px);
-    pointer-events:none;
-  }
+  .door-cta{margin-top:1.8rem;display:inline-flex;align-items:center;gap:10px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;border-bottom:1px solid rgba(255,255,255,0.4);padding-bottom:6px;}
+  .divider{position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(255,255,255,0.15);z-index:3;transform:translateX(-0.5px);pointer-events:none;}
   @media(max-width:820px){
     .split{flex-direction:column;}
-    .split:hover .door{flex:1;}
-    .split .door:hover{flex:1;}
+    .split:hover .door,.split .door:hover{flex:1;}
     .door{flex:1 !important;}
     .divider{display:none;}
     .masthead{padding:1.8rem 6vw 1rem;}
     .masthead .tagline{display:none;}
-    .masthead .name{font-size:clamp(2.8rem,10vw,5rem);}
+    .masthead .name{font-size:clamp(2.4rem,9vw,4.5rem);}
     .door-content{padding-bottom:2.6rem;}
   }
 </style>
@@ -144,58 +119,18 @@
 </div>
 <script>
   const translations = {
-    pl: {
-      page_title: "Alex Sevoz — Fotograf",
-      tagline: "Jeden instynkt — wyłapywać chwilę, zanim zdąży zniknąć. Dwie dziedziny, w których się nim kieruję.",
-      wedding_eyebrow: "Fotografia ślubna",
-      wedding_title: "Śluby",
-      wedding_sub: "Cicha nić całego dnia — bez reżyserii, bez sztywnych póz.",
-      wedding_cta: "Zobacz portfolio →",
-      dogs_eyebrow: "Flying Dog Photography",
-      dogs_title: "PSY W LOCIE",
-      dogs_sub: "Pół sekundy w powietrzu, uchwycona ostro i bez pozowania.",
-      dogs_cta: "ZOBACZ PORTFOLIO →"
-    },
-    fr: {
-      page_title: "Alex Sevoz — Photographe",
-      tagline: "Un seul instinct — saisir l'instant avant qu'il ne disparaisse. Deux terrains où je le mets en pratique.",
-      wedding_eyebrow: "Photographie de mariage",
-      wedding_title: "Mariages",
-      wedding_sub: "Le fil discret d'une journée entière — sans mise en scène, sans poses figées.",
-      wedding_cta: "Voir le portfolio →",
-      dogs_eyebrow: "Flying Dog Photography",
-      dogs_title: "CHIENS EN VOL",
-      dogs_sub: "Une demi-seconde en plein vol, saisie nette et sans pose.",
-      dogs_cta: "VOIR LE PORTFOLIO →"
-    },
-    en: {
-      page_title: "Alex Sevoz — Photographer",
-      tagline: "One instinct — catching the moment before it disappears. Two fields where I put it to work.",
-      wedding_eyebrow: "Wedding Photography",
-      wedding_title: "Weddings",
-      wedding_sub: "The quiet thread of a whole day — no staging, no stiff poses.",
-      wedding_cta: "View portfolio →",
-      dogs_eyebrow: "Flying Dog Photography",
-      dogs_title: "FLYING DOGS",
-      dogs_sub: "Half a second in mid-air, caught sharp and unposed.",
-      dogs_cta: "VIEW PORTFOLIO →"
-    }
+    pl:{page_title:"Alex Sevoz — Fotograf",tagline:"Jeden instynkt — wyłapywać chwilę, zanim zdąży zniknąć. Dwie dziedziny, w których się nim kieruję.",wedding_eyebrow:"Fotografia ślubna",wedding_title:"Śluby",wedding_sub:"Cicha nić całego dnia — bez reżyserii, bez sztywnych póz.",wedding_cta:"Zobacz portfolio →",dogs_eyebrow:"Flying Dog Photography",dogs_title:"PSY W LOCIE",dogs_sub:"Pół sekundy w powietrzu, uchwycona ostro i bez pozowania.",dogs_cta:"ZOBACZ PORTFOLIO →"},
+    fr:{page_title:"Alex Sevoz — Photographe",tagline:"Un seul instinct — saisir l'instant avant qu'il ne disparaisse. Deux terrains où je le mets en pratique.",wedding_eyebrow:"Photographie de mariage",wedding_title:"Mariages",wedding_sub:"Le fil discret d'une journée entière — sans mise en scène, sans poses figées.",wedding_cta:"Voir le portfolio →",dogs_eyebrow:"Flying Dog Photography",dogs_title:"CHIENS EN VOL",dogs_sub:"Une demi-seconde en plein vol, saisie nette et sans pose.",dogs_cta:"VOIR LE PORTFOLIO →"},
+    en:{page_title:"Alex Sevoz — Photographer",tagline:"One instinct — catching the moment before it disappears. Two fields where I put it to work.",wedding_eyebrow:"Wedding Photography",wedding_title:"Weddings",wedding_sub:"The quiet thread of a whole day — no staging, no stiff poses.",wedding_cta:"View portfolio →",dogs_eyebrow:"Flying Dog Photography",dogs_title:"FLYING DOGS",dogs_sub:"Half a second in mid-air, caught sharp and unposed.",dogs_cta:"VIEW PORTFOLIO →"}
   };
   function setLang(lang){
-    const dict = translations[lang];
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if(dict[key] !== undefined) el.innerHTML = dict[key];
-    });
-    document.getElementById('pageTitle').textContent = dict.page_title;
-    document.getElementById('htmlRoot').setAttribute('lang', lang);
-    document.querySelectorAll('.lang-switch button').forEach(b => {
-      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
-    });
+    const dict=translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(dict[k]!==undefined)el.innerHTML=dict[k];});
+    document.getElementById('pageTitle').textContent=dict.page_title;
+    document.getElementById('htmlRoot').setAttribute('lang',lang);
+    document.querySelectorAll('.lang-switch button').forEach(b=>b.classList.toggle('active',b.getAttribute('data-lang')===lang));
   }
-  document.querySelectorAll('.lang-switch button').forEach(btn => {
-    btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
-  });
+  document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>setLang(btn.getAttribute('data-lang'))));
   setLang('en');
 </script>
 </body>
