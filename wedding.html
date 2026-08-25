@@ -227,10 +227,11 @@
   }
   .grid figure:hover figcaption{opacity:1;transform:translateY(0);}
 
-  /* alternance hauteur pour l'effet asymétrique */
-  .grid figure:nth-child(3n+1) img{aspect-ratio:3/4;}
-  .grid figure:nth-child(3n+2) img{aspect-ratio:4/5;}
-  .grid figure:nth-child(3n+3) img{aspect-ratio:1/1;}
+  .grid figure img{
+  width:100%;
+  height:auto;
+  display:block;
+}
 
   /* ---------- LIGHTBOX ---------- */
   .lightbox{
