@@ -8,6 +8,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  @font-face{
+    font-family:'Backstreet';
+    src:url('fonts/Backstreet.ttf') format('truetype');
+    font-weight:normal;font-style:normal;font-display:swap;
+  }
   :root{
     --ink:#26241f;
     --paper:#f4ede0;
@@ -51,7 +56,7 @@
     border-color:var(--line);
   }
   .logo{
-    font-family:'Barlow Condensed',sans-serif;
+    font-family:'Backstreet','Barlow Condensed',sans-serif;
     font-size:1.1rem;
     letter-spacing:0.04em;
     text-transform:uppercase;
@@ -96,7 +101,7 @@
   .hero{position:relative;height:100svh;overflow:hidden;display:flex;align-items:flex-end;background:var(--ink);}
   .hero-bg{
     position:absolute;inset:0;
-    background-image:url('https://raw.githubusercontent.com/aleko-rgb/alexsevoz/main/images/dogs/dog_1.jpg');
+    background-image:url('https://images.unsplash.com/photo-1646640237608-13239adc68b6?q=80&w=1800&auto=format&fit=crop');
     background-size:cover;background-position:center 30%;
     filter:grayscale(0.15) contrast(1.05);
     transform:scale(1.04);
