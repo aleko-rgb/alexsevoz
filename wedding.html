@@ -312,9 +312,9 @@
 
 <script>
 // ─── EMAILJS CONFIG ─── Remplace par tes vraies valeurs
-const EMAILJS_PUBLIC_KEY  = 'VOTRE_PUBLIC_KEY';
-const EMAILJS_SERVICE_ID  = 'VOTRE_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'VOTRE_TEMPLATE_ID';
+const EMAILJS_PUBLIC_KEY  = '8sKwmAvy4Jw0ot0W4';
+const EMAILJS_SERVICE_ID  = 'service_47o5cwb';
+const EMAILJS_TEMPLATE_ID = 'template_9zidq8r';
 emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
 // ─── PORTFOLIO ───────────────────────────────────────────────────────
@@ -401,8 +401,8 @@ document.getElementById('contactForm').addEventListener('submit', async function
       ambiance:    ambiance  ? ambiance.value : '—',
       source:      document.getElementById('f_source').value,
       histoire:    document.getElementById('f_histoire').value,
-      to_email:    'alex.sevoz.photo@gmail.com',
-      cc_email:    'alex.koscinski@eyecu-irisphoto.com',
+      to_email:    'alex.koscinski@eyecu-irisphoto.com',
+      cc_email:    '',
     });
     msg.textContent = currentLang === 'fr' ? 'Message envoyé ! Alex vous répondra sous 48h.' : currentLang === 'pl' ? 'Wiadomość wysłana! Alex odpowie w ciągu 48h.' : 'Message sent! Alex will reply within 48h.';
     msg.className = 'form-msg success';
