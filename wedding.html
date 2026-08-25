@@ -25,9 +25,33 @@
   @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}}
 
   /* NAV */
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:26px 6vw;transition:background 0.5s ease,padding 0.4s ease,box-shadow 0.4s ease;}
-  nav.scrolled{background:rgba(255,255,255,0.94);backdrop-filter:blur(8px);padding:16px 6vw;box-shadow:0 1px 0 var(--line);}
-  .logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;letter-spacing:0.05em;}
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;flex-direction:column;
+    padding:26px 6vw 0;
+    transition:background 0.5s ease,box-shadow 0.4s ease;
+  }
+  nav.scrolled{
+    background:rgba(255,255,255,0.96);
+    backdrop-filter:blur(8px);
+    box-shadow:0 1px 0 var(--line);
+  }
+  .nav-top{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-bottom:14px;
+  }
+  nav.scrolled .nav-top{padding-bottom:10px;}
+  .nav-sub{
+    font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;
+    color:var(--sand);text-align:center;
+    padding:6px 0 10px;
+    border-top:1px solid var(--line);
+    opacity:0;max-height:0;overflow:hidden;
+    transition:opacity 0.4s ease, max-height 0.4s ease, padding 0.4s ease;
+  }
+  nav.scrolled .nav-sub{opacity:1;max-height:40px;padding:8px 0 10px;}
+
+  .logo{font-family:'Cormorant Garamond',serif;font-size:1.15rem;letter-spacing:0.28em;text-transform:uppercase;}
   .nav-right{display:flex;align-items:center;gap:2.4rem;}
   .nav-links{display:flex;gap:2.6rem;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;}
   .nav-links a{position:relative;padding-bottom:4px;color:inherit;}
@@ -38,6 +62,7 @@
   .lang-switch button.active{color:var(--wine);font-weight:500;}
   .lang-switch span{color:var(--line);}
   .nav-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--ink);z-index:110;}
+
   @media(max-width:820px){
     .nav-links{position:fixed;inset:0;background:var(--ink);color:var(--paper);flex-direction:column;justify-content:center;align-items:center;gap:2.2rem;font-size:1.1rem;opacity:0;pointer-events:none;transition:opacity 0.4s ease;z-index:105;}
     .nav-links.open{opacity:1;pointer-events:all;}
@@ -47,31 +72,19 @@
     .lang-switch.mobile-lang.open{opacity:1;pointer-events:all;}
     .lang-switch.mobile-lang button{color:rgba(255,255,255,0.6);}
     .lang-switch.mobile-lang button.active{color:var(--sand);}
+    .nav-sub{display:none;}
+    nav{padding:18px 6vw 0;}
   }
   @media(min-width:821px){.lang-switch.mobile-lang{display:none;}}
-
-  /* SUBNAV BANNER */
-  .subnav-banner{
-    position:fixed;top:0;left:0;right:0;z-index:99;
-    display:flex;align-items:center;justify-content:center;
-    pointer-events:none;
-    padding-top:80px;
-  }
-  .subnav-banner span{
-    font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;
-    color:var(--sand);opacity:0;
-    transition:opacity 0.5s ease;
-  }
-  nav.scrolled ~ .subnav-banner span{opacity:1;}
 
   /* HERO */
   .hero{position:relative;height:100svh;overflow:hidden;}
   .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;animation:slideFade 24s infinite;filter:saturate(0.9);}
   .slide::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,14,0.15),rgba(14,14,14,0.6));}
-  .slide:nth-child(1){animation-delay:0s;  background-image:url('images/wedding/slideshow-1.webp');}
-  .slide:nth-child(2){animation-delay:6s;  background-image:url('images/wedding/slideshow-2.webp');}
-  .slide:nth-child(3){animation-delay:12s; background-image:url('images/wedding/slideshow-3.webp');}
-  .slide:nth-child(4){animation-delay:18s; background-image:url('images/wedding/slideshow-4.webp');}
+  .slide:nth-child(1){animation-delay:0s;background-image:url('images/wedding/slideshow-1.webp');}
+  .slide:nth-child(2){animation-delay:6s;background-image:url('images/wedding/slideshow-2.webp');}
+  .slide:nth-child(3){animation-delay:12s;background-image:url('images/wedding/slideshow-3.webp');}
+  .slide:nth-child(4){animation-delay:18s;background-image:url('images/wedding/slideshow-4.webp');}
   @keyframes slideFade{0%{opacity:0;}4%{opacity:1;}25%{opacity:1;}29%{opacity:0;}100%{opacity:0;}}
   .hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:0 6vw 5rem;color:var(--paper);}
   .hero-eyebrow{font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--sand);margin-bottom:1.2rem;opacity:0;animation:riseIn 1s ease 0.4s forwards;}
@@ -125,7 +138,7 @@
   .lb-close{position:absolute;top:1.6rem;right:2rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;opacity:0.6;transition:opacity .3s ease;line-height:1;}
   .lb-close:hover{opacity:1;}
   .lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;color:#fff;font-size:2.2rem;cursor:pointer;opacity:0.5;transition:opacity .3s ease;padding:1rem;}
-  .lb-prev{left:1rem;} .lb-next{right:1rem;}
+  .lb-prev{left:1rem;}.lb-next{right:1rem;}
   .lb-prev:hover,.lb-next:hover{opacity:1;}
   .lb-counter{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.4);font-size:0.78rem;letter-spacing:0.1em;}
 
@@ -174,21 +187,24 @@
 <body>
 
 <nav id="nav">
-  <a href="index.html" class="logo">Alex Sevoz</a>
-  <div class="nav-right">
-    <div class="nav-links" id="navLinks">
-      <a href="#story"    data-i18n="nav_approach" onclick="closeMenu()"></a>
-      <a href="#portfolio" data-i18n="nav_portfolio" onclick="closeMenu()"></a>
-      <a href="#avis"     data-i18n="nav_avis"     onclick="closeMenu()"></a>
-      <a href="#histoire" data-i18n="nav_contact"  onclick="closeMenu()"></a>
+  <div class="nav-top">
+    <a href="index.html" class="logo">Alex Sevoz</a>
+    <div class="nav-right">
+      <div class="nav-links" id="navLinks">
+        <a href="#story"     data-i18n="nav_approach" onclick="closeMenu()"></a>
+        <a href="#portfolio" data-i18n="nav_portfolio" onclick="closeMenu()"></a>
+        <a href="#avis"      data-i18n="nav_avis"     onclick="closeMenu()"></a>
+        <a href="#histoire"  data-i18n="nav_contact"  onclick="closeMenu()"></a>
+      </div>
+      <div class="lang-switch desktop-lang" id="langSwitchDesktop">
+        <button data-lang="pl">PL</button><span>·</span>
+        <button data-lang="fr">FR</button><span>·</span>
+        <button data-lang="en">EN</button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
     </div>
-    <div class="lang-switch desktop-lang" id="langSwitchDesktop">
-      <button data-lang="pl">PL</button><span>·</span>
-      <button data-lang="fr">FR</button><span>·</span>
-      <button data-lang="en">EN</button>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
   </div>
+  <div class="nav-sub" data-i18n="subnav_banner"></div>
 </nav>
 
 <div class="lang-switch mobile-lang" id="langSwitchMobile">
@@ -197,12 +213,9 @@
   <button data-lang="en">EN</button>
 </div>
 
-<div class="subnav-banner"><span data-i18n="subnav_banner"></span></div>
-
 <header class="hero">
   <div class="slide"></div><div class="slide"></div><div class="slide"></div><div class="slide"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow" data-i18n="hero_eyebrow"></div>
     <h1 data-i18n="hero_title"></h1>
     <p class="hero-sub" data-i18n="hero_sub"></p>
   </div>
@@ -307,19 +320,15 @@
   <div class="footer-cross"><a href="dogs.html" data-i18n="footer_cross"></a></div>
 </footer>
 
-<!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
 <script>
-// ─── EMAILJS CONFIG ─── Remplace par tes vraies valeurs
+// ─── EMAILJS CONFIG — remplace par tes valeurs ───────────────────────
 const EMAILJS_PUBLIC_KEY  = '8sKwmAvy4Jw0ot0W4';
 const EMAILJS_SERVICE_ID  = 'service_47o5cwb';
 const EMAILJS_TEMPLATE_ID = 'template_9zidq8r';
 emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
 // ─── PORTFOLIO ───────────────────────────────────────────────────────
-// Pour ajouter une photo : ajouter une ligne
-// Pour retirer : supprimer la ligne
 const portfolioPhotos = [
   { src: 'images/wedding/portfolio-1.webp',  cap: '' },
   { src: 'images/wedding/portfolio-2.webp',  cap: '' },
@@ -354,9 +363,7 @@ portfolioPhotos.forEach((photo, i) => {
   const fig = document.createElement('figure');
   fig.classList.add('reveal');
   const img = document.createElement('img');
-  img.src = photo.src;
-  img.alt = photo.cap || '';
-  img.loading = 'lazy';
+  img.src = photo.src; img.alt = photo.cap || ''; img.loading = 'lazy';
   fig.appendChild(img);
   if(photo.cap){ const cap = document.createElement('figcaption'); cap.textContent = photo.cap; fig.appendChild(cap); }
   fig.addEventListener('click', () => openLightbox(i));
@@ -383,33 +390,31 @@ document.addEventListener('keydown', e => {
   if(e.key==='ArrowRight') lbMove(1);
 });
 
-// ─── FORM SUBMIT ─────────────────────────────────────────────────────
+// ─── FORM ────────────────────────────────────────────────────────────
 document.getElementById('contactForm').addEventListener('submit', async function(e){
   e.preventDefault();
   const btn = document.getElementById('submitBtn');
   const msg = document.getElementById('formMsg');
-  const ceremo = document.querySelector('input[name="ceremonie"]:checked');
+  const ceremo  = document.querySelector('input[name="ceremonie"]:checked');
   const ambiance = document.querySelector('input[name="ambiance"]:checked');
   btn.disabled = true;
   msg.style.display = 'none';
   try {
     await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-      from_names:  document.getElementById('f_names').value,
-      wedding_date:document.getElementById('f_date').value,
-      lieu:        document.getElementById('f_lieu').value,
-      ceremonie:   ceremo   ? ceremo.value   : '—',
-      ambiance:    ambiance  ? ambiance.value : '—',
-      source:      document.getElementById('f_source').value,
-      histoire:    document.getElementById('f_histoire').value,
-      to_email:    'alex.koscinski@eyecu-irisphoto.com',
-      cc_email:    '',
+      from_names:   document.getElementById('f_names').value,
+      wedding_date: document.getElementById('f_date').value,
+      lieu:         document.getElementById('f_lieu').value,
+      ceremonie:    ceremo   ? ceremo.value   : '—',
+      ambiance:     ambiance ? ambiance.value : '—',
+      source:       document.getElementById('f_source').value,
+      histoire:     document.getElementById('f_histoire').value,
     });
-    msg.textContent = currentLang === 'fr' ? 'Message envoyé ! Alex vous répondra sous 48h.' : currentLang === 'pl' ? 'Wiadomość wysłana! Alex odpowie w ciągu 48h.' : 'Message sent! Alex will reply within 48h.';
+    msg.textContent = currentLang==='fr' ? 'Message envoyé ! Alex vous répondra sous 48h.' : currentLang==='pl' ? 'Wiadomość wysłana! Alex odpowie w ciągu 48h.' : 'Message sent! Alex will reply within 48h.';
     msg.className = 'form-msg success';
     msg.style.display = 'block';
     this.reset();
   } catch(err) {
-    msg.textContent = currentLang === 'fr' ? 'Erreur d\'envoi. Contactez directement alex.sevoz.photo@gmail.com' : 'Send error. Please contact alex.sevoz.photo@gmail.com directly.';
+    msg.textContent = 'Error sending message. Please contact alex.sevoz.photo@gmail.com directly.';
     msg.className = 'form-msg error';
     msg.style.display = 'block';
   }
@@ -423,7 +428,6 @@ const translations = {
     page_title:"Alex Sevoz — Fotograf ślubny",
     nav_approach:"Podejście",nav_portfolio:"Portfolio",nav_avis:"Opinie",nav_contact:"Wasza Historia",
     subnav_banner:"FOTOGRAF ŚLUBNY — POLSKA I ZAGRANICA",
-    hero_eyebrow:"FOTOGRAF ŚLUBNY — POLSKA I ZAGRANICA",
     hero_title:"Cicha nić<br>całego dnia.",
     hero_sub:"Dokumentuję śluby tak, jak podąża się za nicią: nie przerywając, pozwalając, by prawdziwe chwile same opowiedziały swoją historię.",
     scroll_cue:"Przewiń",
@@ -436,14 +440,14 @@ const translations = {
     portfolio_eyebrow:"Portfolio",portfolio_h2:"Kilka wybranych chwil.",portfolio_p:"Fragment niedawnych ślubów, w Polsce i za granicą.",
     avis_eyebrow:"Opinie",avis_h2:"Co mówią pary.",
     testi1_p:"Alex potrafił zniknąć w tle przez cały dzień. Oglądając zdjęcia, odkryliśmy nasz własny ślub z zupełnie innej perspektywy.",testi1_who:"Kasia & Piotr — Ślub w Warszawie",
-    testi2_p:"Żadnego sztucznie ustawionego zdjęcia. Każde ujęcie naprawdę opowiada to, co się wydarzyło. To rzadkie i cenne.",testi2_who:"Ania & Marek — Ślub w Paryżu",
+    testi2_p:"Żadnego sztucznie ustawionego zdjęcia. Każde ujęcie naprawdę opowiada to, co się wydarzyło. To rzadkie i cenne.",testi2_who:"Anaïs & Thomas — Ślub w Paryżu",
     histoire_eyebrow:"Wasza Historia",histoire_h2:"Opowiedzcie mi o Waszym dniu.",histoire_p:"Każdy ślub zaczyna się od szczerej rozmowy. Liczba ślubów w sezonie jest ograniczona — warto pisać z wyprzedzeniem.",
     label_names:"Wasze imiona",placeholder_names:"Kasia & Piotr",
     label_date:"Data ślubu",placeholder_date:"Czerwiec 2027",
     label_lieu:"Miejsce / region",placeholder_lieu:"Toskania, Włochy",
     label_ceremonie:"Rodzaj ceremonii",cere_civil:"Cywilna",cere_reli:"Religijna",cere_intime:"Kameralna",cere_autre:"Inna",
     label_ambiance:"Nastrój",amb_discret:"Dyskretny",amb_festif:"Radosny",amb_boheme:"Boho",amb_elegant:"Elegancki",amb_autre:"Inny",
-    label_source:"Skąd nas znacie?",placeholder_source:"Instagram, polecenie znajomych...",
+    label_source:"Jak nas znaleźliście?",placeholder_source:"Google, polecenie znajomych...",
     label_histoire:"Wasza historia",placeholder_histoire:"Opowiedzcie mi o Waszym dniu...",
     btn_send:"Wyślij wiadomość",
     line_email_label:"E-mail",line_phone_label:"Telefon",
@@ -453,7 +457,6 @@ const translations = {
     page_title:"Alex Sevoz — Photographe de mariage",
     nav_approach:"L'approche",nav_portfolio:"Portfolio",nav_avis:"Avis",nav_contact:"Votre Histoire",
     subnav_banner:"PHOTOGRAPHE DE MARIAGE — POLOGNE & DESTINATION",
-    hero_eyebrow:"PHOTOGRAPHE DE MARIAGE — POLOGNE & DESTINATION",
     hero_title:"Le fil discret<br>d'une journée entière.",
     hero_sub:"Je documente les mariages comme on suit un fil : sans les interrompre, en laissant les vrais moments se raconter d'eux-mêmes.",
     scroll_cue:"Défiler",
@@ -466,14 +469,14 @@ const translations = {
     portfolio_eyebrow:"Portfolio",portfolio_h2:"Quelques instants choisis.",portfolio_p:"Un aperçu de mariages récents, en Pologne et à l'étranger.",
     avis_eyebrow:"Avis",avis_h2:"Ce qu'ils en disent.",
     testi1_p:"Alex a su se faire oublier toute la journée. En découvrant les photos, nous avons redécouvert notre propre mariage sous un angle inédit.",testi1_who:"Kasia & Piotr — Mariage à Varsovie",
-    testi2_p:"Aucune photo posée artificiellement. Chaque image raconte vraiment ce qui s'est passé. C'est rare et précieux.",testi2_who:"Ania & Marek — Mariage à Paris",
+    testi2_p:"Aucune photo posée artificiellement. Chaque image raconte vraiment ce qui s'est passé. C'est rare et précieux.",testi2_who:"Anaïs & Thomas — Mariage à Paris",
     histoire_eyebrow:"Votre Histoire",histoire_h2:"Parlez-moi de votre journée.",histoire_p:"Chaque mariage commence par un échange sincère. Le nombre de mariages par saison est volontairement limité — mieux vaut écrire tôt.",
     label_names:"Vos prénoms",placeholder_names:"Camille & Thomas",
     label_date:"Date du mariage",placeholder_date:"Juin 2027",
     label_lieu:"Lieu / région",placeholder_lieu:"Toscane, Italie",
     label_ceremonie:"Type de cérémonie",cere_civil:"Civile",cere_reli:"Religieuse",cere_intime:"Intime",cere_autre:"Autre",
     label_ambiance:"Ambiance",amb_discret:"Discret",amb_festif:"Festif",amb_boheme:"Bohème",amb_elegant:"Élégant",amb_autre:"Autre",
-    label_source:"Comment avez-vous découvert Alex ?",placeholder_source:"Instagram, bouche-à-oreille...",
+    label_source:"Comment avez-vous trouvé Alex ?",placeholder_source:"Google, bouche-à-oreille...",
     label_histoire:"Votre histoire",placeholder_histoire:"Racontez-moi votre journée idéale...",
     btn_send:"Envoyer le message",
     line_email_label:"Email",line_phone_label:"Téléphone",
@@ -483,7 +486,6 @@ const translations = {
     page_title:"Alex Sevoz — Wedding Photographer",
     nav_approach:"Approach",nav_portfolio:"Portfolio",nav_avis:"Reviews",nav_contact:"Your Story",
     subnav_banner:"WEDDING PHOTOGRAPHER — POLAND & DESTINATION",
-    hero_eyebrow:"WEDDING PHOTOGRAPHER — POLAND & DESTINATION",
     hero_title:"The quiet thread<br>of a whole day.",
     hero_sub:"I document weddings the way you follow a thread: without interrupting, letting the real moments tell their own story.",
     scroll_cue:"Scroll",
@@ -496,14 +498,14 @@ const translations = {
     portfolio_eyebrow:"Portfolio",portfolio_h2:"A few chosen moments.",portfolio_p:"A glimpse of recent weddings, in Poland and abroad.",
     avis_eyebrow:"Reviews",avis_h2:"What couples say.",
     testi1_p:"Alex managed to fade into the background the whole day. Seeing the photos, we rediscovered our own wedding from an angle we hadn't noticed in the moment.",testi1_who:"Kasia & Piotr — Wedding in Warsaw",
-    testi2_p:"Not a single artificially posed photo. Every image genuinely tells what happened. That's rare, and precious.",testi2_who:"Ania & Marek — Wedding in Paris",
+    testi2_p:"Not a single artificially posed photo. Every image genuinely tells what happened. That's rare, and precious.",testi2_who:"Anaïs & Thomas — Wedding in Paris",
     histoire_eyebrow:"Your Story",histoire_h2:"Tell me about your day.",histoire_p:"Every wedding starts with an honest conversation. The number of weddings per season is intentionally limited — it's best to reach out early.",
     label_names:"Your first names",placeholder_names:"Emily & James",
     label_date:"Wedding date",placeholder_date:"June 2027",
     label_lieu:"Venue / region",placeholder_lieu:"Tuscany, Italy",
     label_ceremonie:"Type of ceremony",cere_civil:"Civil",cere_reli:"Religious",cere_intime:"Intimate",cere_autre:"Other",
     label_ambiance:"Mood",amb_discret:"Discreet",amb_festif:"Festive",amb_boheme:"Bohemian",amb_elegant:"Elegant",amb_autre:"Other",
-    label_source:"How did you find Alex?",placeholder_source:"Instagram, word of mouth...",
+    label_source:"How did you find Alex?",placeholder_source:"Google, word of mouth...",
     label_histoire:"Your story",placeholder_histoire:"Tell me about your ideal day...",
     btn_send:"Send message",
     line_email_label:"Email",line_phone_label:"Phone",
@@ -526,9 +528,9 @@ setLang('en');
 // NAV
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
-const navToggle = document.getElementById('navToggle');
-const navLinks  = document.getElementById('navLinks');
-const mobileLang= document.getElementById('langSwitchMobile');
+const navToggle  = document.getElementById('navToggle');
+const navLinks   = document.getElementById('navLinks');
+const mobileLang = document.getElementById('langSwitchMobile');
 navToggle.addEventListener('click', () => {
   const open = navLinks.classList.toggle('open');
   mobileLang.classList.toggle('open', open);
@@ -536,14 +538,14 @@ navToggle.addEventListener('click', () => {
 });
 function closeMenu(){ navLinks.classList.remove('open'); mobileLang.classList.remove('open'); navToggle.textContent='☰'; }
 
-// SCROLL REVEAL (sections)
+// SCROLL REVEAL sections
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 // TESTIMONIALS
-const track = document.getElementById('testiTrack');
+const track    = document.getElementById('testiTrack');
 const testiNav = document.getElementById('testiNav');
-const total = track.children.length;
-let current = 0;
+const total    = track.children.length;
+let current    = 0;
 for(let i=0;i<total;i++){
   const dot = document.createElement('button');
   dot.className = 'testi-dot'+(i===0?' active':'');
