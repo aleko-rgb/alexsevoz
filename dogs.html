@@ -458,6 +458,10 @@
     }
   };
 
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, {threshold:0.1});
+
   const dogPhotos=[
     {src:'images/dog/Portfolio-1.webp'},
     {src:'images/dog/Protfolio-2.webp'},
@@ -523,11 +527,7 @@
   });
   function closeMenu(){ navLinks.classList.remove('open'); mobileLang.classList.remove('open'); navToggle.textContent = '☰'; }
 
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-  }, {threshold:0.1});
-  revealEls.forEach(el => io.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   const track = document.getElementById('testiTrack');
   const testiNav = document.getElementById('testiNav');
