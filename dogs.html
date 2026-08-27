@@ -6,7 +6,7 @@
 <title id="pageTitle">Alex Sevoz — Flying Dog Photography</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   @font-face{font-family:'Backstreet';src:url('fonts/Backstreet.ttf') format('truetype');font-weight:normal;font-style:normal;font-display:swap;}
   :root{
@@ -24,10 +24,13 @@
   @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}}
 
   /* NAV */
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:24px 6vw;transition:background 0.4s ease,padding 0.4s ease,border-color 0.4s ease;border-bottom:1px solid transparent;}
-  nav.scrolled{background:rgba(38,36,31,0.88);backdrop-filter:blur(8px);padding:15px 6vw;border-color:var(--line);}
-  .logo{font-family:'Backstreet','Barlow Condensed',sans-serif;font-size:1.1rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--paper);}
-  .logo span{color:var(--accent);}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;flex-direction:column;padding:24px 6vw 0;transition:background 0.4s ease,box-shadow 0.4s ease;}
+  nav.scrolled{background:rgba(38,36,31,0.92);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--line);}
+  .nav-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:14px;}
+  nav.scrolled .nav-top{padding-bottom:10px;}
+  .nav-sub{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.75);text-align:center;padding:6px 0 10px;border-top:1px solid var(--line);opacity:0;max-height:0;overflow:hidden;transition:opacity 0.4s ease,max-height 0.4s ease,padding 0.4s ease;}
+  nav.scrolled .nav-sub{opacity:1;max-height:40px;padding:8px 0 10px;}
+  .logo{font-family:'Backstreet','Cormorant Garamond',serif;font-size:1.5rem;letter-spacing:0.04em;color:var(--paper);}
   .nav-right{display:flex;align-items:center;gap:2.4rem;}
   .nav-links{display:flex;gap:2.4rem;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;}
   .nav-links a{position:relative;padding-bottom:4px;color:var(--paper-dim);transition:color .3s ease;}
@@ -44,6 +47,8 @@
     .lang-switch.desktop-lang{display:none;}
     .lang-switch.mobile-lang{position:fixed;bottom:2.4rem;left:0;right:0;justify-content:center;z-index:110;opacity:0;pointer-events:none;transition:opacity .4s ease;}
     .lang-switch.mobile-lang.open{opacity:1;pointer-events:all;}
+    .nav-sub{display:none;}
+    nav{padding:18px 6vw 0;}
   }
   @media(min-width:821px){.lang-switch.mobile-lang{display:none;}}
 
@@ -51,16 +56,16 @@
   .hero{position:relative;height:100svh;overflow:hidden;display:flex;align-items:flex-end;background:var(--ink);}
   .hero-bg{position:absolute;inset:0;background-image:url('images/dog/slideshow-2.webp');background-size:cover;background-position:center 30%;filter:grayscale(0.15) contrast(1.05);transform:scale(1.04);}
   .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(38,36,31,0.22) 0%,rgba(38,36,31,0.4) 55%,rgba(38,36,31,0.82) 100%);}
-  .flight-arc{position:absolute;inset:0;z-index:1;pointer-events:none;}
-  .flight-arc svg{width:100%;height:100%;}
-  .arc-path{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:6 10;opacity:0.55;}
+  .flight-arc-banner{width:100%;height:140px;pointer-events:none;overflow:hidden;}
+  .flight-arc-banner svg{width:100%;height:100%;}
+  .arc-path{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:6 10;opacity:0.45;}
   .dog-part{fill:var(--accent);}
-  .arc-anim{offset-path:path('M -40 560 Q 480 40 1020 560');offset-rotate:auto;animation:flyArc 5.5s ease-in-out infinite;}
+  .arc-anim{offset-path:path('M -40 130 Q 500 10 1040 130');offset-rotate:auto;animation:flyArc 5.5s ease-in-out infinite;}
   @keyframes flyArc{0%{offset-distance:0%;opacity:0;}8%{opacity:1;}92%{opacity:1;}100%{offset-distance:100%;opacity:0;}}
-  .hero-content{position:relative;z-index:2;padding:0 6vw 5rem;color:var(--paper);width:100%;}
+  .hero-content{position:relative;z-index:2;padding:0 6vw 3rem;color:var(--paper);width:100%;}
   .hero-tag{font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.08em;color:var(--accent);margin-bottom:1.3rem;display:inline-flex;gap:10px;align-items:center;opacity:0;animation:riseIn 0.9s ease 0.3s forwards;}
   .hero-tag::before{content:'●';font-size:0.6rem;}
-  .hero h1{font-size:clamp(2.8rem,9vw,7rem);font-weight:500;line-height:0.95;max-width:20ch;color:var(--paper);opacity:0;animation:riseIn 0.9s ease 0.5s forwards;}
+  .hero h1{font-size:clamp(2rem,6vw,4.8rem);font-weight:500;line-height:0.95;max-width:20ch;color:var(--paper);opacity:0;animation:riseIn 0.9s ease 0.5s forwards;}
   .hero h1 em{font-style:normal;color:var(--accent);}
   .hero-sub{margin-top:1.6rem;max-width:44ch;font-size:1.05rem;line-height:1.6;color:var(--paper-dim);opacity:0;animation:riseIn 0.9s ease 0.75s forwards;}
   @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
@@ -148,21 +153,24 @@
 <body>
 
 <nav id="nav">
-  <a href="index.html" class="logo">Alex Sevoz <span>· Flying Dog</span></a>
-  <div class="nav-right">
-    <div class="nav-links" id="navLinks">
-      <a href="#anatomy" data-i18n="nav_anatomy" onclick="closeMenu()"></a>
-      <a href="#portfolio" data-i18n="nav_portfolio" onclick="closeMenu()"></a>
-      <a href="#sessions" data-i18n="nav_sessions" onclick="closeMenu()"></a>
-      <a href="#contact" data-i18n="nav_contact" onclick="closeMenu()"></a>
+  <div class="nav-top">
+    <a href="index.html" class="logo">Alex Sevoz</a>
+    <div class="nav-right">
+      <div class="nav-links" id="navLinks">
+        <a href="#anatomy" data-i18n="nav_anatomy" onclick="closeMenu()"></a>
+        <a href="#portfolio" data-i18n="nav_portfolio" onclick="closeMenu()"></a>
+        <a href="#sessions" data-i18n="nav_sessions" onclick="closeMenu()"></a>
+        <a href="#contact" data-i18n="nav_contact" onclick="closeMenu()"></a>
+      </div>
+      <div class="lang-switch desktop-lang" id="langSwitchDesktop">
+        <button data-lang="pl">PL</button><span>·</span>
+        <button data-lang="fr">FR</button><span>·</span>
+        <button data-lang="en">EN</button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
     </div>
-    <div class="lang-switch desktop-lang" id="langSwitchDesktop">
-      <button data-lang="pl">PL</button><span>·</span>
-      <button data-lang="fr">FR</button><span>·</span>
-      <button data-lang="en">EN</button>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
   </div>
+  <div class="nav-sub" data-i18n="subnav_banner"></div>
 </nav>
 <div class="lang-switch mobile-lang" id="langSwitchMobile">
   <button data-lang="pl">PL</button><span>·</span>
@@ -172,20 +180,6 @@
 
 <header class="hero">
   <div class="hero-bg"></div>
-  <div class="flight-arc">
-    <svg viewBox="0 0 1000 620" preserveAspectRatio="none">
-      <path class="arc-path" d="M -40 560 Q 480 40 1020 560"></path>
-      <g class="arc-anim">
-        <path class="dog-part" d="M -13,-6 Q -20,-13 -16,-18 Q -14,-13 -9,-7 Z"></path>
-        <ellipse class="dog-part" cx="-2" cy="0" rx="13" ry="6"></ellipse>
-        <path class="dog-part" d="M -12,3 L -19,-3 L -16,-6 L -9,1 Z"></path>
-        <path class="dog-part" d="M 5,4 L 11,15 L 7,15 L 2,5 Z"></path>
-        <circle class="dog-part" cx="14" cy="-5" r="5.5"></circle>
-        <ellipse class="dog-part" cx="20" cy="-3" rx="3" ry="2"></ellipse>
-        <path class="dog-part" d="M 11,-10 L 16,-10 L 13,-15 Z"></path>
-      </g>
-    </svg>
-  </div>
   <div class="hero-content">
     <div class="hero-tag" data-i18n="hero_tag"></div>
     <h1 data-i18n="hero_title"></h1>
@@ -193,6 +187,21 @@
   </div>
   <div class="scroll-cue mono" data-i18n="scroll_cue"></div>
 </header>
+
+<div class="flight-arc-banner">
+  <svg viewBox="0 0 1000 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path class="arc-path" d="M -40 130 Q 500 10 1040 130"></path>
+    <g class="arc-anim">
+      <path class="dog-part" d="M -13,-6 Q -20,-13 -16,-18 Q -14,-13 -9,-7 Z"></path>
+      <ellipse class="dog-part" cx="-2" cy="0" rx="13" ry="6"></ellipse>
+      <path class="dog-part" d="M -12,3 L -19,-3 L -16,-6 L -9,1 Z"></path>
+      <path class="dog-part" d="M 5,4 L 11,15 L 7,15 L 2,5 Z"></path>
+      <circle class="dog-part" cx="14" cy="-5" r="5.5"></circle>
+      <ellipse class="dog-part" cx="20" cy="-3" rx="3" ry="2"></ellipse>
+      <path class="dog-part" d="M 11,-10 L 16,-10 L 13,-15 Z"></path>
+    </g>
+  </svg>
+</div>
 
 <section id="anatomy">
   <div class="section-head reveal">
@@ -289,7 +298,6 @@
       <p data-i18n="contact_info_p"></p>
       <div class="line"><span data-i18n="line_email_label"></span><span>alex.sevoz.photo@gmail.com</span></div>
       <div class="line"><span data-i18n="line_phone_label"></span><span>+48 720 852 075</span></div>
-      <div class="line"><span data-i18n="line_insta_label"></span><span>@alexsevoz.flyingdog</span></div>
     </div>
   </div>
 </section>
@@ -304,6 +312,7 @@
     pl: {
       page_title: "Alex Sevoz — Flying Dog Photography",
       nav_anatomy: "Anatomia skoku", nav_portfolio: "Portfolio", nav_sessions: "Sesje", nav_contact: "Kontakt",
+      subnav_banner: "FLYING DOG PHOTOGRAPHY — POZNAŃ I OKOLICE",
       hero_tag: "FLYING DOG PHOTOGRAPHY — POZNAŃ I OKOLICE",
       hero_title: "Pół sekundy<br><em>w powietrzu.</em>",
       hero_sub: "Fotografuję psy dokładnie w tym momencie, w którym cztery łapy tracą kontakt z ziemią. Bez pozowania — czysty refleks, ruch i radość.",
@@ -328,12 +337,12 @@
       s3_label: "7 DNI", s3_desc: "Czas realizacji od sesji do przekazania gotowych zdjęć w wysokiej rozdzielczości.",
       session_note: "<strong>Wskazówka:</strong> najlepsze zdjęcia w locie powstają, gdy pies robi coś, co już uwielbia — aportuje, biega za dyskiem, skacze do wody. Sesję planujemy wokół tej jednej rzeczy.",
       avis_tag: "Opinie", avis_h2: "Co mówią właściciele.",
-      testi1_p: "Byłam pewna, że mój pies nigdy nie usiedzi na jednym miejscu wystarczająco długo. Alex nawet nie próbował go uspokoić — po prostu czekał na właściwy moment.",
-      testi1_who: "Ola — właścicielka Biscuita, bordera",
+      testi1_p: "Byłam pewna, że mój pies nigdy nie usiedzi na jednym miejscu wystarczająco długo. Alex nawet nie próbował go uspokoić, po prostu czekał na właściwy moment.",
+      testi1_who: "Ola, właścicielka Biscuita, bordera",
       testi2_p: "Zdjęcie z apogeum skoku wisi teraz w naszym salonie w formacie XL. Goście pytają, czy to profesjonalny model, a to po prostu nasz pies.",
-      testi2_who: "Rafał — właściciel Rexa",
-      testi3_p: "Zero stresu dla psa, zero czekania w bezruchu. Cała sesja wyglądała jak zwykła zabawa w parku — a zdjęcia wyszły niesamowite.",
-      testi3_who: "Marta — właścicielka Luny i Kosa",
+      testi2_who: "Rafał, właściciel Rexa",
+      testi3_p: "Zero stresu dla psa, zero czekania w bezruchu. Cała sesja wyglądała jak zwykła zabawa w parku, a zdjęcia wyszły niesamowite.",
+      testi3_who: "Marta, właścicielka Luny",
       contact_tag: "Kontakt", contact_h2: "Umówmy sesję.",
       contact_p: "Sesje prowadzę na świeżym powietrzu, w Poznaniu i okolicach — najlepiej w porze, gdy Wasz pies ma najwięcej energii.",
       label_dname: "Imię psa", label_breed: "Rasa / temperament", label_msg: "Wiadomość",
@@ -349,6 +358,7 @@
     fr: {
       page_title: "Alex Sevoz — Flying Dog Photography",
       nav_anatomy: "Anatomie du saut", nav_portfolio: "Portfolio", nav_sessions: "Séances", nav_contact: "Contact",
+      subnav_banner: "FLYING DOG PHOTOGRAPHY — POZNAŃ ET ENVIRONS",
       hero_tag: "FLYING DOG PHOTOGRAPHY — POZNAŃ ET ENVIRONS",
       hero_title: "Une demi-seconde<br><em>en plein vol.</em>",
       hero_sub: "Je photographie les chiens exactement à l'instant où les quatre pattes quittent le sol. Aucune pose — juste le réflexe, le mouvement et la joie brute.",
@@ -373,12 +383,12 @@
       s3_label: "7 JOURS", s3_desc: "Délai entre la séance et la livraison des photos finales en haute résolution.",
       session_note: "<strong>Conseil :</strong> les meilleures photos en vol naissent quand le chien fait ce qu'il adore déjà — rapporter, courir après un frisbee, sauter dans l'eau. On construit la séance autour de cette chose-là.",
       avis_tag: "Avis", avis_h2: "Ce que disent les maîtres.",
-      testi1_p: "J'étais certaine que mon chien ne tiendrait jamais assez longtemps en place. Alex n'a même pas essayé de le calmer — il a juste attendu le bon instant.",
-      testi1_who: "Ola — propriétaire de Biscuit, border collie",
+      testi1_p: "J'étais certaine que mon chien ne tiendrait jamais assez longtemps en place. Alex n'a même pas essayé de le calmer, il a juste attendu le bon instant.",
+      testi1_who: "Ola, propriétaire de Biscuit, border collie",
       testi2_p: "La photo du sommet du saut trône maintenant en grand format dans notre salon. Nos invités demandent si c'est un chien de pub, alors que c'est juste le nôtre.",
-      testi2_who: "Rafał — propriétaire de Rex",
-      testi3_p: "Aucun stress pour le chien, aucune attente immobile. Toute la séance ressemblait à un jeu au parc — et le résultat est bluffant.",
-      testi3_who: "Marta — propriétaire de Luna et Kos",
+      testi2_who: "Rafał, propriétaire de Rex",
+      testi3_p: "Aucun stress pour le chien, aucune attente immobile. Toute la séance ressemblait à un jeu au parc, et le résultat est bluffant.",
+      testi3_who: "Marta, propriétaire de Luna",
       contact_tag: "Contact", contact_h2: "Réservons une séance.",
       contact_p: "Je photographie en extérieur, à Poznań et ses environs — idéalement au moment où votre chien déborde le plus d'énergie.",
       label_dname: "Nom du chien", label_breed: "Race / tempérament", label_msg: "Votre message",
@@ -394,6 +404,7 @@
     en: {
       page_title: "Alex Sevoz — Flying Dog Photography",
       nav_anatomy: "Anatomy of a jump", nav_portfolio: "Portfolio", nav_sessions: "Sessions", nav_contact: "Contact",
+      subnav_banner: "FLYING DOG PHOTOGRAPHY — POZNAŃ & SURROUNDINGS",
       hero_tag: "FLYING DOG PHOTOGRAPHY — POZNAŃ & SURROUNDINGS",
       hero_title: "Half a second<br><em>in mid-air.</em>",
       hero_sub: "I photograph dogs at the exact instant all four paws leave the ground. No posing — just reflex, motion, and unfiltered joy.",
@@ -418,12 +429,12 @@
       s3_label: "7 DAYS", s3_desc: "Turnaround from the session to delivery of the final high-resolution photos.",
       session_note: "<strong>Tip:</strong> the best flight shots happen when a dog does something it already loves — fetching, chasing a frisbee, jumping into water. We build the session around that one thing.",
       avis_tag: "Reviews", avis_h2: "What owners say.",
-      testi1_p: "I was sure my dog would never sit still long enough. Alex didn't even try to calm him down — he just waited for the right moment.",
-      testi1_who: "Ola — owner of Biscuit, border collie",
-      testi2_p: "The peak-of-the-jump shot now hangs in our living room, printed huge. Guests ask if he's a professional model dog — he's just ours.",
-      testi2_who: "Rafał — owner of Rex",
-      testi3_p: "Zero stress for the dog, zero standing still and waiting. The whole session felt like an ordinary trip to the park — and the photos are stunning.",
-      testi3_who: "Marta — owner of Luna and Kos",
+      testi1_p: "I was sure my dog would never sit still long enough. Alex didn't even try to calm him down, he just waited for the right moment.",
+      testi1_who: "Ola, owner of Biscuit, border collie",
+      testi2_p: "The peak-of-the-jump shot now hangs in our living room, printed huge. Guests ask if he's a professional model dog, he's just ours.",
+      testi2_who: "Rafał, owner of Rex",
+      testi3_p: "Zero stress for the dog, zero standing still and waiting. The whole session felt like an ordinary trip to the park, and the photos are stunning.",
+      testi3_who: "Marta, owner of Luna",
       contact_tag: "Contact", contact_h2: "Let's book a session.",
       contact_p: "Sessions run outdoors, in Poznań and the surrounding area — ideally timed for when your dog has the most energy.",
       label_dname: "Dog's name", label_breed: "Breed / temperament", label_msg: "Your message",
