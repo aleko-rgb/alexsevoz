@@ -63,8 +63,6 @@
   .arc-anim{offset-path:path('M -40 130 Q 500 10 1040 130');offset-rotate:auto;animation:flyArc 5.5s ease-in-out infinite;}
   @keyframes flyArc{0%{offset-distance:0%;opacity:0;}8%{opacity:1;}92%{opacity:1;}100%{offset-distance:100%;opacity:0;}}
   .hero-content{position:relative;z-index:2;padding:0 6vw 3rem;color:var(--paper);width:100%;}
-  .hero-tag{font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.08em;color:var(--accent);margin-bottom:1.3rem;display:inline-flex;gap:10px;align-items:center;opacity:0;animation:riseIn 0.9s ease 0.3s forwards;}
-  .hero-tag::before{content:'●';font-size:0.6rem;}
   .hero h1{font-size:clamp(2rem,6vw,4.8rem);font-weight:500;line-height:0.95;max-width:20ch;color:var(--paper);opacity:0;animation:riseIn 0.9s ease 0.5s forwards;}
   .hero h1 em{font-style:normal;color:var(--accent);}
   .hero-sub{margin-top:1.6rem;max-width:44ch;font-size:1.05rem;line-height:1.6;color:var(--paper-dim);opacity:0;animation:riseIn 0.9s ease 0.75s forwards;}
@@ -91,7 +89,7 @@
   .jstep h3{font-size:1.5rem;margin-bottom:0.7rem;}
   .jstep p{color:var(--paper-dim);line-height:1.65;font-size:0.94rem;}
 
-  /* PORTFOLIO — masonry columns, no gap/hole */
+  /* PORTFOLIO */
   .grid{columns:3;column-gap:14px;}
   @media(max-width:900px){.grid{columns:2;}}
   @media(max-width:520px){.grid{columns:1;}}
@@ -128,10 +126,10 @@
   .session-note{background:rgba(226,163,59,0.08);border:1px solid rgba(226,163,59,0.3);padding:1.8rem;font-size:0.95rem;line-height:1.7;color:var(--paper);}
   .session-note strong{color:var(--accent);}
 
-  /* TESTIMONIALS */
+  /* TESTIMONIALS — fixed carousel */
   .testi-wrap{position:relative;background:#33312a;padding:5rem 6vw;overflow:hidden;border:1px solid var(--line);}
-  .testi-track{display:flex;transition:transform 0.7s cubic-bezier(.6,0,.2,1);width:100%;will-change:transform;}
-  .testi{width:100%;flex:0 0 100%;box-sizing:border-box;}
+  .testi-track{display:flex;transition:transform 0.7s cubic-bezier(.6,0,.2,1);will-change:transform;}
+  .testi{flex:0 0 100%;width:100%;box-sizing:border-box;}
   .testi p{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.2rem,2.2vw,1.55rem);line-height:1.5;font-weight:400;}
   .testi .who{margin-top:1.8rem;font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);}
   .testi-nav{display:flex;gap:10px;margin-top:2.6rem;position:relative;z-index:2;}
@@ -244,7 +242,6 @@
   </div>
 </section>
 
-<!-- Lightbox -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
   <button class="lb-close" id="lbClose">✕</button>
   <button class="lb-prev" id="lbPrev">‹</button>
@@ -333,268 +330,264 @@
 <script>
 const EMAILJS_PUBLIC_KEY  = '8sKwmAvy4Jw0ot0W4';
 const EMAILJS_SERVICE_ID  = 'service_47o5cwb';
-const EMAILJS_TEMPLATE_DOG = 'template_p9bnrqz'; // ← remplace par ton template ID Flying Dog
-  let currentLang = 'en';
-  const translations = {
-    pl: {
-      page_title: "Alex Sevoz — Flying Dog Photography",
-      nav_anatomy: "Anatomia skoku", nav_portfolio: "Portfolio", nav_sessions: "Sesje", nav_contact: "Kontakt",
-      subnav_banner: "FLYING DOG PHOTOGRAPHY — POZNAŃ I OKOLICE",
-      hero_tag: "FLYING DOG PHOTOGRAPHY — POZNAŃ I OKOLICE",
-      hero_title: "Pół sekundy<br><em>w powietrzu.</em>",
-      hero_sub: "Fotografuję psy dokładnie w tym momencie, w którym cztery łapy tracą kontakt z ziemią. Bez pozowania — czysty refleks, ruch i radość.",
-      scroll_cue: "SCROLL ↓",
-      anatomy_tag: "Jak to działa", anatomy_h2: "Anatomia skoku.",
-      anatomy_p: "Dobre zdjęcie w locie to nie przypadek — to znajomość rytmu konkretnego psa i moment naciśnięcia migawki co do klatki. Cztery fazy, które śledzę przy każdej sesji.",
-      step1_n: "01 / PRZED", step1_h: "Podejście", step1_p: "Obserwuję rozbieg, rytm łap, ulubioną zabawkę. Ustawiam się pod właściwym kątem i światłem, zanim pies w ogóle wystartuje.",
-      step2_n: "02 / START", step2_h: "Odbicie", step2_p: "Ułamek sekundy, w którym tylne łapy odrywają się od podłoża. Tu decyduje się kompozycja całego kadru.",
-      step3_n: "03 / SZCZYT", step3_h: "Apogeum", step3_p: "Najwyższy punkt skoku — uszy w locie, ogon prostuje się, ciało w pełnym napięciu. To jest to zdjęcie, po które tu przyjeżdżacie.",
-      step4_n: "04 / LĄDOWANIE", step4_h: "Powrót", step4_p: "Łapy wracają na ziemię, kurz unosi się znad trawy. Czasem najbardziej szczery kadr powstaje właśnie tutaj, nie w szczycie.",
-      portfolio_tag: "Portfolio", portfolio_h2: "Klatka po klatce.",
-      portfolio_p: "Wybrane sesje — aportowanie, plaża, bieganie w terenie, w Polsce i za granicą.",
-      cap1_n: "Border collie", cap1_d: "", cap2_n: "Poodle", cap2_d: "", cap3_n: "Scottish terrier", cap3_d: "",
-      cap4_n: "Sesja w terenie", cap4_d: "", cap5_n: "Skok w locie", cap5_d: "", cap6_n: "Portret w akcji", cap6_d: "",
-      cap7_n: "Seria skoków", cap7_d: "", cap8_n: "Aportowanie", cap8_d: "", cap9_n: "W powietrzu", cap9_d: "",
-      technique_label: "Technika sesji",
-      technique_text: "Idealnie pracujemy w trzy osoby — jedna osoba trzyma psa, Mike czeka nieruchomo leżąc na ziemi, a właściciel staje za nim i woła psa. Ten układ gwarantuje naturalny, pełen energii skok prosto w kadr.",
-      sessions_tag: "Sesje", sessions_h2: "Jak wygląda sesja.",
-      sessions_p: "Prosty format, dopasowany do temperamentu psa — bez presji, bez powtarzania w nieskończoność tego samego triku.",
-      s1_label: "60–90 MIN", s1_desc: "Czas na rozgrzewkę, kilkanaście prób skoku i chwilę odpoczynku dla psa między seriami.",
-      s2_label: "SELEKCJA UJĘĆ", s2_desc: "Finałowa selekcja ostrych, wyraźnych ujęć w locie — bez rozmazanych prób.",
-      s3_label: "7 DNI", s3_desc: "Czas realizacji od sesji do przekazania gotowych zdjęć w wysokiej rozdzielczości.",
-      session_note: "<strong>Wskazówka:</strong> najlepsze zdjęcia w locie powstają, gdy pies robi coś, co już uwielbia — aportuje, biega za dyskiem, skacze do wody. Sesję planujemy wokół tej jednej rzeczy.",
-      avis_tag: "Opinie", avis_h2: "Co mówią właściciele.",
-      testi1_p: "Byłam pewna, że mój pies nigdy nie usiedzi na jednym miejscu wystarczająco długo. Alex nawet nie próbował go uspokoić, po prostu czekał na właściwy moment.",
-      testi1_who: "Ola, właścicielka Biscuita, bordera",
-      testi2_p: "Zdjęcie z apogeum skoku wisi teraz w naszym salonie w formacie XL. Goście pytają, czy to profesjonalny model, a to po prostu nasz pies.",
-      testi2_who: "Rafał, właściciel Rexa",
-      testi3_p: "Zero stresu dla psa, zero czekania w bezruchu. Cała sesja wyglądała jak zwykła zabawa w parku, a zdjęcia wyszły niesamowite.",
-      testi3_who: "Marta, właścicielka Luny",
-      contact_tag: "Kontakt", contact_h2: "Umówmy sesję.",
-      contact_p: "Sesje prowadzę na świeżym powietrzu, w Poznaniu i okolicach — najlepiej w porze, gdy Wasz pies ma najwięcej energii.",
-      label_dname: "Imię psa", label_breed: "Rasa / temperament",
-      label_email: "Twój e-mail", placeholder_email: "twoj@email.com",
-      label_phone: "Numer telefonu", placeholder_phone: "+48 ...",
-      label_msg: "Wiadomość",
-      placeholder_dname: "Reksio", placeholder_breed: "Bordercollie, uwielbia dysk",
-      placeholder_msg: "Co Wasz pies uwielbia robić najbardziej?",
-      btn_send: "Wyślij wiadomość",
-      contact_h3: "Poznań i okolice, dojazd możliwy.",
-      contact_info_p: "Piszcie śmiało, nawet jeśli nie wiecie jeszcze, jaki trik chcecie uwiecznić — dobieramy go razem podczas rozmowy.",
-      line_email_label: "E-mail", line_phone_label: "Telefon", line_insta_label: "Instagram",
-      footer_text: "© 2026 Alex Sevoz — Flying Dog Photography",
-      footer_cross: "Fotografuję też śluby → Wedding Photography"
-    },
-    fr: {
-      page_title: "Alex Sevoz — Flying Dog Photography",
-      nav_anatomy: "Anatomie du saut", nav_portfolio: "Portfolio", nav_sessions: "Séances", nav_contact: "Contact",
-      subnav_banner: "FLYING DOG PHOTOGRAPHY — POZNAŃ ET ENVIRONS",
-      hero_tag: "FLYING DOG PHOTOGRAPHY — POZNAŃ ET ENVIRONS",
-      hero_title: "Une demi-seconde<br><em>en plein vol.</em>",
-      hero_sub: "Je photographie les chiens exactement à l'instant où les quatre pattes quittent le sol. Aucune pose — juste le réflexe, le mouvement et la joie brute.",
-      scroll_cue: "SCROLL ↓",
-      anatomy_tag: "Comment ça marche", anatomy_h2: "L'anatomie du saut.",
-      anatomy_p: "Une bonne photo en vol n'est pas un hasard : c'est connaître le rythme de ce chien précis et déclencher à l'image près. Quatre phases que je suis à chaque séance.",
-      step1_n: "01 / AVANT", step1_h: "L'approche", step1_p: "J'observe l'élan, le rythme des pattes, le jouet préféré. Je me positionne selon le bon angle et la bonne lumière avant même le premier saut.",
-      step2_n: "02 / L'ENVOL", step2_h: "L'impulsion", step2_p: "Le dixième de seconde où les pattes arrière quittent le sol. C'est là que se joue toute la composition du cadre.",
-      step3_n: "03 / SOMMET", step3_h: "L'apogée", step3_p: "Le point le plus haut du saut — oreilles envolées, queue tendue, corps en pleine extension. C'est la photo que vous êtes venus chercher.",
-      step4_n: "04 / RETOUR", step4_h: "L'atterrissage", step4_p: "Les pattes retrouvent le sol, la poussière se soulève. Parfois, c'est ici que naît l'image la plus sincère, pas au sommet.",
-      portfolio_tag: "Portfolio", portfolio_h2: "Image par image.",
-      portfolio_p: "Une sélection de séances — rapport, plage, course en pleine nature, en Pologne et à l'étranger.",
-      cap1_n: "Border collie", cap1_d: "", cap2_n: "Poodle", cap2_d: "", cap3_n: "Scottish terrier", cap3_d: "",
-      cap4_n: "Séance en nature", cap4_d: "", cap5_n: "Saut en vol", cap5_d: "", cap6_n: "Portrait en action", cap6_d: "",
-      cap7_n: "Série de sauts", cap7_d: "", cap8_n: "Rapport", cap8_d: "", cap9_n: "En plein vol", cap9_d: "",
-      technique_label: "La technique",
-      technique_text: "Idéalement on travaille à trois — une personne tient le chien, Mike attend allongé au sol, et le propriétaire se place derrière lui pour appeler le chien. Ce dispositif garantit un saut naturel et plein d'énergie droit dans le cadre.",
-      sessions_tag: "Séances", sessions_h2: "Le déroulé d'une séance.",
-      sessions_p: "Un format simple, adapté au tempérament du chien — sans pression, sans répéter le même tour à l'infini.",
-      s1_label: "60–90 MIN", s1_desc: "Le temps de l'échauffement, une quinzaine de tentatives et des pauses pour le chien entre chaque série.",
-      s2_label: "SÉLECTION FINALE", s2_desc: "La sélection finale d'images nettes et bien composées en plein vol — aucun flou retenu.",
-      s3_label: "7 JOURS", s3_desc: "Délai entre la séance et la livraison des photos finales en haute résolution.",
-      session_note: "<strong>Conseil :</strong> les meilleures photos en vol naissent quand le chien fait ce qu'il adore déjà — rapporter, courir après un frisbee, sauter dans l'eau. On construit la séance autour de cette chose-là.",
-      avis_tag: "Avis", avis_h2: "Ce que disent les maîtres.",
-      testi1_p: "J'étais certaine que mon chien ne tiendrait jamais assez longtemps en place. Alex n'a même pas essayé de le calmer, il a juste attendu le bon instant.",
-      testi1_who: "Ola, propriétaire de Biscuit, border collie",
-      testi2_p: "La photo du sommet du saut trône maintenant en grand format dans notre salon. Nos invités demandent si c'est un chien de pub, alors que c'est juste le nôtre.",
-      testi2_who: "Rafał, propriétaire de Rex",
-      testi3_p: "Aucun stress pour le chien, aucune attente immobile. Toute la séance ressemblait à un jeu au parc, et le résultat est bluffant.",
-      testi3_who: "Marta, propriétaire de Luna",
-      contact_tag: "Contact", contact_h2: "Réservons une séance.",
-      contact_p: "Je photographie en extérieur, à Poznań et ses environs — idéalement au moment où votre chien déborde le plus d'énergie.",
-      label_dname: "Nom du chien", label_breed: "Race / tempérament",
-      label_email: "Votre email", placeholder_email: "votre@email.com",
-      label_phone: "Numéro de téléphone", placeholder_phone: "+48 ...",
-      label_msg: "Votre message",
-      placeholder_dname: "Rex", placeholder_breed: "Border collie, adore le frisbee",
-      placeholder_msg: "Qu'est-ce que votre chien adore faire le plus ?",
-      btn_send: "Envoyer le message",
-      contact_h3: "Basé à Poznań, déplacements possibles.",
-      contact_info_p: "Écrivez-nous même si vous ne savez pas encore quel tour capturer — on le choisit ensemble pendant l'échange.",
-      line_email_label: "Email", line_phone_label: "Téléphone", line_insta_label: "Instagram",
-      footer_text: "© 2026 Alex Sevoz — Flying Dog Photography",
-      footer_cross: "Je photographie aussi des mariages → Wedding Photography"
-    },
-    en: {
-      page_title: "Alex Sevoz — Flying Dog Photography",
-      nav_anatomy: "Anatomy of a jump", nav_portfolio: "Portfolio", nav_sessions: "Sessions", nav_contact: "Contact",
-      subnav_banner: "FLYING DOG PHOTOGRAPHY — POZNAŃ & SURROUNDINGS",
-      hero_tag: "FLYING DOG PHOTOGRAPHY — POZNAŃ & SURROUNDINGS",
-      hero_title: "Half a second<br><em>in mid-air.</em>",
-      hero_sub: "I photograph dogs at the exact instant all four paws leave the ground. No posing — just reflex, motion, and unfiltered joy.",
-      scroll_cue: "SCROLL ↓",
-      anatomy_tag: "How it works", anatomy_h2: "The anatomy of a jump.",
-      anatomy_p: "A good flight shot isn't luck — it's knowing this particular dog's rhythm and hitting the shutter within a single frame. Four phases I track in every session.",
-      step1_n: "01 / BEFORE", step1_h: "The approach", step1_p: "I watch the run-up, the paw rhythm, the favourite toy. I find the right angle and light before the dog even takes off.",
-      step2_n: "02 / TAKEOFF", step2_h: "The launch", step2_p: "The fraction of a second where the back paws leave the ground. This is where the whole frame's composition gets decided.",
-      step3_n: "03 / PEAK", step3_h: "The apex", step3_p: "The highest point of the jump — ears airborne, tail extended, full-body tension. This is the shot you came here for.",
-      step4_n: "04 / LANDING", step4_h: "The return", step4_p: "Paws hit the ground, dust lifts off the grass. Sometimes the most honest frame happens right here, not at the peak.",
-      portfolio_tag: "Portfolio", portfolio_h2: "Frame by frame.",
-      portfolio_p: "A selection of recent sessions — fetch, beach runs, open-field sprints, in Poland and abroad.",
-      cap1_n: "Border collie", cap1_d: "", cap2_n: "Poodle", cap2_d: "", cap3_n: "Scottish terrier", cap3_d: "",
-      cap4_n: "Field session", cap4_d: "", cap5_n: "Mid-air jump", cap5_d: "", cap6_n: "Action portrait", cap6_d: "",
-      cap7_n: "Jump series", cap7_d: "", cap8_n: "Fetch", cap8_d: "", cap9_n: "In flight", cap9_d: "",
-      technique_label: "The technique",
-      technique_text: "Ideally we work with three people — one holds the dog, Mike waits lying flat on the ground, and the owner stands behind him and calls the dog. This setup guarantees a natural, high-energy jump straight into the frame.",
-      sessions_tag: "Sessions", sessions_h2: "What a session looks like.",
-      sessions_p: "A simple format, built around your dog's temperament — no pressure, no endless repeats of the same trick.",
-      s1_label: "60–90 MIN", s1_desc: "Time to warm up, a dozen or so jump attempts, and rest breaks for the dog between sets.",
-      s2_label: "FINAL SELECTION", s2_desc: "The final selection of sharp, well-composed mid-air shots — no blurred attempts included.",
-      s3_label: "7 DAYS", s3_desc: "Turnaround from the session to delivery of the final high-resolution photos.",
-      session_note: "<strong>Tip:</strong> the best flight shots happen when a dog does something it already loves — fetching, chasing a frisbee, jumping into water. We build the session around that one thing.",
-      avis_tag: "Reviews", avis_h2: "What owners say.",
-      testi1_p: "I was sure my dog would never sit still long enough. Alex didn't even try to calm him down, he just waited for the right moment.",
-      testi1_who: "Ola, owner of Biscuit, border collie",
-      testi2_p: "The peak-of-the-jump shot now hangs in our living room, printed huge. Guests ask if he's a professional model dog, he's just ours.",
-      testi2_who: "Rafał, owner of Rex",
-      testi3_p: "Zero stress for the dog, zero standing still and waiting. The whole session felt like an ordinary trip to the park, and the photos are stunning.",
-      testi3_who: "Marta, owner of Luna",
-      contact_tag: "Contact", contact_h2: "Let's book a session.",
-      contact_p: "Sessions run outdoors, in Poznań and the surrounding area — ideally timed for when your dog has the most energy.",
-      label_dname: "Dog's name", label_breed: "Breed / temperament",
-      label_email: "Your email", placeholder_email: "your@email.com",
-      label_phone: "Phone number", placeholder_phone: "+48 ...",
-      label_msg: "Your message",
-      placeholder_dname: "Rex", placeholder_breed: "Border collie, loves the frisbee",
-      placeholder_msg: "What does your dog love doing most?",
-      btn_send: "Send message",
-      contact_h3: "Based in Poznań, travel possible.",
-      contact_info_p: "Write to us even if you're not sure which trick to capture yet — we'll figure it out together.",
-      line_email_label: "Email", line_phone_label: "Phone", line_insta_label: "Instagram",
-      footer_text: "© 2026 Alex Sevoz — Flying Dog Photography",
-      footer_cross: "I also shoot weddings → Wedding Photography"
-    }
-  };
+const EMAILJS_TEMPLATE_DOG = 'template_p9bnrqz';
 
-  emailjs.init({publicKey: EMAILJS_PUBLIC_KEY});
-
-  document.getElementById('dogForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('dogSubmitBtn');
-    const msg = document.getElementById('dogFormMsg');
-    btn.disabled = true; msg.style.display = 'none';
-    try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_DOG, {
-        dog_name: document.getElementById('dname').value,
-        breed:    document.getElementById('breed').value,
-        email:    document.getElementById('f_email').value,
-        phone:    document.getElementById('f_phone').value,
-        message:  document.getElementById('msg').value,
-      });
-      msg.textContent = currentLang === 'fr' ? 'Message envoyé ! Alex vous répondra rapidement.' :
-                        currentLang === 'pl' ? 'Wiadomość wysłana! Alex odpowie wkrótce.' :
-                        'Message sent! Alex will get back to you soon.';
-      msg.className = 'form-msg success'; msg.style.display = 'block';
-      this.reset();
-    } catch(err) {
-      msg.textContent = 'Error sending. Please contact alex.sevoz.photo@gmail.com directly.';
-      msg.className = 'form-msg error'; msg.style.display = 'block';
-    }
-    btn.disabled = false;
-  });
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-  }, {threshold:0.1});
-
-  const dogPhotos=[
-    {src:'images/dog/Portfolio-1.webp'},
-    {src:'images/dog/Protfolio-2.webp'},
-    {src:'images/dog/Portfolio-3.webp'},
-    {src:'images/dog/Protfolio-4.webp'},
-    {src:'images/dog/Portfolio-5.webp'},
-    {src:'images/dog/Portfolio-6.webp'},
-    {src:'images/dog/Portfolio-7.webp'},
-    {src:'images/dog/Portfolio-8.webp'},
-    {src:'images/dog/Portfolio-10.webp'},
-  ];
-  const dogGrid=document.getElementById('portfolioGrid');
-  dogPhotos.forEach((photo,i)=>{
-    const fig=document.createElement('figure');fig.classList.add('reveal');
-    const img=document.createElement('img');img.src=photo.src;img.alt='';img.loading='lazy';
-    fig.appendChild(img);
-    fig.addEventListener('click',()=>openLightbox(i));
-    dogGrid.appendChild(fig);
-    io.observe(fig);
-  });
-  const lightbox=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCounter=document.getElementById('lbCounter');
-  let lbIndex=0;
-  function openLightbox(i){lbIndex=i;lbImg.src=dogPhotos[i].src;lbCounter.textContent=(i+1)+' / '+dogPhotos.length;lightbox.classList.add('open');document.body.style.overflow='hidden';}
-  function closeLightbox(){lightbox.classList.remove('open');document.body.style.overflow='';}
-  function lbMove(dir){lbIndex=(lbIndex+dir+dogPhotos.length)%dogPhotos.length;lbImg.src=dogPhotos[lbIndex].src;lbCounter.textContent=(lbIndex+1)+' / '+dogPhotos.length;}
-  document.getElementById('lbClose').addEventListener('click',closeLightbox);
-  document.getElementById('lbPrev').addEventListener('click',()=>lbMove(-1));
-  document.getElementById('lbNext').addEventListener('click',()=>lbMove(1));
-  lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox();});
-  document.addEventListener('keydown',e=>{if(!lightbox.classList.contains('open'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')lbMove(-1);if(e.key==='ArrowRight')lbMove(1);});
-
-  function setLang(lang){
-    const dict = translations[lang];
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if(dict[key] !== undefined) el.innerHTML = dict[key];
-    });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-      const key = el.getAttribute('data-i18n-placeholder');
-      if(dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
-    });
-    document.getElementById('pageTitle').textContent = dict.page_title;
-    document.getElementById('htmlRoot').setAttribute('lang', lang);
-    document.querySelectorAll('.lang-switch button').forEach(b => {
-      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
-    });
+let currentLang = 'en';
+const translations = {
+  pl: {
+    page_title: "Alex Sevoz — Flying Dog Photography",
+    nav_anatomy: "Anatomia skoku", nav_portfolio: "Portfolio", nav_sessions: "Sesje", nav_contact: "Kontakt",
+    subnav_banner: "FLYING DOG PHOTOGRAPHY — POZNAŃ I OKOLICE",
+    hero_title: "Pół sekundy<br><em>w powietrzu.</em>",
+    hero_sub: "Fotografuję psy dokładnie w tym momencie, w którym cztery łapy tracają kontakt z ziemią. Bez pozowania — czysty refleks, ruch i radość.",
+    scroll_cue: "SCROLL ↓",
+    anatomy_tag: "Jak to działa", anatomy_h2: "Anatomia skoku.",
+    anatomy_p: "Dobre zdjęcie w locie to nie przypadek — to znajomość rytmu konkretnego psa i moment naciśnięcia migawki co do klatki. Cztery fazy, które śledzę przy każdej sesji.",
+    step1_n: "01 / PRZED", step1_h: "Podejście", step1_p: "Obserwuję rozbieg, rytm łap, ulubioną zabawkę. Ustawiam się pod właściwym kątem i światłem, zanim pies w ogóle wystartuje.",
+    step2_n: "02 / START", step2_h: "Odbicie", step2_p: "Ułamek sekundy, w którym tylne łapy odrywają się od podłoża. Tu decyduje się kompozycja całego kadru.",
+    step3_n: "03 / SZCZYT", step3_h: "Apogeum", step3_p: "Najwyższy punkt skoku — uszy w locie, ogon prostuje się, ciało w pełnym napięciu. To jest to zdjęcie, po które tu przyjeżdżacie.",
+    step4_n: "04 / LĄDOWANIE", step4_h: "Powrót", step4_p: "Łapy wracają na ziemię, kurz unosi się znad trawy. Czasem najbardziej szczery kadr powstaje właśnie tutaj, nie w szczycie.",
+    portfolio_tag: "Portfolio", portfolio_h2: "Klatka po klatce.",
+    portfolio_p: "Wybrane sesje — aportowanie, plaża, bieganie w terenie, w Polsce i za granicą.",
+    technique_label: "Technika sesji",
+    technique_text: "Idealnie pracujemy w trzy osoby — jedna osoba trzyma psa, Mike czeka nieruchomo leżąc na ziemi, a właściciel staje za nim i woła psa. Ten układ gwarantuje naturalny, pełen energii skok prosto w kadr.",
+    sessions_tag: "Sesje", sessions_h2: "Jak wygląda sesja.",
+    sessions_p: "Prosty format, dopasowany do temperamentu psa — bez presji, bez powtarzania w nieskończoność tego samego triku.",
+    s1_label: "60–90 MIN", s1_desc: "Czas na rozgrzewkę, kilkanaście prób skoku i chwilę odpoczynku dla psa między seriami.",
+    s2_label: "SELEKCJA UJĘĆ", s2_desc: "Finałowa selekcja ostrych, wyraźnych ujęć w locie — bez rozmazanych prób.",
+    s3_label: "7 DNI", s3_desc: "Czas realizacji od sesji do przekazania gotowych zdjęć w wysokiej rozdzielczości.",
+    session_note: "<strong>Wskazówka:</strong> najlepsze zdjęcia w locie powstają, gdy pies robi coś, co już uwielbia — aportuje, biega za dyskiem, skacze do wody. Sesję planujemy wokół tej jednej rzeczy.",
+    avis_tag: "Opinie", avis_h2: "Co mówią właściciele.",
+    testi1_p: "Byłam pewna, że mój pies nigdy nie usiedzi na jednym miejscu wystarczająco długo. Alex nawet nie próbował go uspokoić, po prostu czekał na właściwy moment.",
+    testi1_who: "Ola, właścicielka Biscuita, bordera",
+    testi2_p: "Zdjęcie z apogeum skoku wisi teraz w naszym salonie w formacie XL. Goście pytają, czy to profesjonalny model, a to po prostu nasz pies.",
+    testi2_who: "Rafał, właściciel Rexa",
+    testi3_p: "Zero stresu dla psa, zero czekania w bezruchu. Cała sesja wyglądała jak zwykła zabawa w parku, a zdjęcia wyszły niesamowite.",
+    testi3_who: "Marta, właścicielka Luny",
+    contact_tag: "Kontakt", contact_h2: "Umówmy sesję.",
+    contact_p: "Sesje prowadzę na świeżym powietrzu, w Poznaniu i okolicach — najlepiej w porze, gdy Wasz pies ma najwięcej energii.",
+    label_dname: "Imię psa", label_breed: "Rasa / temperament",
+    label_email: "Twój e-mail", placeholder_email: "twoj@email.com",
+    label_phone: "Numer telefonu", placeholder_phone: "+48 ...",
+    label_msg: "Wiadomość",
+    placeholder_dname: "Reksio", placeholder_breed: "Bordercollie, uwielbia dysk",
+    placeholder_msg: "Co Wasz pies uwielbia robić najbardziej?",
+    btn_send: "Wyślij wiadomość",
+    contact_h3: "Poznań i okolice, dojazd możliwy.",
+    contact_info_p: "Piszcie śmiało, nawet jeśli nie wiecie jeszcze, jaki trik chcecie uwiecznić — dobieramy go razem podczas rozmowy.",
+    line_email_label: "E-mail", line_phone_label: "Telefon",
+    footer_text: "© 2026 Alex Sevoz — Flying Dog Photography",
+    footer_cross: "Fotografuję też śluby → Wedding Photography"
+  },
+  fr: {
+    page_title: "Alex Sevoz — Flying Dog Photography",
+    nav_anatomy: "Anatomie du saut", nav_portfolio: "Portfolio", nav_sessions: "Séances", nav_contact: "Contact",
+    subnav_banner: "FLYING DOG PHOTOGRAPHY — POZNAŃ ET ENVIRONS",
+    hero_title: "Une demi-seconde<br><em>en plein vol.</em>",
+    hero_sub: "Je photographie les chiens exactement à l'instant où les quatre pattes quittent le sol. Aucune pose — juste le réflexe, le mouvement et la joie brute.",
+    scroll_cue: "SCROLL ↓",
+    anatomy_tag: "Comment ça marche", anatomy_h2: "L'anatomie du saut.",
+    anatomy_p: "Une bonne photo en vol n'est pas un hasard : c'est connaître le rythme de ce chien précis et déclencher à l'image près. Quatre phases que je suis à chaque séance.",
+    step1_n: "01 / AVANT", step1_h: "L'approche", step1_p: "J'observe l'élan, le rythme des pattes, le jouet préféré. Je me positionne selon le bon angle et la bonne lumière avant même le premier saut.",
+    step2_n: "02 / L'ENVOL", step2_h: "L'impulsion", step2_p: "Le dixième de seconde où les pattes arrière quittent le sol. C'est là que se joue toute la composition du cadre.",
+    step3_n: "03 / SOMMET", step3_h: "L'apogée", step3_p: "Le point le plus haut du saut — oreilles envolées, queue tendue, corps en pleine extension. C'est la photo que vous êtes venus chercher.",
+    step4_n: "04 / RETOUR", step4_h: "L'atterrissage", step4_p: "Les pattes retrouvent le sol, la poussière se soulève. Parfois, c'est ici que naît l'image la plus sincère, pas au sommet.",
+    portfolio_tag: "Portfolio", portfolio_h2: "Image par image.",
+    portfolio_p: "Une sélection de séances — rapport, plage, course en pleine nature, en Pologne et à l'étranger.",
+    technique_label: "La technique",
+    technique_text: "Idéalement on travaille à trois — une personne tient le chien, Mike attend allongé au sol, et le propriétaire se place derrière lui pour appeler le chien. Ce dispositif garantit un saut naturel et plein d'énergie droit dans le cadre.",
+    sessions_tag: "Séances", sessions_h2: "Le déroulé d'une séance.",
+    sessions_p: "Un format simple, adapté au tempérament du chien — sans pression, sans répéter le même tour à l'infini.",
+    s1_label: "60–90 MIN", s1_desc: "Le temps de l'échauffement, une quinzaine de tentatives et des pauses pour le chien entre chaque série.",
+    s2_label: "SÉLECTION FINALE", s2_desc: "La sélection finale d'images nettes et bien composées en plein vol — aucun flou retenu.",
+    s3_label: "7 JOURS", s3_desc: "Délai entre la séance et la livraison des photos finales en haute résolution.",
+    session_note: "<strong>Conseil :</strong> les meilleures photos en vol naissent quand le chien fait ce qu'il adore déjà — rapporter, courir après un frisbee, sauter dans l'eau. On construit la séance autour de cette chose-là.",
+    avis_tag: "Avis", avis_h2: "Ce que disent les maîtres.",
+    testi1_p: "J'étais certaine que mon chien ne tiendrait jamais assez longtemps en place. Alex n'a même pas essayé de le calmer, il a juste attendu le bon instant.",
+    testi1_who: "Ola, propriétaire de Biscuit, border collie",
+    testi2_p: "La photo du sommet du saut trône maintenant en grand format dans notre salon. Nos invités demandent si c'est un chien de pub, alors que c'est juste le nôtre.",
+    testi2_who: "Rafał, propriétaire de Rex",
+    testi3_p: "Aucun stress pour le chien, aucune attente immobile. Toute la séance ressemblait à un jeu au parc, et le résultat est bluffant.",
+    testi3_who: "Marta, propriétaire de Luna",
+    contact_tag: "Contact", contact_h2: "Réservons une séance.",
+    contact_p: "Je photographie en extérieur, à Poznań et ses environs — idéalement au moment où votre chien déborde le plus d'énergie.",
+    label_dname: "Nom du chien", label_breed: "Race / tempérament",
+    label_email: "Votre email", placeholder_email: "votre@email.com",
+    label_phone: "Numéro de téléphone", placeholder_phone: "+48 ...",
+    label_msg: "Votre message",
+    placeholder_dname: "Rex", placeholder_breed: "Border collie, adore le frisbee",
+    placeholder_msg: "Qu'est-ce que votre chien adore faire le plus ?",
+    btn_send: "Envoyer le message",
+    contact_h3: "Basé à Poznań, déplacements possibles.",
+    contact_info_p: "Écrivez-nous même si vous ne savez pas encore quel tour capturer — on le choisit ensemble pendant l'échange.",
+    line_email_label: "Email", line_phone_label: "Téléphone",
+    footer_text: "© 2026 Alex Sevoz — Flying Dog Photography",
+    footer_cross: "Je photographie aussi des mariages → Wedding Photography"
+  },
+  en: {
+    page_title: "Alex Sevoz — Flying Dog Photography",
+    nav_anatomy: "Anatomy of a jump", nav_portfolio: "Portfolio", nav_sessions: "Sessions", nav_contact: "Contact",
+    subnav_banner: "FLYING DOG PHOTOGRAPHY — POZNAŃ & SURROUNDINGS",
+    hero_title: "Half a second<br><em>in mid-air.</em>",
+    hero_sub: "I photograph dogs at the exact instant all four paws leave the ground. No posing — just reflex, motion, and unfiltered joy.",
+    scroll_cue: "SCROLL ↓",
+    anatomy_tag: "How it works", anatomy_h2: "The anatomy of a jump.",
+    anatomy_p: "A good flight shot isn't luck — it's knowing this particular dog's rhythm and hitting the shutter within a single frame. Four phases I track in every session.",
+    step1_n: "01 / BEFORE", step1_h: "The approach", step1_p: "I watch the run-up, the paw rhythm, the favourite toy. I find the right angle and light before the dog even takes off.",
+    step2_n: "02 / TAKEOFF", step2_h: "The launch", step2_p: "The fraction of a second where the back paws leave the ground. This is where the whole frame's composition gets decided.",
+    step3_n: "03 / PEAK", step3_h: "The apex", step3_p: "The highest point of the jump — ears airborne, tail extended, full-body tension. This is the shot you came here for.",
+    step4_n: "04 / LANDING", step4_h: "The return", step4_p: "Paws hit the ground, dust lifts off the grass. Sometimes the most honest frame happens right here, not at the peak.",
+    portfolio_tag: "Portfolio", portfolio_h2: "Frame by frame.",
+    portfolio_p: "A selection of recent sessions — fetch, beach runs, open-field sprints, in Poland and abroad.",
+    technique_label: "The technique",
+    technique_text: "Ideally we work with three people — one holds the dog, Mike waits lying flat on the ground, and the owner stands behind him and calls the dog. This setup guarantees a natural, high-energy jump straight into the frame.",
+    sessions_tag: "Sessions", sessions_h2: "What a session looks like.",
+    sessions_p: "A simple format, built around your dog's temperament — no pressure, no endless repeats of the same trick.",
+    s1_label: "60–90 MIN", s1_desc: "Time to warm up, a dozen or so jump attempts, and rest breaks for the dog between sets.",
+    s2_label: "FINAL SELECTION", s2_desc: "The final selection of sharp, well-composed mid-air shots — no blurred attempts included.",
+    s3_label: "7 DAYS", s3_desc: "Turnaround from the session to delivery of the final high-resolution photos.",
+    session_note: "<strong>Tip:</strong> the best flight shots happen when a dog does something it already loves — fetching, chasing a frisbee, jumping into water. We build the session around that one thing.",
+    avis_tag: "Reviews", avis_h2: "What owners say.",
+    testi1_p: "I was sure my dog would never sit still long enough. Alex didn't even try to calm him down, he just waited for the right moment.",
+    testi1_who: "Ola, owner of Biscuit, border collie",
+    testi2_p: "The peak-of-the-jump shot now hangs in our living room, printed huge. Guests ask if he's a professional model dog, he's just ours.",
+    testi2_who: "Rafał, owner of Rex",
+    testi3_p: "Zero stress for the dog, zero standing still and waiting. The whole session felt like an ordinary trip to the park, and the photos are stunning.",
+    testi3_who: "Marta, owner of Luna",
+    contact_tag: "Contact", contact_h2: "Let's book a session.",
+    contact_p: "Sessions run outdoors, in Poznań and the surrounding area — ideally timed for when your dog has the most energy.",
+    label_dname: "Dog's name", label_breed: "Breed / temperament",
+    label_email: "Your email", placeholder_email: "your@email.com",
+    label_phone: "Phone number", placeholder_phone: "+48 ...",
+    label_msg: "Your message",
+    placeholder_dname: "Rex", placeholder_breed: "Border collie, loves the frisbee",
+    placeholder_msg: "What does your dog love doing most?",
+    btn_send: "Send message",
+    contact_h3: "Based in Poznań, travel possible.",
+    contact_info_p: "Write to us even if you're not sure which trick to capture yet — we'll figure it out together.",
+    line_email_label: "Email", line_phone_label: "Phone",
+    footer_text: "© 2026 Alex Sevoz — Flying Dog Photography",
+    footer_cross: "I also shoot weddings → Wedding Photography"
   }
-  document.querySelectorAll('.lang-switch button').forEach(btn => {
-    btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
-  });
-  setLang('en');
+};
 
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+emailjs.init({publicKey: EMAILJS_PUBLIC_KEY});
 
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-  const mobileLang = document.getElementById('langSwitchMobile');
-  navToggle.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    mobileLang.classList.toggle('open', open);
-    navToggle.textContent = open ? '✕' : '☰';
-  });
-  function closeMenu(){ navLinks.classList.remove('open'); mobileLang.classList.remove('open'); navToggle.textContent = '☰'; }
-
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  const track = document.getElementById('testiTrack');
-  const testiNav = document.getElementById('testiNav');
-  const total = track.children.length;
-  let current = 0;
-  for(let i=0;i<total;i++){
-    const dot = document.createElement('button');
-    dot.className = 'testi-dot' + (i===0 ? ' active' : '');
-    dot.addEventListener('click', () => goTo(i));
-    testiNav.appendChild(dot);
+document.getElementById('dogForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('dogSubmitBtn');
+  const msg = document.getElementById('dogFormMsg');
+  btn.disabled = true; msg.style.display = 'none';
+  try {
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_DOG, {
+      dog_name: document.getElementById('dname').value,
+      breed:    document.getElementById('breed').value,
+      email:    document.getElementById('f_email').value,
+      phone:    document.getElementById('f_phone').value,
+      message:  document.getElementById('msg').value,
+    });
+    msg.textContent = currentLang === 'fr' ? 'Message envoyé ! Alex vous répondra rapidement.' :
+                      currentLang === 'pl' ? 'Wiadomość wysłana! Alex odpowie wkrótce.' :
+                      'Message sent! Alex will get back to you soon.';
+    msg.className = 'form-msg success'; msg.style.display = 'block';
+    this.reset();
+  } catch(err) {
+    msg.textContent = 'Error sending. Please contact alex.sevoz.photo@gmail.com directly.';
+    msg.className = 'form-msg error'; msg.style.display = 'block';
   }
-  function goTo(i){ current=i; track.style.transform=`translateX(-${i*100}%)`; [...testiNav.children].forEach((d,idx)=>d.classList.toggle('active',idx===i)); }
-  setInterval(() => goTo((current+1)%total), 6000);
+  btn.disabled = false;
+});
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.1});
+
+const dogPhotos = [
+  {src:'images/dog/Portfolio-1.webp'},
+  {src:'images/dog/Protfolio-2.webp'},
+  {src:'images/dog/Portfolio-3.webp'},
+  {src:'images/dog/Protfolio-4.webp'},
+  {src:'images/dog/Portfolio-5.webp'},
+  {src:'images/dog/Portfolio-6.webp'},
+  {src:'images/dog/Portfolio-7.webp'},
+  {src:'images/dog/Portfolio-8.webp'},
+  {src:'images/dog/Portfolio-10.webp'},
+];
+const dogGrid = document.getElementById('portfolioGrid');
+dogPhotos.forEach((photo, i) => {
+  const fig = document.createElement('figure'); fig.classList.add('reveal');
+  const img = document.createElement('img'); img.src = photo.src; img.alt = ''; img.loading = 'lazy';
+  fig.appendChild(img);
+  fig.addEventListener('click', () => openLightbox(i));
+  dogGrid.appendChild(fig);
+  io.observe(fig);
+});
+
+const lightbox = document.getElementById('lightbox'), lbImg = document.getElementById('lbImg'), lbCounter = document.getElementById('lbCounter');
+let lbIndex = 0;
+function openLightbox(i){lbIndex=i;lbImg.src=dogPhotos[i].src;lbCounter.textContent=(i+1)+' / '+dogPhotos.length;lightbox.classList.add('open');document.body.style.overflow='hidden';}
+function closeLightbox(){lightbox.classList.remove('open');document.body.style.overflow='';}
+function lbMove(dir){lbIndex=(lbIndex+dir+dogPhotos.length)%dogPhotos.length;lbImg.src=dogPhotos[lbIndex].src;lbCounter.textContent=(lbIndex+1)+' / '+dogPhotos.length;}
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lbPrev').addEventListener('click', () => lbMove(-1));
+document.getElementById('lbNext').addEventListener('click', () => lbMove(1));
+lightbox.addEventListener('click', e => { if(e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', e => { if(!lightbox.classList.contains('open')) return; if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowLeft') lbMove(-1); if(e.key==='ArrowRight') lbMove(1); });
+
+function setLang(lang) {
+  currentLang = lang;
+  const dict = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if(dict[k] !== undefined) el.innerHTML = dict[k]; });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const k = el.getAttribute('data-i18n-placeholder'); if(dict[k] !== undefined) el.setAttribute('placeholder', dict[k]); });
+  document.getElementById('pageTitle').textContent = dict.page_title;
+  document.getElementById('htmlRoot').setAttribute('lang', lang);
+  document.querySelectorAll('.lang-switch button').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === lang));
+}
+document.querySelectorAll('.lang-switch button').forEach(btn => btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang'))));
+setLang('en');
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+const mobileLang = document.getElementById('langSwitchMobile');
+navToggle.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  mobileLang.classList.toggle('open', open);
+  navToggle.textContent = open ? '✕' : '☰';
+});
+function closeMenu(){ navLinks.classList.remove('open'); mobileLang.classList.remove('open'); navToggle.textContent = '☰'; }
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* CAROUSEL — fixed: translateX uses the wrap width, not the track width */
+const track = document.getElementById('testiTrack');
+const testiNav = document.getElementById('testiNav');
+const total = track.children.length;
+let current = 0;
+for(let i = 0; i < total; i++){
+  const dot = document.createElement('button');
+  dot.className = 'testi-dot' + (i === 0 ? ' active' : '');
+  dot.addEventListener('click', () => goTo(i));
+  testiNav.appendChild(dot);
+}
+function goTo(i){
+  current = i;
+  /* Each slide is 100% of the WRAP (parent of track), not 100% of the track.
+     track width = total * 100% of wrap, so slide i starts at i * wrap_width.
+     We move the track by -(i * wrap_width) = -(i * 100% of wrap).
+     Since track is a child of wrap and wrap has overflow:hidden,
+     we translate by percentage of the TRACK itself: -(i * 100% / total * total) = -(i * 100%).
+     But % on transform is relative to the ELEMENT itself (the track).
+     track width = total slides = total * 100vw equivalent.
+     So 100% of track = total slides. One slide = 100%/total of track.
+     To move one slide: translateX(-(100% / total)) per step.  */
+  const pct = (100 / total) * i;
+  track.style.transform = `translateX(-${pct}%)`;
+  [...testiNav.children].forEach((d, idx) => d.classList.toggle('active', idx === i));
+}
+setInterval(() => goTo((current + 1) % total), 6000);
 </script>
 </body>
 </html>
