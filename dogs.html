@@ -150,6 +150,10 @@
   .submit-btn{margin-top:1rem;padding:0.9rem 2.2rem;background:var(--accent);color:var(--ink);border:none;font-family:'JetBrains Mono',monospace;font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:background .3s ease,transform .3s ease;}
   .submit-btn:hover{background:#9db3c2;transform:translateY(-2px);}
   .submit-btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+  .form-msg{margin-top:1rem;font-size:0.88rem;padding:0.6rem 1rem;}
+  .form-msg.success{color:#2a6e3f;background:rgba(42,110,63,0.08);border-left:3px solid #2a6e3f;}
+  .form-msg.error{color:#c1502e;background:rgba(193,80,46,0.08);border-left:3px solid #c1502e;}
+  .submit-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
   .contact-info h3{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;margin-bottom:1.4rem;}
   .contact-info p{color:var(--paper-dim);line-height:1.7;margin-bottom:2rem;max-width:42ch;}
   .contact-info .line{padding:0.9rem 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:0.92rem;}
@@ -287,7 +291,7 @@
     <p data-i18n="contact_p"></p>
   </div>
   <div class="contact-grid reveal">
-    <form onsubmit="return false;">
+    <form id="dogForm">
       <div class="field">
         <label for="dname" data-i18n="label_dname"></label>
         <input type="text" id="dname" data-i18n-placeholder="placeholder_dname">
@@ -297,10 +301,19 @@
         <input type="text" id="breed" data-i18n-placeholder="placeholder_breed">
       </div>
       <div class="field">
+        <label for="f_email" data-i18n="label_email"></label>
+        <input type="email" id="f_email" data-i18n-placeholder="placeholder_email">
+      </div>
+      <div class="field">
+        <label for="f_phone" data-i18n="label_phone"></label>
+        <input type="tel" id="f_phone" data-i18n-placeholder="placeholder_phone">
+      </div>
+      <div class="field">
         <label for="msg" data-i18n="label_msg"></label>
         <textarea id="msg" data-i18n-placeholder="placeholder_msg"></textarea>
       </div>
-      <button class="submit-btn" type="submit" data-i18n="btn_send"></button>
+      <button class="submit-btn" type="submit" id="dogSubmitBtn" data-i18n="btn_send"></button>
+      <div class="form-msg" id="dogFormMsg" style="display:none"></div>
     </form>
     <div class="contact-info">
       <h3 data-i18n="contact_h3"></h3>
@@ -316,7 +329,12 @@
   <div class="footer-cross"><a href="wedding.html" data-i18n="footer_cross"></a></div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
+const EMAILJS_PUBLIC_KEY  = '8sKwmAvy4Jw0ot0W4';
+const EMAILJS_SERVICE_ID  = 'service_47o5cwb';
+const EMAILJS_TEMPLATE_DOG = 'template_p9bnrqz'; // ← remplace par ton template ID Flying Dog
+  let currentLang = 'en';
   const translations = {
     pl: {
       page_title: "Alex Sevoz — Flying Dog Photography",
@@ -354,7 +372,10 @@
       testi3_who: "Marta, właścicielka Luny",
       contact_tag: "Kontakt", contact_h2: "Umówmy sesję.",
       contact_p: "Sesje prowadzę na świeżym powietrzu, w Poznaniu i okolicach — najlepiej w porze, gdy Wasz pies ma najwięcej energii.",
-      label_dname: "Imię psa", label_breed: "Rasa / temperament", label_msg: "Wiadomość",
+      label_dname: "Imię psa", label_breed: "Rasa / temperament",
+      label_email: "Twój e-mail", placeholder_email: "twoj@email.com",
+      label_phone: "Numer telefonu", placeholder_phone: "+48 ...",
+      label_msg: "Wiadomość",
       placeholder_dname: "Reksio", placeholder_breed: "Bordercollie, uwielbia dysk",
       placeholder_msg: "Co Wasz pies uwielbia robić najbardziej?",
       btn_send: "Wyślij wiadomość",
@@ -400,7 +421,10 @@
       testi3_who: "Marta, propriétaire de Luna",
       contact_tag: "Contact", contact_h2: "Réservons une séance.",
       contact_p: "Je photographie en extérieur, à Poznań et ses environs — idéalement au moment où votre chien déborde le plus d'énergie.",
-      label_dname: "Nom du chien", label_breed: "Race / tempérament", label_msg: "Votre message",
+      label_dname: "Nom du chien", label_breed: "Race / tempérament",
+      label_email: "Votre email", placeholder_email: "votre@email.com",
+      label_phone: "Numéro de téléphone", placeholder_phone: "+48 ...",
+      label_msg: "Votre message",
       placeholder_dname: "Rex", placeholder_breed: "Border collie, adore le frisbee",
       placeholder_msg: "Qu'est-ce que votre chien adore faire le plus ?",
       btn_send: "Envoyer le message",
@@ -446,7 +470,10 @@
       testi3_who: "Marta, owner of Luna",
       contact_tag: "Contact", contact_h2: "Let's book a session.",
       contact_p: "Sessions run outdoors, in Poznań and the surrounding area — ideally timed for when your dog has the most energy.",
-      label_dname: "Dog's name", label_breed: "Breed / temperament", label_msg: "Your message",
+      label_dname: "Dog's name", label_breed: "Breed / temperament",
+      label_email: "Your email", placeholder_email: "your@email.com",
+      label_phone: "Phone number", placeholder_phone: "+48 ...",
+      label_msg: "Your message",
       placeholder_dname: "Rex", placeholder_breed: "Border collie, loves the frisbee",
       placeholder_msg: "What does your dog love doing most?",
       btn_send: "Send message",
@@ -457,6 +484,33 @@
       footer_cross: "I also shoot weddings → Wedding Photography"
     }
   };
+
+  emailjs.init({publicKey: EMAILJS_PUBLIC_KEY});
+
+  document.getElementById('dogForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('dogSubmitBtn');
+    const msg = document.getElementById('dogFormMsg');
+    btn.disabled = true; msg.style.display = 'none';
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_DOG, {
+        dog_name: document.getElementById('dname').value,
+        breed:    document.getElementById('breed').value,
+        email:    document.getElementById('f_email').value,
+        phone:    document.getElementById('f_phone').value,
+        message:  document.getElementById('msg').value,
+      });
+      msg.textContent = currentLang === 'fr' ? 'Message envoyé ! Alex vous répondra rapidement.' :
+                        currentLang === 'pl' ? 'Wiadomość wysłana! Alex odpowie wkrótce.' :
+                        'Message sent! Alex will get back to you soon.';
+      msg.className = 'form-msg success'; msg.style.display = 'block';
+      this.reset();
+    } catch(err) {
+      msg.textContent = 'Error sending. Please contact alex.sevoz.photo@gmail.com directly.';
+      msg.className = 'form-msg error'; msg.style.display = 'block';
+    }
+    btn.disabled = false;
+  });
 
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
