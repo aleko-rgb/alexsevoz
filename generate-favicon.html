@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>body{background:#eee;display:flex;flex-direction:column;align-items:center;gap:20px;padding:40px;font-family:sans-serif;}</style>
+<style>
+@font-face{font-family:'Backstreet';src:url('fonts/Backstreet.ttf') format('truetype');}
+</style>
+</head>
+<body>
+<h3>Favicon Generator — Alex Sevoz</h3>
+<canvas id="c180" width="180" height="180" style="border-radius:50%;"></canvas>
+<canvas id="c32" width="32" height="32" style="border-radius:50%;width:64px;height:64px;image-rendering:pixelated;"></canvas>
+<button onclick="download()">Download favicon-180.png</button>
+<p style="font-size:12px;color:#666;">Upload this file to GitHub root as <code>favicon-180.png</code> and <code>favicon.ico</code></p>
+<script>
+function draw(canvas) {
+  const s = canvas.width;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0,0,s,s);
+  // circle
+  ctx.beginPath();
+  ctx.arc(s/2, s/2, s/2, 0, Math.PI*2);
+  ctx.fillStyle = '#0e0e0e';
+  ctx.fill();
+  // text
+  const fontSize = s * 0.52;
+  ctx.font = `${fontSize}px Backstreet`;
+  ctx.fillStyle = '#ffffff';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('AS', s/2, s/2 + fontSize*0.06);
+}
+
+document.fonts.load("100px Backstreet").then(() => {
+  draw(document.getElementById('c180'));
+  draw(document.getElementById('c32'));
+});
+
+function download() {
+  const c = document.getElementById('c180');
+  const a = document.createElement('a');
+  a.download = 'favicon-180.png';
+  a.href = c.toDataURL('image/png');
+  a.click();
+}
+</script>
+</body>
+</html>
