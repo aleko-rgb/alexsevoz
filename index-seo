@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Sevoz Photography — Wedding & Flying Dog Photographer in Poznań</title>
+<meta name="description" content="Alex Sevoz Photography — wedding photographer and flying dog specialist based in Poznań, Poland. Available across Europe.">
+<link rel="canonical" href="https://www.alexsevoz.com/">
+<link rel="alternate" hreflang="en" href="https://www.alexsevoz.com/wedding-photography">
+<link rel="alternate" hreflang="fr" href="https://www.alexsevoz.com/photographe-mariage">
+<link rel="alternate" hreflang="pl" href="https://www.alexsevoz.com/fotograf-slubny">
+<link rel="alternate" hreflang="x-default" href="https://www.alexsevoz.com/">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="favicon-180.png">
+<style>
+  body{margin:0;padding:0;background:#0e0e0e;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:system-ui,sans-serif;}
+  .loader{text-align:center;color:rgba(255,255,255,0.4);font-size:0.9rem;letter-spacing:0.1em;}
+</style>
+<script>
+// Language detection and redirect
+(function(){
+  var lang = navigator.language || navigator.userLanguage || 'en';
+  var code = lang.toLowerCase().substring(0,2);
+  if(code === 'pl'){
+    window.location.replace('/fotograf-slubny');
+  } else if(code === 'fr'){
+    window.location.replace('/photographe-mariage');
+  } else {
+    window.location.replace('/wedding-photography');
+  }
+})();
+</script>
+</head>
+<body>
+<div class="loader">Loading Alex Sevoz Photography…</div>
+</body>
+</html>
