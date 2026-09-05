@@ -11,24 +11,27 @@
 <canvas id="c180" width="180" height="180" style="border-radius:50%;"></canvas>
 <canvas id="c32" width="32" height="32" style="border-radius:50%;width:64px;height:64px;image-rendering:pixelated;"></canvas>
 <button onclick="download()">Download favicon-180.png</button>
-<p style="font-size:12px;color:#666;">Upload this file to GitHub root as <code>favicon-180.png</code> and <code>favicon.ico</code></p>
+<p style="font-size:12px;color:#666;">Upload this file to GitHub root as <code>favicon-180.png</code></p>
 <script>
 function draw(canvas) {
   const s = canvas.width;
   const ctx = canvas.getContext('2d');
   ctx.clearRect(0,0,s,s);
-  // circle
   ctx.beginPath();
   ctx.arc(s/2, s/2, s/2, 0, Math.PI*2);
   ctx.fillStyle = '#0e0e0e';
   ctx.fill();
-  // text
-  const fontSize = s * 0.52;
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(s/2, s/2, s/2, 0, Math.PI*2);
+  ctx.clip();
+  const fontSize = s * 0.34;
   ctx.font = `${fontSize}px Backstreet`;
   ctx.fillStyle = '#ffffff';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText('AS', s/2, s/2 + fontSize*0.06);
+  ctx.fillText('AS', s/2, s/2 + fontSize*0.05);
+  ctx.restore();
 }
 
 document.fonts.load("100px Backstreet").then(() => {
