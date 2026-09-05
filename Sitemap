@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.alexsevoz.com/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.alexsevoz.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Wedding Photography — EN -->
+  <url>
+    <loc>https://www.alexsevoz.com/wedding-photography</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alexsevoz.com/wedding-photography"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.alexsevoz.com/photographe-mariage"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.alexsevoz.com/fotograf-slubny"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Wedding Photography — FR -->
+  <url>
+    <loc>https://www.alexsevoz.com/photographe-mariage</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alexsevoz.com/wedding-photography"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.alexsevoz.com/photographe-mariage"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.alexsevoz.com/fotograf-slubny"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Wedding Photography — PL -->
+  <url>
+    <loc>https://www.alexsevoz.com/fotograf-slubny</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alexsevoz.com/wedding-photography"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.alexsevoz.com/photographe-mariage"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.alexsevoz.com/fotograf-slubny"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Dog Photography — EN -->
+  <url>
+    <loc>https://www.alexsevoz.com/dog-photography</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alexsevoz.com/dog-photography"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.alexsevoz.com/photographe-chien"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.alexsevoz.com/sesje-ze-psem"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Dog Photography — FR -->
+  <url>
+    <loc>https://www.alexsevoz.com/photographe-chien</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alexsevoz.com/dog-photography"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.alexsevoz.com/photographe-chien"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.alexsevoz.com/sesje-ze-psem"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Dog Photography — PL -->
+  <url>
+    <loc>https://www.alexsevoz.com/sesje-ze-psem</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alexsevoz.com/dog-photography"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.alexsevoz.com/photographe-chien"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.alexsevoz.com/sesje-ze-psem"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+</urlset>
