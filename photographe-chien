@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photographe Chien Poznań — Flying Dog Photography | Alex Sevoz Photography</title>
+<meta name="description" content="Alex Sevoz photographie les chiens en plein vol à Poznań et partout en Pologne. Photos d'action, nettes et sans pose — réservez votre séance flying dog.">
+<meta name="keywords" content="photographe chien Poznań, photo chien en vol Pologne, séance photo chien action, photographe animalier Poznań, chien saut photographie">
+<meta name="author" content="Alex Sevoz Photography">
+<meta name="robots" content="index, follow">
+<meta name="geo.region" content="PL-WP">
+<meta name="geo.placename" content="Poznań">
+<link rel="canonical" href="https://www.alexsevoz.com/photographe-chien">
+<link rel="alternate" hreflang="en" href="https://www.alexsevoz.com/dog-photography">
+<link rel="alternate" hreflang="fr" href="https://www.alexsevoz.com/photographe-chien">
+<link rel="alternate" hreflang="pl" href="https://www.alexsevoz.com/sesje-ze-psem">
+<link rel="alternate" hreflang="x-default" href="https://www.alexsevoz.com/dog-photography">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Photographe Chien Poznań — Flying Dog Photography | Alex Sevoz Photography">
+<meta property="og:description" content="Chiens capturés en plein vol, nets et sans pose. Réservez une séance flying dog à Poznań.">
+<meta property="og:url" content="https://www.alexsevoz.com/photographe-chien">
+<meta property="og:image" content="https://www.alexsevoz.com/images/dog/slideshow-2.webp">
+<meta property="og:locale" content="fr_FR">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Alex Sevoz Photography","description":"Photographe de chiens en action basé à Poznań, Pologne. Spécialisé dans la photographie flying dog.","url":"https://www.alexsevoz.com","telephone":"+48720852075","email":"alex.sevoz.photo@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Poznań","addressCountry":"PL"},"areaServed":["Pologne","Europe"],"serviceType":"Photographie animalière"}</script>
+<style>
+  @font-face{font-family:'Backstreet';src:url('fonts/Backstreet.ttf') format('truetype');font-weight:normal;font-style:normal;font-display:swap;}
+  :root{--ink:#26241f;--paper:#f4ede0;--paper-dim:#c9c0ae;--accent:#2f6690;--rust:#c1502e;--moss:#767d5f;--line:rgba(244,237,224,0.14);--line-dark:rgba(0,0,0,0.1);}
+  *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+  body{background:linear-gradient(180deg,#201e1b 0%,#363430 28%,#4d4b41 58%,#63604f 100%);color:var(--paper);font-family:'Space Grotesk',sans-serif;font-weight:400;overflow-x:hidden;}
+  h1,h2,h3,.display{font-family:'Barlow Condensed',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:0.01em;}
+  .mono{font-family:'JetBrains Mono',monospace;}a{color:inherit;text-decoration:none;}img{display:block;max-width:100%;}
+  @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;flex-direction:column;padding:24px 6vw 0;transition:background 0.4s ease,box-shadow 0.4s ease;}
+  nav.scrolled{background:rgba(38,36,31,0.92);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--line);}
+  .nav-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:14px;}
+  nav.scrolled .nav-top{padding-bottom:10px;}
+  .nav-sub{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.75);text-align:center;padding:6px 0 10px;border-top:1px solid var(--line);opacity:0;max-height:0;overflow:hidden;transition:opacity 0.4s ease,max-height 0.4s ease,padding 0.4s ease;}
+  nav.scrolled .nav-sub{opacity:1;max-height:40px;padding:8px 0 10px;}
+  .logo{font-family:'Backstreet','Cormorant Garamond',serif;font-size:1.5rem;letter-spacing:0.04em;color:var(--paper);}
+  .nav-right{display:flex;align-items:center;gap:2.4rem;}
+  .nav-links{display:flex;gap:2.4rem;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;}
+  .nav-links a{position:relative;padding-bottom:4px;color:var(--paper-dim);transition:color .3s ease;}
+  .nav-links a:hover{color:var(--accent);}
+  .lang-switch{display:flex;gap:0.6rem;font-size:0.72rem;letter-spacing:0.1em;}
+  .lang-switch a{background:none;border:none;cursor:pointer;color:var(--paper-dim);font-family:'JetBrains Mono',monospace;padding:2px 4px;transition:color .3s ease;}
+  .lang-switch a.active{color:var(--accent);font-weight:500;}
+  .lang-switch span{color:var(--line);}
+  .nav-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--paper);}
+  @media(max-width:820px){
+    .nav-links{position:fixed;inset:0;background:var(--ink);color:var(--paper);flex-direction:column;justify-content:center;align-items:center;gap:2.2rem;font-size:1.1rem;opacity:0;pointer-events:none;transition:opacity 0.4s ease;z-index:105;}
+    .nav-links.open{opacity:1;pointer-events:all;}
+    .nav-toggle{display:block;z-index:110;}
+    .lang-switch.desktop-lang{display:none;}
+    .lang-switch.mobile-lang{position:fixed;bottom:2.4rem;left:0;right:0;justify-content:center;z-index:110;opacity:0;pointer-events:none;transition:opacity .4s ease;}
+    .lang-switch.mobile-lang.open{opacity:1;pointer-events:all;}
+    .nav-sub{display:none;}nav{padding:18px 6vw 0;}
+  }
+  @media(min-width:821px){.lang-switch.mobile-lang{display:none;}}
+  .hero{position:relative;height:100svh;overflow:hidden;display:flex;align-items:flex-end;background:var(--ink);}
+  .slide{position:absolute;inset:0;background-size:cover;background-position:center 30%;opacity:0;animation:slideFade 24s infinite;filter:grayscale(0.15) contrast(1.05);}
+  .slide::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(38,36,31,0.22) 0%,rgba(38,36,31,0.4) 55%,rgba(38,36,31,0.82) 100%);}
+  .slide:nth-child(1){animation-delay:0s;background-image:url('images/dog/slideshow-1.webp');}
+  .slide:nth-child(2){animation-delay:8s;background-image:url('images/dog/slideshow-2.webp');}
+  .slide:nth-child(3){animation-delay:16s;background-image:url('images/dog/slideshow-3.webp');}
+  @keyframes slideFade{0%{opacity:0;}4%{opacity:1;}29%{opacity:1;}33%{opacity:0;}100%{opacity:0;}}
+  .flight-arc-banner{width:100%;height:140px;pointer-events:none;overflow:hidden;}
+  .flight-arc-banner svg{width:100%;height:100%;}
+  .arc-path{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:6 10;opacity:0.45;}
+  .dog-part{fill:var(--accent);}
+  .arc-anim{offset-path:path('M -40 130 Q 500 10 1040 130');offset-rotate:auto;animation:flyArc 5.5s ease-in-out infinite;}
+  @keyframes flyArc{0%{offset-distance:0%;opacity:0;}8%{opacity:1;}92%{opacity:1;}100%{offset-distance:100%;opacity:0;}}
+  .hero-content{position:relative;z-index:2;padding:0 6vw 3rem;color:var(--paper);width:100%;}
+  .hero h1{font-size:clamp(2rem,6vw,4.8rem);font-weight:500;line-height:0.95;max-width:20ch;color:var(--paper);opacity:0;animation:riseIn 0.9s ease 0.5s forwards;}
+  .hero h1 em{font-style:normal;color:var(--accent);}
+  .hero-sub{margin-top:1.6rem;max-width:44ch;font-size:1.05rem;line-height:1.6;color:var(--paper-dim);opacity:0;animation:riseIn 0.9s ease 0.75s forwards;}
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+  .scroll-cue{position:absolute;bottom:2rem;right:6vw;z-index:2;color:var(--paper-dim);font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0;animation:riseIn 0.9s ease 1.1s forwards;}
+  section{padding:8rem 6vw;}
+  .section-head{max-width:640px;margin-bottom:4rem;}
+  .tag{font-family:'JetBrains Mono',monospace;font-size:0.76rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:1.2rem;}
+  .tag::before{content:'';width:24px;height:2px;background:var(--accent);}
+  .section-head h2{font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.05;}
+  .section-head p{margin-top:1.3rem;color:var(--paper-dim);line-height:1.7;font-size:1.02rem;max-width:52ch;}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.8s ease,transform 0.8s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+  .jump-seq{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media(max-width:900px){.jump-seq{grid-template-columns:1fr 1fr;}}@media(max-width:520px){.jump-seq{grid-template-columns:1fr;}}
+  .jstep{background:var(--ink);padding:2.4rem 1.8rem;transition:background .35s ease;}
+  .jstep:hover{background:#33312a;}
+  .jstep .n{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:0.82rem;letter-spacing:0.08em;margin-bottom:1.4rem;}
+  .jstep h3{font-size:1.5rem;margin-bottom:0.7rem;}
+  .jstep p{color:var(--paper-dim);line-height:1.65;font-size:0.94rem;}
+  .grid{columns:3;column-gap:14px;}@media(max-width:900px){.grid{columns:2;}}@media(max-width:520px){.grid{columns:1;}}
+  .grid figure{break-inside:avoid;position:relative;overflow:hidden;background:#000;cursor:pointer;margin-bottom:14px;}
+  .grid figure img{width:100%;height:auto;display:block;transition:transform 1s cubic-bezier(.16,.84,.44,1),filter .5s ease;filter:saturate(1.05) contrast(1.03);}
+  .grid figure:hover img{transform:scale(1.07);}
+  .lightbox{position:fixed;inset:0;z-index:200;background:rgba(10,10,10,0.97);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.4s ease;}
+  .lightbox.open{opacity:1;pointer-events:all;}
+  .lightbox img{max-width:90vw;max-height:88vh;object-fit:contain;transform:scale(0.96);transition:transform 0.4s ease;}
+  .lightbox.open img{transform:scale(1);}
+  .lb-close{position:absolute;top:1.6rem;right:2rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;opacity:0.6;line-height:1;}
+  .lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;color:#fff;font-size:2.2rem;cursor:pointer;opacity:0.5;padding:1rem;}
+  .lb-prev{left:1rem;}.lb-next{right:1rem;}
+  .lb-counter{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.4);font-size:0.78rem;letter-spacing:0.1em;}
+  .technique-note{background:rgba(47,102,144,0.08);border:1px solid rgba(47,102,144,0.25);padding:2rem 2.4rem;margin-top:3rem;font-size:0.95rem;line-height:1.75;color:var(--paper);}
+  .technique-note strong{color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;display:block;margin-bottom:0.5rem;}
+  .session-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:start;}@media(max-width:900px){.session-grid{grid-template-columns:1fr;}}
+  .session-list{display:flex;flex-direction:column;}
+  .session-item{padding:1.6rem 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:2rem;align-items:baseline;}
+  .session-list .session-item:last-child{border-bottom:1px solid var(--line);}
+  .session-item .label{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;letter-spacing:0.01em;}
+  .session-item .desc{color:var(--paper-dim);font-size:0.9rem;text-align:right;max-width:26ch;line-height:1.5;}
+  .session-note{background:rgba(226,163,59,0.08);border:1px solid rgba(226,163,59,0.3);padding:1.8rem;font-size:0.95rem;line-height:1.7;color:var(--paper);}
+  .session-note strong{color:var(--accent);}
+  .testi-wrap{position:relative;background:#33312a;padding:5rem 6vw;overflow:hidden;border:1px solid var(--line);}
+  .testi-track{display:flex;transition:transform 0.7s cubic-bezier(.6,0,.2,1);will-change:transform;}
+  .testi{flex:0 0 100%;width:100%;box-sizing:border-box;}
+  .testi p{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.2rem,2.2vw,1.55rem);line-height:1.5;font-weight:400;}
+  .testi .who{margin-top:1.8rem;font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);}
+  .testi-nav{display:flex;gap:10px;margin-top:2.6rem;}
+  .testi-dot{width:8px;height:8px;border-radius:50%;background:var(--line);border:none;cursor:pointer;transition:background .3s ease,transform .3s ease;}
+  .testi-dot.active{background:var(--accent);transform:scale(1.3);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}@media(max-width:820px){.contact-grid{grid-template-columns:1fr;gap:3rem;}}
+  .field{margin-bottom:1.6rem;}
+  .field label{display:block;font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--paper-dim);margin-bottom:0.6rem;}
+  .field input,.field textarea{width:100%;border:none;border-bottom:1px solid var(--line);background:transparent;padding:0.6rem 0.2rem;font-family:'Space Grotesk',sans-serif;font-size:1rem;color:var(--paper);transition:border-color .3s ease;}
+  .field input::placeholder,.field textarea::placeholder{color:var(--paper-dim);opacity:0.5;}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);}
+  .field textarea{resize:vertical;min-height:100px;}
+  .submit-btn{margin-top:1rem;padding:0.9rem 2.2rem;background:var(--accent);color:var(--ink);border:none;font-family:'JetBrains Mono',monospace;font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:background .3s ease,transform .3s ease;}
+  .submit-btn:hover{background:#9db3c2;transform:translateY(-2px);}
+  .submit-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+  .form-msg{margin-top:1rem;font-size:0.88rem;padding:0.6rem 1rem;}
+  .form-msg.success{color:#2a6e3f;background:rgba(42,110,63,0.08);border-left:3px solid #2a6e3f;}
+  .form-msg.error{color:#c1502e;background:rgba(193,80,46,0.08);border-left:3px solid #c1502e;}
+  .contact-info h3{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;margin-bottom:1.4rem;}
+  .contact-info p{color:var(--paper-dim);line-height:1.7;margin-bottom:2rem;max-width:42ch;}
+  .contact-info .line{padding:0.9rem 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:0.92rem;}
+  .contact-info .line:last-child{border-bottom:1px solid var(--line);}
+  footer{padding:3rem 6vw;text-align:center;color:var(--paper-dim);font-size:0.8rem;border-top:1px solid var(--line);}
+  .footer-cross{margin-top:0.7rem;}
+  .footer-cross a{color:var(--paper-dim);border-bottom:1px solid var(--line);padding-bottom:1px;transition:color .3s ease,border-color .3s ease;}
+  .footer-cross a:hover{color:var(--accent);border-color:var(--accent);}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-top">
+    <a href="index.html" class="logo">Alex Sevoz</a>
+    <div class="nav-right">
+      <div class="nav-links" id="navLinks">
+        <a href="#anatomy" onclick="closeMenu()">Anatomy of a jump</a>
+        <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
+        <a href="#sessions" onclick="closeMenu()">Sessions</a>
+        <a href="#contact" onclick="closeMenu()">Contact</a>
+      </div>
+      <div class="lang-switch desktop-lang">
+        <a href="sesje-ze-psem.html">PL</a><span>·</span>
+        <a href="photographe-chien.html">FR</a><span>·</span>
+        <a href="dog-photography.html" class="active">EN</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+  <div class="nav-sub">FLYING DOG PHOTOGRAPHY — POZNAŃ & SURROUNDINGS</div>
+</nav>
+<div class="lang-switch mobile-lang" id="langSwitchMobile">
+  <a href="sesje-ze-psem.html">PL</a><span>·</span>
+  <a href="photographe-chien.html">FR</a><span>·</span>
+  <a href="dog-photography.html" class="active">EN</a>
+</div>
+<header class="hero">
+  <div class="slide"></div><div class="slide"></div><div class="slide"></div>
+  <div class="hero-content">
+    <h1>Half a second<br><em>in mid-air.</em></h1>
+    <p class="hero-sub">I photograph dogs at the exact instant all four paws leave the ground. No posing — just reflex, motion, and unfiltered joy.</p>
+  </div>
+  <div class="scroll-cue mono">SCROLL ↓</div>
+</header>
+<div class="flight-arc-banner">
+  <svg viewBox="0 0 1000 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path class="arc-path" d="M -40 130 Q 500 10 1040 130"></path>
+    <g class="arc-anim">
+      <path class="dog-part" d="M -13,-6 Q -20,-13 -16,-18 Q -14,-13 -9,-7 Z"></path>
+      <ellipse class="dog-part" cx="-2" cy="0" rx="13" ry="6"></ellipse>
+      <path class="dog-part" d="M -12,3 L -19,-3 L -16,-6 L -9,1 Z"></path>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-top">
+    <a href="index.html" class="logo">Alex Sevoz</a>
+    <div class="nav-right">
+      <div class="nav-links" id="navLinks">
+        <a href="#anatomy" onclick="closeMenu()">Anatomie du saut</a>
+        <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
+        <a href="#sessions" onclick="closeMenu()">Séances</a>
+        <a href="#contact" onclick="closeMenu()">Contact</a>
+      </div>
+      <div class="lang-switch desktop-lang">
+        <a href="sesje-ze-psem.html">PL</a><span>·</span>
+        <a href="photographe-chien.html" class="active">FR</a><span>·</span>
+        <a href="dog-photography.html">EN</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+  <div class="nav-sub">FLYING DOG PHOTOGRAPHY — POZNAŃ ET ENVIRONS</div>
+</nav>
+<div class="lang-switch mobile-lang" id="langSwitchMobile">
+  <a href="sesje-ze-psem.html">PL</a><span>·</span>
+  <a href="photographe-chien.html" class="active">FR</a><span>·</span>
+  <a href="dog-photography.html">EN</a>
+</div>
+<header class="hero">
+  <div class="slide"></div><div class="slide"></div><div class="slide"></div>
+  <div class="hero-content">
+    <h1>Une demi-seconde<br><em>en plein vol.</em></h1>
+    <p class="hero-sub">Je photographie les chiens exactement à l'instant où les quatre pattes quittent le sol. Aucune pose — juste le réflexe, le mouvement et la joie brute.</p>
+  </div>
+  <div class="scroll-cue mono">SCROLL ↓</div>
+</header>
+<div class="flight-arc-banner">
+  <svg viewBox="0 0 1000 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path class="arc-path" d="M -40 130 Q 500 10 1040 130"></path>
+    <g class="arc-anim">
+      <path class="dog-part" d="M -13,-6 Q -20,-13 -16,-18 Q -14,-13 -9,-7 Z"></path>
+      <ellipse class="dog-part" cx="-2" cy="0" rx="13" ry="6"></ellipse>
+      <path class="dog-part" d="M -12,3 L -19,-3 L -16,-6 L -9,1 Z"></path>
+      <path class="dog-part" d="M 5,4 L 11,15 L 7,15 L 2,5 Z"></path>
+      <circle class="dog-part" cx="14" cy="-5" r="5.5"></circle>
+      <ellipse class="dog-part" cx="20" cy="-3" rx="3" ry="2"></ellipse>
+      <path class="dog-part" d="M 11,-10 L 16,-10 L 13,-15 Z"></path>
+    </g>
+  </svg>
+</div>
+<section id="anatomy">
+  <div class="section-head reveal">
+    <div class="tag">Comment ça marche</div>
+    <h2>L'anatomie du saut.</h2>
+    <p>Une bonne photo en vol n'est pas un hasard : c'est connaître le rythme de ce chien précis et déclencher à l'image près. Quatre phases que je suis à chaque séance.</p>
+  </div>
+  <div class="jump-seq reveal">
+    <div class="jstep"><div class="n">01 / AVANT</div><h3>L'approche</h3><p>J'observe l'élan, le rythme des pattes, le jouet préféré. Je me positionne selon le bon angle et la bonne lumière avant même le premier saut.</p></div>
+    <div class="jstep"><div class="n">02 / L'ENVOL</div><h3>L'impulsion</h3><p>Le dixième de seconde où les pattes arrière quittent le sol. C'est là que se joue toute la composition du cadre.</p></div>
+    <div class="jstep"><div class="n">03 / SOMMET</div><h3>L'apogée</h3><p>Le point le plus haut du saut — oreilles envolées, queue tendue, corps en pleine extension. C'est la photo que vous êtes venus chercher.</p></div>
+    <div class="jstep"><div class="n">04 / RETOUR</div><h3>L'atterrissage</h3><p>Les pattes retrouvent le sol, la poussière se soulève. Parfois, c'est ici que naît l'image la plus sincère, pas au sommet.</p></div>
+  </div>
+</section>
+<section id="portfolio">
+  <div class="section-head reveal">
+    <div class="tag">Portfolio</div>
+    <h2>Image par image.</h2>
+    <p>Une sélection de séances — rapport, plage, course en pleine nature, en Pologne et à l'étranger.</p>
+  </div>
+  <div class="grid" id="portfolioGrid"></div>
+  <div class="technique-note reveal">
+    <strong>La technique</strong>
+    Idéalement on travaille à trois — une personne tient le chien, Alex attend allongé au sol, et le propriétaire se place derrière lui pour appeler le chien. Ce dispositif garantit un saut naturel et plein d'énergie droit dans le cadre.
+  </div>
+</section>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galerie photos">
+  <button class="lb-close" id="lbClose" aria-label="Fermer">✕</button>
+  <button class="lb-prev" id="lbPrev" aria-label="Précédent">‹</button>
+  <img id="lbImg" src="" alt="Photographie chien en vol par Alex Sevoz">
+  <button class="lb-next" id="lbNext" aria-label="Suivant">›</button>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+<section id="sessions">
+  <div class="section-head reveal">
+    <div class="tag">Séances</div>
+    <h2>Le déroulé d'une séance.</h2>
+    <p>Un format simple, adapté au tempérament du chien — sans pression, sans répéter le même tour à l'infini.</p>
+  </div>
+  <div class="session-grid reveal">
+    <div class="session-list">
+      <div class="session-item"><div class="label">60–90 MIN</div><div class="desc">Le temps de l'échauffement, une quinzaine de tentatives et des pauses pour le chien entre chaque série.</div></div>
+      <div class="session-item"><div class="label">SÉLECTION FINALE</div><div class="desc">La sélection finale d'images nettes et bien composées en plein vol — aucun flou retenu.</div></div>
+      <div class="session-item"><div class="label">7 JOURS</div><div class="desc">Délai entre la séance et la livraison des photos finales en haute résolution.</div></div>
+    </div>
+    <div class="session-note"><strong>Conseil :</strong> les meilleures photos en vol naissent quand le chien fait ce qu'il adore déjà — rapporter, courir après un frisbee, sauter dans l'eau. On construit la séance autour de cette chose-là.</div>
+  </div>
+</section>
+<section id="avis">
+  <div class="section-head reveal">
+    <div class="tag">Avis</div>
+    <h2>Ce que disent les maîtres.</h2>
+  </div>
+  <div class="testi-wrap reveal">
+    <div class="testi-track" id="testiTrack">
+      <div class="testi"><p>J'étais certaine que mon chien ne tiendrait jamais assez longtemps en place. Alex n'a même pas essayé de le calmer, il a juste attendu le bon instant.</p><div class="who">Ola, propriétaire de Biscuit, border collie</div></div>
+      <div class="testi"><p>La photo du sommet du saut trône maintenant en grand format dans notre salon. Nos invités demandent si c'est un chien de pub, alors que c'est juste le nôtre.</p><div class="who">Rafał, propriétaire de Rex</div></div>
+      <div class="testi"><p>Aucun stress pour le chien, aucune attente immobile. Toute la séance ressemblait à un jeu au parc, et le résultat est bluffant.</p><div class="who">Marta, propriétaire de Luna</div></div>
+    </div>
+    <div class="testi-nav" id="testiNav"></div>
+  </div>
+</section>
+<section id="contact">
+  <div class="section-head reveal">
+    <div class="tag">Contact</div>
+    <h2>Réservons une séance.</h2>
+    <p>Je photographie en extérieur, à Poznań et ses environs — idéalement au moment où votre chien déborde le plus d'énergie.</p>
+  </div>
+  <div class="contact-grid reveal">
+    <form id="dogForm">
+      <div class="field"><label for="dname">Nom du chien</label><input type="text" id="dname" placeholder="Rex"></div>
+      <div class="field"><label for="breed">Race / tempérament</label><input type="text" id="breed" placeholder="Border collie, adore le frisbee"></div>
+      <div class="field"><label for="f_email">Votre email</label><input type="email" id="f_email" placeholder="votre@email.com"></div>
+      <div class="field"><label for="f_phone">Numéro de téléphone</label><input type="tel" id="f_phone" placeholder="+48 ..."></div>
+      <div class="field"><label for="msg">Votre message</label><textarea id="msg" placeholder="Qu'est-ce que votre chien adore faire le plus ?"></textarea></div>
+      <button class="submit-btn" type="submit" id="dogSubmitBtn">Envoyer le message</button>
+      <div class="form-msg" id="dogFormMsg" style="display:none"></div>
+    </form>
+    <div class="contact-info">
+      <h3>Basé à Poznań, déplacements possibles.</h3>
+      <p>Écrivez-nous même si vous ne savez pas encore quel tour capturer — on le choisit ensemble pendant l'échange.</p>
+      <div class="line"><span>Email</span><span>alex.sevoz.photo@gmail.com</span></div>
+      <div class="line"><span>Téléphone</span><span>+48 720 852 075</span></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div>© 2026 Alex Sevoz Photography — Flying Dog Photography</div>
+  <div class="footer-cross"><a href="photographe-mariage.html">Je photographie aussi des mariages → Wedding Photography par Alex Sevoz</a></div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+const EMAILJS_PUBLIC_KEY='8sKwmAvy4Jw0ot0W4',EMAILJS_SERVICE_ID='service_47o5cwb',EMAILJS_TEMPLATE_DOG='template_p9bnrqz';
+emailjs.init({publicKey:EMAILJS_PUBLIC_KEY});
+document.getElementById('dogForm').addEventListener('submit',async function(e){
+  e.preventDefault();const btn=document.getElementById('dogSubmitBtn'),msg=document.getElementById('dogFormMsg');
+  btn.disabled=true;msg.style.display='none';
+  try{await emailjs.send(EMAILJS_SERVICE_ID,EMAILJS_TEMPLATE_DOG,{dog_name:document.getElementById('dname').value,breed:document.getElementById('breed').value,email:document.getElementById('f_email').value,phone:document.getElementById('f_phone').value,message:document.getElementById('msg').value});
+  msg.textContent='Message envoyé ! Alex vous répondra rapidement.';msg.className='form-msg success';msg.style.display='block';this.reset();
+  }catch(err){msg.textContent='Erreur. Contactez alex.sevoz.photo@gmail.com directement.';msg.className='form-msg error';msg.style.display='block';}
+  btn.disabled=false;
+});
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
+const dogPhotos=[
+  {src:'images/dog/Portfolio-1.webp',alt:'Chien en plein vol par Alex Sevoz'},
+  {src:'images/dog/Protfolio-2.webp',alt:'Photo action chien'},
+  {src:'images/dog/Portfolio-3.webp',alt:'Photographie chien saut Poznań'},
+  {src:'images/dog/Protfolio-4.webp',alt:'Border collie en vol'},
+  {src:'images/dog/Portfolio-5.webp',alt:'Chien attrapant un frisbee'},
+  {src:'images/dog/Portfolio-10.webp',alt:'Photo action chien Pologne'},
+  {src:'images/dog/Portfolio-8.webp',alt:'Chien au sommet du saut'},
+  {src:'images/dog/Portfolio-7.webp',alt:'Séance flying dog'},
+  {src:'images/dog/Portfolio-6.webp',alt:'Portrait chien en vol'},
+];
+const grid=document.getElementById('portfolioGrid');
+dogPhotos.forEach((photo,i)=>{
+  const fig=document.createElement('figure');fig.classList.add('reveal');
+  const img=document.createElement('img');img.src=photo.src;img.alt=photo.alt;img.loading='lazy';img.width=900;img.height=600;
+  fig.appendChild(img);fig.addEventListener('click',()=>openLightbox(i));grid.appendChild(fig);io.observe(fig);
+});
+const lightbox=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCounter=document.getElementById('lbCounter');
+let lbIndex=0;
+function openLightbox(i){lbIndex=i;lbImg.src=dogPhotos[i].src;lbImg.alt=dogPhotos[i].alt;lbCounter.textContent=(i+1)+' / '+dogPhotos.length;lightbox.classList.add('open');document.body.style.overflow='hidden';}
+function closeLightbox(){lightbox.classList.remove('open');document.body.style.overflow='';}
+function lbMove(dir){lbIndex=(lbIndex+dir+dogPhotos.length)%dogPhotos.length;lbImg.src=dogPhotos[lbIndex].src;lbImg.alt=dogPhotos[lbIndex].alt;lbCounter.textContent=(lbIndex+1)+' / '+dogPhotos.length;}
+document.getElementById('lbClose').addEventListener('click',closeLightbox);
+document.getElementById('lbPrev').addEventListener('click',()=>lbMove(-1));
+document.getElementById('lbNext').addEventListener('click',()=>lbMove(1));
+lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox();});
+document.addEventListener('keydown',e=>{if(!lightbox.classList.contains('open'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')lbMove(-1);if(e.key==='ArrowRight')lbMove(1);});
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+const navToggle=document.getElementById('navToggle'),navLinks=document.getElementById('navLinks'),mobileLang=document.getElementById('langSwitchMobile');
+navToggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');mobileLang.classList.toggle('open',open);navToggle.textContent=open?'✕':'☰';});
+function closeMenu(){navLinks.classList.remove('open');mobileLang.classList.remove('open');navToggle.textContent='☰';}
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const track=document.getElementById('testiTrack'),testiNav=document.getElementById('testiNav'),total=track.children.length;
+let current=0;
+for(let i=0;i<total;i++){const dot=document.createElement('button');dot.className='testi-dot'+(i===0?' active':'');dot.addEventListener('click',()=>goTo(i));testiNav.appendChild(dot);}
+function goTo(i){current=i;const pct=(100/total)*i;track.style.transform=`translateX(-${pct}%)`;[...testiNav.children].forEach((d,idx)=>d.classList.toggle('active',idx===i));}
+setInterval(()=>goTo((current+1)%total),6000);
+</script>
+</body>
+</html>
