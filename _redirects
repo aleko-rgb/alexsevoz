@@ -1,0 +1,9 @@
+# Legacy JS-based pages → new static SEO pages
+/wedding.html  /wedding-photography  301
+/dogs.html     /dog-photography      301
+
+# Clean URL support (Cloudflare Pages serves .html files without extension by default)
+# No extra rules needed — Cloudflare auto-handles extensionless URLs
+
+# www redirect (if not handled in DNS)
+# https://alexsevoz.com/* https://www.alexsevoz.com/:splat 301
