@@ -52,10 +52,15 @@
   }
   @media(min-width:821px){.lang-switch.mobile-lang{display:none;}}
 
-  /* HERO */
+  /* HERO — slideshow like wedding.html */
   .hero{position:relative;height:100svh;overflow:hidden;display:flex;align-items:flex-end;background:var(--ink);}
-  .hero-bg{position:absolute;inset:0;background-image:url('images/dog/slideshow-2.webp');background-size:cover;background-position:center 30%;filter:grayscale(0.15) contrast(1.05);transform:scale(1.04);}
-  .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(38,36,31,0.22) 0%,rgba(38,36,31,0.4) 55%,rgba(38,36,31,0.82) 100%);}
+  .slide{position:absolute;inset:0;background-size:cover;background-position:center 30%;opacity:0;animation:slideFade 24s infinite;filter:grayscale(0.15) contrast(1.05);}
+  .slide::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(38,36,31,0.22) 0%,rgba(38,36,31,0.4) 55%,rgba(38,36,31,0.82) 100%);}
+  .slide:nth-child(1){animation-delay:0s;background-image:url('images/dog/slideshow-1.webp');}
+  .slide:nth-child(2){animation-delay:8s;background-image:url('images/dog/slideshow-2.webp');}
+  .slide:nth-child(3){animation-delay:16s;background-image:url('images/dog/slideshow-3.webp');}
+  @keyframes slideFade{0%{opacity:0;}4%{opacity:1;}29%{opacity:1;}33%{opacity:0;}100%{opacity:0;}}
+
   .flight-arc-banner{width:100%;height:140px;pointer-events:none;overflow:hidden;}
   .flight-arc-banner svg{width:100%;height:100%;}
   .arc-path{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:6 10;opacity:0.45;}
@@ -126,7 +131,7 @@
   .session-note{background:rgba(226,163,59,0.08);border:1px solid rgba(226,163,59,0.3);padding:1.8rem;font-size:0.95rem;line-height:1.7;color:var(--paper);}
   .session-note strong{color:var(--accent);}
 
-  /* TESTIMONIALS — fixed carousel */
+  /* TESTIMONIALS */
   .testi-wrap{position:relative;background:#33312a;padding:5rem 6vw;overflow:hidden;border:1px solid var(--line);}
   .testi-track{display:flex;transition:transform 0.7s cubic-bezier(.6,0,.2,1);will-change:transform;}
   .testi{flex:0 0 100%;width:100%;box-sizing:border-box;}
@@ -192,7 +197,9 @@
 </div>
 
 <header class="hero">
-  <div class="hero-bg"></div>
+  <div class="slide"></div>
+  <div class="slide"></div>
+  <div class="slide"></div>
   <div class="hero-content">
     <h1 data-i18n="hero_title"></h1>
     <p class="hero-sub" data-i18n="hero_sub"></p>
@@ -289,26 +296,11 @@
   </div>
   <div class="contact-grid reveal">
     <form id="dogForm">
-      <div class="field">
-        <label for="dname" data-i18n="label_dname"></label>
-        <input type="text" id="dname" data-i18n-placeholder="placeholder_dname">
-      </div>
-      <div class="field">
-        <label for="breed" data-i18n="label_breed"></label>
-        <input type="text" id="breed" data-i18n-placeholder="placeholder_breed">
-      </div>
-      <div class="field">
-        <label for="f_email" data-i18n="label_email"></label>
-        <input type="email" id="f_email" data-i18n-placeholder="placeholder_email">
-      </div>
-      <div class="field">
-        <label for="f_phone" data-i18n="label_phone"></label>
-        <input type="tel" id="f_phone" data-i18n-placeholder="placeholder_phone">
-      </div>
-      <div class="field">
-        <label for="msg" data-i18n="label_msg"></label>
-        <textarea id="msg" data-i18n-placeholder="placeholder_msg"></textarea>
-      </div>
+      <div class="field"><label for="dname" data-i18n="label_dname"></label><input type="text" id="dname" data-i18n-placeholder="placeholder_dname"></div>
+      <div class="field"><label for="breed" data-i18n="label_breed"></label><input type="text" id="breed" data-i18n-placeholder="placeholder_breed"></div>
+      <div class="field"><label for="f_email" data-i18n="label_email"></label><input type="email" id="f_email" data-i18n-placeholder="placeholder_email"></div>
+      <div class="field"><label for="f_phone" data-i18n="label_phone"></label><input type="tel" id="f_phone" data-i18n-placeholder="placeholder_phone"></div>
+      <div class="field"><label for="msg" data-i18n="label_msg"></label><textarea id="msg" data-i18n-placeholder="placeholder_msg"></textarea></div>
       <button class="submit-btn" type="submit" id="dogSubmitBtn" data-i18n="btn_send"></button>
       <div class="form-msg" id="dogFormMsg" style="display:none"></div>
     </form>
@@ -561,7 +553,6 @@ function closeMenu(){ navLinks.classList.remove('open'); mobileLang.classList.re
 
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/* CAROUSEL — fixed: translateX uses the wrap width, not the track width */
 const track = document.getElementById('testiTrack');
 const testiNav = document.getElementById('testiNav');
 const total = track.children.length;
@@ -574,15 +565,6 @@ for(let i = 0; i < total; i++){
 }
 function goTo(i){
   current = i;
-  /* Each slide is 100% of the WRAP (parent of track), not 100% of the track.
-     track width = total * 100% of wrap, so slide i starts at i * wrap_width.
-     We move the track by -(i * wrap_width) = -(i * 100% of wrap).
-     Since track is a child of wrap and wrap has overflow:hidden,
-     we translate by percentage of the TRACK itself: -(i * 100% / total * total) = -(i * 100%).
-     But % on transform is relative to the ELEMENT itself (the track).
-     track width = total slides = total * 100vw equivalent.
-     So 100% of track = total slides. One slide = 100%/total of track.
-     To move one slide: translateX(-(100% / total)) per step.  */
   const pct = (100 / total) * i;
   track.style.transform = `translateX(-${pct}%)`;
   [...testiNav.children].forEach((d, idx) => d.classList.toggle('active', idx === i));
