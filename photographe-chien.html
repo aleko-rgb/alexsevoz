@@ -47,7 +47,7 @@
   nav.scrolled{background:rgba(38,36,31,0.92);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--line);}
   .nav-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:14px;}
   nav.scrolled .nav-top{padding-bottom:10px;}
-  .nav-sub{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.75);text-align:center;padding:6px 0 10px;border-top:1px solid var(--line);opacity:0;max-height:0;overflow:hidden;transition:opacity 0.4s ease,max-height 0.4s ease,padding 0.4s ease;}
+  .nav-sub{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.75);padding:6px 0 10px;border-top:1px solid var(--line);opacity:0;max-height:0;overflow:hidden;transition:opacity 0.4s ease,max-height 0.4s ease,padding 0.4s ease;display:flex;justify-content:space-between;align-items:center;}
   nav.scrolled .nav-sub{opacity:1;max-height:40px;padding:8px 0 10px;}
   .logo{font-family:'Backstreet','Cormorant Garamond',serif;font-size:2rem;letter-spacing:0.04em;color:var(--paper);}
   .nav-right{display:flex;align-items:center;gap:2.4rem;}
@@ -132,9 +132,9 @@
   .pkg .pkg-detail{color:var(--paper-dim);font-size:0.85rem;}
 
   /* TESTIMONIALS */
-  .testi-wrap{position:relative;background:#33312a;padding:5rem 6vw;overflow:hidden;border:1px solid var(--line);}
-  .testi-track{display:flex;transition:transform 0.7s cubic-bezier(.6,0,.2,1);will-change:transform;}
-  .testi{flex:0 0 100%;width:100%;box-sizing:border-box;}
+  .testi-wrap{position:relative;background:#33312a;padding:5rem 6vw;overflow:hidden;border:1px solid var(--line);}.testi-viewport{overflow:hidden;width:100%;}
+  .testi-track{display:flex;transition:transform 0.7s cubic-bezier(.6,0,.2,1);will-change:transform;width:100%;}
+  .testi{flex:0 0 100%;min-width:100%;box-sizing:border-box;}
   .testi p{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.2rem,2.2vw,1.55rem);line-height:1.5;font-weight:400;}
   .testi .who{margin-top:1.8rem;font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);}
   .testi-nav{display:flex;gap:10px;margin-top:2.6rem;}
@@ -193,7 +193,7 @@
       <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
     </div>
   </div>
-  <div class="nav-sub">Flying Dogs Photography — Poznań &amp; Wielkopolska</div>
+  <div class="nav-sub"><span>Flying Dogs Photography — Poznań &amp; Wielkopolska</span><span class="nav-sub-contact"><a href="tel:+48720852075" style="color:rgba(255,255,255,0.65);text-decoration:none;margin-right:1.4rem;">+48 720 852 075</a><a href="mailto:alex.sevoz.photo@gmail.com" style="color:rgba(255,255,255,0.65);text-decoration:none;">alex.sevoz.photo@gmail.com</a></span></div>
 </nav>
 <div class="lang-switch mobile-lang" id="langSwitchMobile">
   <a href="sesje-ze-psem">PL</a><span>·</span>
@@ -278,11 +278,11 @@
     <h2>Ce que disent les maîtres.</h2>
   </div>
   <div class="testi-wrap reveal">
-    <div class="testi-track" id="testiTrack">
+    <div class="testi-viewport"><div class="testi-track" id="testiTrack">
       <div class="testi"><p>J'étais certaine que mon chien ne tiendrait jamais assez longtemps en place. Alex n'a même pas essayé de le calmer, il a juste attendu le bon instant.</p><div class="who">Ola, propriétaire de Biscuit, border collie</div></div>
       <div class="testi"><p>La photo du sommet du saut trône maintenant en grand format dans notre salon. Nos invités demandent si c'est un chien de pub — c'est juste le nôtre.</p><div class="who">Rafał, propriétaire de Rex</div></div>
       <div class="testi"><p>Aucun stress pour le chien, aucune attente immobile. Toute la séance ressemblait à un jeu au parc, et le résultat est bluffant.</p><div class="who">Marta, propriétaire de Luna</div></div>
-    </div>
+    </div></div>
     <div class="testi-nav" id="testiNav"></div>
   </div>
 </section>
