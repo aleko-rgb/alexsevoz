@@ -50,6 +50,8 @@
   .nav-sub{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.75);padding:6px 0 10px;border-top:1px solid var(--line);opacity:0;max-height:0;overflow:hidden;transition:opacity 0.4s ease,max-height 0.4s ease,padding 0.4s ease;display:flex;justify-content:space-between;align-items:center;}
   nav.scrolled .nav-sub{opacity:1;max-height:40px;padding:8px 0 10px;}
   .logo{font-family:'Backstreet','Cormorant Garamond',serif;font-size:2rem;letter-spacing:0.04em;color:var(--paper);}
+  .logo-sub{font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(244,237,224,0.55);font-weight:400;vertical-align:middle;margin-left:0.5rem;}
+
   .nav-right{display:flex;align-items:center;gap:2.4rem;}
   .nav-links{display:flex;gap:2.4rem;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;}
   .nav-links a{position:relative;padding-bottom:4px;color:var(--paper-dim);transition:color .3s ease;}
@@ -119,8 +121,8 @@
   .lb-counter{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.4);font-size:0.78rem;letter-spacing:0.1em;}
 
   /* HOW IT WORKS — steps */
-  .how-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem 5rem;margin-top:3rem;}
-  @media(max-width:820px){.how-grid{grid-template-columns:1fr;gap:2rem;}}
+  .how-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem 3rem;margin-top:3rem;}
+  @media(max-width:900px){.how-grid{grid-template-columns:1fr;gap:2rem;}}
   .how-intro{font-size:1.1rem;line-height:1.7;color:var(--paper-dim);max-width:52ch;margin-bottom:3rem;}
   .how-step{border-top:1px solid var(--line);padding-top:1.6rem;}
   .how-step .num{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:0.78rem;letter-spacing:0.08em;margin-bottom:0.8rem;}
@@ -177,7 +179,7 @@
 <body>
 <nav id="nav">
   <div class="nav-top">
-    <a href="index.html" class="logo">Alex Sevoz</a>
+    <a href="index.html" class="logo">Alex Sevoz <span class="logo-sub">Photography</span></a>
     <div class="nav-right">
       <div class="nav-links" id="navLinks">
         <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
@@ -254,9 +256,9 @@
       <h3>Formules &amp; Sélection</h3>
       <p>Partagez les infos de votre chien et choisissez votre formule :</p>
       <div class="packages">
-        <div class="pkg"><span class="pkg-name">60 Minutes</span><span class="pkg-detail">8 photos retouchées à la main</span></div>
-        <div class="pkg"><span class="pkg-name">90 Minutes</span><span class="pkg-detail">12 photos retouchées à la main</span></div>
-        <div class="pkg"><span class="pkg-name">120 Minutes</span><span class="pkg-detail">16 photos retouchées à la main</span></div>
+        <div class="pkg"><span class="pkg-name">60 Minutes</span></div>
+        <div class="pkg"><span class="pkg-name">90 Minutes</span></div>
+        <div class="pkg"><span class="pkg-name">120 Minutes</span></div>
       </div>
     </div>
     <div class="how-step">
