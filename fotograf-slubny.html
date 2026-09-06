@@ -56,6 +56,9 @@
   .nav-sub{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--sand);text-align:center;padding:6px 0 10px;border-top:1px solid var(--line);opacity:0;max-height:0;overflow:hidden;transition:opacity 0.4s ease,max-height 0.4s ease,padding 0.4s ease;}
   nav.scrolled .nav-sub{opacity:1;max-height:40px;padding:8px 0 10px;}
   .logo{font-family:'Backstreet','Cormorant Garamond',serif;font-size:1.6rem;letter-spacing:0.04em;}
+  .logo-sub{font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,0,0,0.35);font-weight:400;vertical-align:middle;margin-left:0.5rem;}
+  nav:not(.scrolled) .logo-sub{color:rgba(255,255,255,0.5);}
+
   .nav-right{display:flex;align-items:center;gap:2.4rem;}
   .nav-links{display:flex;gap:2.6rem;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;}
   .nav-links a{position:relative;padding-bottom:4px;color:inherit;transition:color 0.4s ease;}
@@ -165,7 +168,7 @@
 <body>
 <nav id="nav">
   <div class="nav-top">
-    <a href="index.html" class="logo">Alex Sevoz</a>
+    <a href="index.html" class="logo">Alex Sevoz <span class="logo-sub">Photography</span></a>
     <div class="nav-right">
       <div class="nav-links" id="navLinks">
         <a href="#story" onclick="closeMenu()">Podejście</a>
