@@ -134,10 +134,10 @@
   .pkg .pkg-detail{color:var(--paper-dim);font-size:0.85rem;}
 
   /* TESTIMONIALS */
-  .testi-wrap{position:relative;background:#33312a;padding:5rem 6vw;border:1px solid var(--line);}
-  .testi-viewport{overflow:hidden;width:100%;}
-  .testi-track{display:flex;transition:transform 0.7s cubic-bezier(.6,0,.2,1);will-change:transform;}
-  .testi{flex:0 0 100%;min-width:100%;box-sizing:border-box;padding:0 0.5rem;}
+  .testi-wrap{position:relative;background:#33312a;padding:5rem 6vw;border:1px solid var(--line);overflow:hidden;}
+  .testi-viewport{overflow:hidden;width:100%;position:relative;}
+  .testi-track{display:flex;transition:transform 0.7s cubic-bezier(.6,0,.2,1);will-change:transform;width:100%;}
+  .testi{flex:0 0 100%;width:100%;min-width:0;box-sizing:border-box;}
   .testi p{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.2rem,2.2vw,1.55rem);line-height:1.5;font-weight:400;}
   .testi .who{margin-top:1.8rem;font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);}
   .testi-nav{display:flex;gap:10px;margin-top:2.6rem;}
@@ -390,7 +390,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 const track=document.getElementById('testiTrack'),testiNav=document.getElementById('testiNav'),total=track.children.length;
 let current=0;
 for(let i=0;i<total;i++){const dot=document.createElement('button');dot.className='testi-dot'+(i===0?' active':'');dot.addEventListener('click',()=>goTo(i));testiNav.appendChild(dot);}
-function goTo(i){current=i;const pct=(100/total)*i;track.style.transform=`translateX(-${pct}%)`;[...testiNav.children].forEach((d,idx)=>d.classList.toggle('active',idx===i));}
+function goTo(i){current=i;const w=track.parentElement.offsetWidth;track.style.transform=`translateX(-${w*i}px)`;[...testiNav.children].forEach((d,idx)=>d.classList.toggle('active',idx===i));}
 setInterval(()=>goTo((current+1)%total),6000);
 </script>
 </body>
