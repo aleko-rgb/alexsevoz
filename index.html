@@ -47,19 +47,27 @@
     color:rgba(0,0,0,0.45);
   }
 
-  /* LANG + CONTACT — fixed top-right corner */
+  /* LANG + CONTACT — fixed top-right, lang top, contact pinned to bottom of bar */
   .topbar-right{
     position:fixed;top:0;right:6vw;z-index:21;
-    display:flex;flex-direction:column;align-items:flex-end;justify-content:center;
-    padding:1.4rem 0;
-    gap:0.2rem;
+    display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;
+    height:100%;
+    max-height:var(--bar-h);
+    padding-top:1.4rem;
+    padding-bottom:1.1rem;
     pointer-events:auto;
   }
   .lang-switch{display:flex;gap:0.6rem;font-size:0.72rem;letter-spacing:0.1em;}
   .lang-switch button{background:none;border:none;cursor:pointer;color:rgba(0,0,0,0.45);font-family:'Jost',sans-serif;padding:2px 4px;transition:color .3s ease;}
   .lang-switch button.active{color:var(--accent);font-weight:500;}
   .lang-switch span{color:rgba(0,0,0,0.2);}
-  .contact-bar{display:flex;flex-direction:column;align-items:flex-end;gap:0.12rem;font-size:0.67rem;letter-spacing:0.05em;color:rgba(0,0,0,0.38);font-family:'Jost',sans-serif;}
+  .contact-bar{
+    display:flex;flex-direction:column;align-items:flex-end;gap:0.1rem;
+    font-size:0.66rem;letter-spacing:0.04em;color:rgba(0,0,0,0.38);font-family:'Jost',sans-serif;
+    border-top:1px solid rgba(0,0,0,0.1);
+    padding-top:0.5rem;
+    margin-top:0.4rem;
+  }
   .contact-bar a{color:rgba(0,0,0,0.38);text-decoration:none;transition:color .3s ease;}
   .contact-bar a:hover{color:var(--accent);}
   @media(max-width:640px){.topbar-right{display:none;}}
@@ -202,6 +210,14 @@
   }
   document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>setLang(btn.getAttribute('data-lang'))));
   setLang('en');
+
+  // Sync topbar-right height to topbar
+  function syncBarHeight(){
+    const h = document.querySelector('.topbar').offsetHeight;
+    document.querySelector('.topbar-right').style.maxHeight = h + 'px';
+  }
+  syncBarHeight();
+  window.addEventListener('resize', syncBarHeight);
 </script>
 </body>
 </html>
