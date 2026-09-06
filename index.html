@@ -27,7 +27,6 @@
   .topbar{
     position:fixed;top:0;left:0;right:0;z-index:20;
     display:flex;align-items:center;justify-content:center;
-    position:fixed;
     padding:1.4rem 6vw;
     background:rgba(255,255,255,0.94);
     backdrop-filter:blur(8px);
@@ -48,18 +47,21 @@
     color:rgba(0,0,0,0.45);
   }
 
-  /* LANG + CONTACT — right side of topbar */
+  /* LANG + CONTACT — fixed top-right corner */
   .topbar-right{
-    display:flex;flex-direction:column;align-items:flex-end;gap:0.28rem;
+    position:fixed;top:0;right:6vw;z-index:21;
+    display:flex;flex-direction:column;align-items:flex-end;justify-content:center;
+    height:var(--bar-height,80px);
+    gap:0.2rem;
   }
   .lang-switch{display:flex;gap:0.6rem;font-size:0.72rem;letter-spacing:0.1em;}
   .lang-switch button{background:none;border:none;cursor:pointer;color:rgba(0,0,0,0.45);font-family:'Jost',sans-serif;padding:2px 4px;transition:color .3s ease;}
   .lang-switch button.active{color:var(--accent);font-weight:500;}
   .lang-switch span{color:rgba(0,0,0,0.2);}
-  .contact-bar{display:flex;flex-direction:column;align-items:flex-end;gap:0.15rem;font-size:0.67rem;letter-spacing:0.05em;color:rgba(0,0,0,0.38);font-family:'Jost',sans-serif;}
+  .contact-bar{display:flex;flex-direction:column;align-items:flex-end;gap:0.12rem;font-size:0.67rem;letter-spacing:0.05em;color:rgba(0,0,0,0.38);font-family:'Jost',sans-serif;}
   .contact-bar a{color:rgba(0,0,0,0.38);text-decoration:none;transition:color .3s ease;}
   .contact-bar a:hover{color:var(--accent);}
-  @media(max-width:640px){.topbar-right{display:none;}.contact-bar{display:none;}}
+  @media(max-width:640px){.topbar-right{display:none;}}
 
   /* SPLIT */
   .split{position:relative;height:100svh;display:flex;gap:3px;background:#fff;}
@@ -122,12 +124,11 @@
 <body>
 
 <div class="topbar">
-  <div class="topbar-center">
-    <div class="name">Alex Sevoz</div>
-    <div class="sep">—</div>
-    <div class="sub" data-i18n="topbar_sub"></div>
-  </div>
-  <div class="topbar-right">
+  <div class="name">Alex Sevoz</div>
+  <div class="sep">—</div>
+  <div class="sub" data-i18n="topbar_sub"></div>
+</div>
+<div class="topbar-right">
     <div class="lang-switch">
       <button data-lang="pl">PL</button><span>·</span>
       <button data-lang="fr">FR</button><span>·</span>
@@ -137,11 +138,10 @@
       <a href="tel:+48720852075">+48 720 852 075</a>
       <a href="mailto:alex.sevoz.photo@gmail.com">alex.sevoz.photo@gmail.com</a>
     </div>
-  </div>
 </div>
 
 <div class="split">
-  <a class="door door-wedding" href="wedding-photography">
+  <a class="door door-wedding" href="/wedding-photography">
     <div class="door-bg"></div>
     <div class="door-content">
       <h2 data-i18n="wedding_title"></h2>
@@ -149,7 +149,7 @@
       <div class="door-cta" data-i18n="wedding_cta"></div>
     </div>
   </a>
-  <a class="door door-dogs" href="dog-photography">
+  <a class="door door-dogs" href="/dog-photography">
     <div class="door-bg"></div>
     <div class="door-content">
       <h2 data-i18n="dogs_title"></h2>
