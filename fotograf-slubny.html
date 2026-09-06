@@ -129,9 +129,10 @@
   .lb-prev{left:1rem;}.lb-next{right:1rem;}
   .lb-counter{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.4);font-size:0.78rem;letter-spacing:0.1em;}
   .testi-wrap{position:relative;background:var(--ink);color:#fff;padding:5rem 6vw;overflow:hidden;}
+  .testi-viewport{overflow:hidden;width:100%;position:relative;}
   .testi-wrap::before{content:'"';position:absolute;top:-2rem;left:2vw;font-family:'Cormorant Garamond',serif;font-size:16rem;color:rgba(255,255,255,0.05);line-height:1;}
-  .testi-track{display:flex;transition:transform 0.7s cubic-bezier(.6,0,.2,1);will-change:transform;}
-  .testi{flex:0 0 100%;width:100%;box-sizing:border-box;}
+  .testi-track{display:flex;transition:transform 0.7s cubic-bezier(.6,0,.2,1);will-change:transform;width:100%;}
+  .testi{flex:0 0 100%;width:100%;min-width:0;box-sizing:border-box;}
   .testi p{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.5;font-weight:300;}
   .testi .who{margin-top:1.8rem;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--sand);}
   .testi-nav{display:flex;gap:10px;margin-top:2.6rem;}
@@ -239,10 +240,10 @@
     <h2>Słowa zaufania.</h2>
   </div>
   <div class="testi-wrap reveal reveal-delay-1">
-    <div class="testi-track" id="testiTrack">
+    <div class="testi-viewport"><div class="testi-track" id="testiTrack">
       <div class="testi"><p>Alex potrafił zniknąć w tle przez cały dzień. Oglądając zdjęcia, odkryliśmy nasz własny ślub z zupełnie innej perspektywy.</p><div class="who">Kasia & Piotr — Ślub w Warszawie</div></div>
       <div class="testi"><p>Żadnego sztucznie ustawionego zdjęcia. Każde ujęcie naprawdę opowiada to, co się wydarzyło. To rzadkie i cenne.</p><div class="who">Anaïs & Thomas — Ślub w Paryżu</div></div>
-    </div>
+    </div></div>
     <div class="testi-nav" id="testiNav"></div>
   </div>
 </section>
@@ -355,7 +356,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 const track=document.getElementById('testiTrack'),testiNav=document.getElementById('testiNav'),total=track.children.length;
 let current=0;
 for(let i=0;i<total;i++){const dot=document.createElement('button');dot.className='testi-dot'+(i===0?' active':'');dot.addEventListener('click',()=>goTo(i));testiNav.appendChild(dot);}
-function goTo(i){current=i;const pct=(100/total)*i;track.style.transform=`translateX(-${pct}%)`;[...testiNav.children].forEach((d,idx)=>d.classList.toggle('active',idx===i));}
+function goTo(i){current=i;const w=track.parentElement.offsetWidth;track.style.transform=`translateX(-${w*i}px)`;[...testiNav.children].forEach((d,idx)=>d.classList.toggle('active',idx===i));}
 setInterval(()=>goTo((current+1)%total),6000);
 </script>
 </body>
