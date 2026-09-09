@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="pageTitle">Alex Sevoz — Photography</title>
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="apple-touch-icon" href="favicon-180.png">
+<title id="pageTitle">Alex Sevoz — Photographer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Barlow+Condensed:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -13,192 +11,163 @@
   @font-face{
     font-family:'Backstreet';
     src:url('fonts/Backstreet.ttf') format('truetype');
-    font-weight:normal;font-style:normal;font-display:swap;
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
   }
-  :root{--ink:#0e0e0e;--paper:#faf8f4;--wine:#6d1f2c;--accent:#2f6690;}
+  :root{
+    --ink:#0e0e0e;
+    --paper:#faf8f4;
+    --wine:#6d1f2c;
+    --accent:#2f6690;
+  }
   *{margin:0;padding:0;box-sizing:border-box;}
   html,body{height:100%;}
   body{background:var(--ink);color:var(--paper);font-family:'Jost',sans-serif;overflow:hidden;}
   a{color:inherit;text-decoration:none;}
   img{display:block;max-width:100%;}
-  @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms !important;transition-duration:0.01ms !important;}}
-
-  /* TOP BAR */
-  .topbar{
+  @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;}}
+  .masthead{
     position:fixed;top:0;left:0;right:0;z-index:20;
-    display:flex;align-items:center;justify-content:center;
-    padding:1.4rem 6vw;
-    background:rgba(255,255,255,0.94);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid rgba(0,0,0,0.08);
+    display:flex;flex-direction:column;align-items:center;
+    padding:3.8rem 6vw 1.6rem;
+    text-align:center;pointer-events:none;
   }
-  .topbar .name{
+  .masthead .name{
     font-family:'Backstreet','Cormorant Garamond',serif;
-    font-size:clamp(1.8rem,3.2vw,2.8rem);
-    font-weight:300;color:#0e0e0e;letter-spacing:0.04em;
+    font-size:clamp(1.8rem,3.6vw,3rem);
+    font-weight:300;
+    color:var(--paper);
+    line-height:1.1;
+    letter-spacing:0.04em;
   }
-  .topbar .sep{
-    font-size:0.85rem;color:rgba(0,0,0,0.25);
-    margin:0 0.8rem;
+  .masthead .subtitle{
+    margin-top:0.3rem;font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;
+    color:rgba(250,248,244,0.5);font-family:'Jost',sans-serif;
   }
-  .topbar .sub{
+  .masthead .tagline{
+    margin-top:0.9rem;font-size:0.86rem;line-height:1.6;max-width:34ch;
+    color:rgba(250,248,244,0.72);
+    opacity:0;animation:fadeIn 1.2s ease 0.5s forwards;
     font-family:'Jost',sans-serif;
-    font-size:0.88rem;letter-spacing:0.18em;text-transform:uppercase;
-    color:rgba(0,0,0,0.45);
   }
-
-  /* LANG + CONTACT — fixed top-right, lang top, contact pinned to bottom of bar */
-  .topbar-right{
-    position:fixed;top:0;right:6vw;z-index:21;
-    display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;
-    height:100%;
-    max-height:var(--bar-h);
-    padding-top:1.4rem;
-    padding-bottom:1.1rem;
-    pointer-events:auto;
+  @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+  .lang-switch{
+    position:fixed;top:2.6rem;right:6vw;z-index:21;
+    display:flex;gap:0.6rem;font-size:0.72rem;letter-spacing:0.1em;
   }
-  .lang-switch{display:flex;gap:0.6rem;font-size:0.72rem;letter-spacing:0.1em;}
-  .lang-switch button{background:none;border:none;cursor:pointer;color:rgba(0,0,0,0.45);font-family:'Jost',sans-serif;padding:2px 4px;transition:color .3s ease;}
+  .lang-switch button{background:none;border:none;cursor:pointer;color:rgba(250,248,244,0.55);font-family:'Jost',sans-serif;padding:2px 4px;transition:color .3s ease;}
   .lang-switch button.active{color:var(--accent);font-weight:500;}
-  .lang-switch span{color:rgba(0,0,0,0.2);}
-  .contact-bar{
-    display:flex;flex-direction:column;align-items:flex-end;gap:0.1rem;
-    font-size:0.66rem;letter-spacing:0.04em;color:rgba(0,0,0,0.38);font-family:'Jost',sans-serif;
-    border-top:1px solid rgba(0,0,0,0.1);
-    padding-top:0.5rem;
-    margin-top:0.4rem;
-  }
-  .contact-bar a{color:rgba(0,0,0,0.38);text-decoration:none;transition:color .3s ease;}
-  .contact-bar a:hover{color:var(--accent);}
-  @media(max-width:640px){.topbar-right{display:none;}}
-
-  /* SPLIT */
-  .split{position:relative;height:100svh;display:flex;gap:3px;background:#fff;}
+  .lang-switch span{color:rgba(250,248,244,0.25);}
+  @media(max-width:640px){.lang-switch{top:auto;bottom:3.8rem;right:0;left:0;justify-content:center;}}
+  .split{position:relative;height:100svh;display:flex;}
   .door{position:relative;flex:1;overflow:hidden;cursor:pointer;transition:flex 0.6s cubic-bezier(.6,0,.2,1);display:flex;align-items:flex-end;}
   .split:hover .door{flex:0.82;}
   .split .door:hover{flex:1.18;}
-
-  /* BACKGROUNDS */
   .door-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 1s ease;}
-  .door:hover .door-bg{transform:scale(1.04);}
-  .door-wedding .door-bg{background-image:url('images/wedding/home-wedding.webp');}
-  .door-dogs .door-bg{background-image:url('images/dog/home-dog.webp');}
-
-  /* OVERLAYS — only at bottom for text readability on hover */
-  .door-wedding::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(14,14,14,0.7) 100%);opacity:0;transition:opacity 0.5s ease;z-index:1;}
-  .door-dogs::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(14,14,14,0.7) 100%);opacity:0;transition:opacity 0.5s ease;z-index:1;}
-  .door-wedding:hover::after,.door-dogs:hover::after{opacity:1;}
-
-  /* CONTENT — hidden by default, shown on hover */
+  .door:hover .door-bg{transform:scale(1.05);}
+  .door-wedding .door-bg{background-image:url('images/home/home-wedding.jpg');filter:saturate(0.85);}
+  .door-wedding::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(109,31,44,0.18),rgba(14,14,14,0.72));}
+  .door-dogs .door-bg{background-image:url('images/dog/home-dog.webp');filter:saturate(1.05) contrast(1.05);}
+  .door-dogs::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(38,36,31,0.15),rgba(38,36,31,0.68));}
   .door-content{position:relative;z-index:2;padding:0 5vw 5.5rem;width:100%;}
-  .door-content h2{
-    font-family:'Backstreet','Cormorant Garamond',serif;
-    font-weight:400;font-style:normal;
-    font-size:clamp(2rem,4.5vw,3.6rem);
-    line-height:1.05;color:#fff;
-    opacity:0;transform:translateY(14px);
-    transition:opacity 0.45s ease,transform 0.45s ease;
-  }
-  .door-dogs .door-content h2{font-style:normal;}
-  .door-sub{
-    margin-top:1rem;max-width:32ch;font-size:1.05rem;line-height:1.6;
-    color:rgba(255,255,255,0.9);
-    opacity:0;transform:translateY(14px);
-    transition:opacity 0.45s ease 0.06s,transform 0.45s ease 0.06s;
-  }
-  .door-cta{
-    margin-top:1.8rem;display:inline-flex;align-items:center;gap:10px;
-    font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;
-    color:#fff;border-bottom:1px solid rgba(255,255,255,0.4);padding-bottom:6px;
-    opacity:0;transform:translateY(10px);
-    transition:opacity 0.4s ease 0.1s,transform 0.4s ease 0.1s;
-  }
-  .door:hover .door-content h2,
-  .door:hover .door-sub,
-  .door:hover .door-cta{opacity:1;transform:translateY(0);}
-
+  .door-eyebrow{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.9rem;opacity:0.85;}
+  .door-wedding .door-eyebrow{color:#d99aa4;font-family:'Jost',sans-serif;}
+  .door-dogs .door-eyebrow{color:var(--accent);font-family:'Jost',sans-serif;}
+  .door-wedding h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-style:italic;font-size:clamp(2rem,5.2vw,3.6rem);line-height:1.05;color:#fff;}
+  .door-dogs h2{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;font-weight:400;letter-spacing:0.03em;font-size:clamp(1.7rem,4.4vw,3rem);line-height:1;color:#fff;}
+  .door-sub{margin-top:1rem;max-width:32ch;font-size:0.9rem;line-height:1.6;color:rgba(255,255,255,0.78);}
+  .door-cta{margin-top:1.8rem;display:inline-flex;align-items:center;gap:10px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;border-bottom:1px solid rgba(255,255,255,0.4);padding-bottom:6px;}
+  .site-footer{position:fixed;bottom:0;left:0;right:0;z-index:20;text-align:center;padding:0.6rem 6vw;pointer-events:none;}
+  .site-footer .contact-bar{display:inline-flex;gap:2rem;font-size:0.7rem;letter-spacing:0.1em;color:rgba(250,248,244,0.4);pointer-events:all;}
+  .site-footer .contact-bar a{color:rgba(250,248,244,0.4);transition:color .3s ease;}
+  .site-footer .contact-bar a:hover{color:rgba(250,248,244,0.8);}
   @media(max-width:820px){
     .split{flex-direction:column;}
     .split:hover .door,.split .door:hover{flex:1;}
     .door{flex:1 !important;}
-    .topbar{padding:1rem 6vw;}
-    .topbar .sub{display:none;}
-    .topbar .sep{display:none;}
+    .masthead{padding:2.8rem 6vw 1rem;}
+    .masthead .tagline{display:none;}
+    .masthead .name{font-size:clamp(1.6rem,7vw,2.8rem);}
     .door-content{padding-bottom:2.6rem;}
-    .door-content h2,.door-sub,.door-cta{opacity:1;transform:none;}
-    .door-wedding::after,.door-dogs::after{opacity:1;}
+    .site-footer .contact-bar{gap:1rem;font-size:0.65rem;}
   }
 </style>
 </head>
 <body>
-
-<div class="topbar">
+<div class="masthead">
   <div class="name">Alex Sevoz</div>
-  <div class="sep">—</div>
-  <div class="sub" data-i18n="topbar_sub"></div>
+  <div class="subtitle">Photography</div>
+  <div class="tagline" data-i18n="tagline"></div>
 </div>
-<div class="topbar-right">
-    <div class="lang-switch">
-      <button data-lang="pl">PL</button><span>·</span>
-      <button data-lang="fr">FR</button><span>·</span>
-      <button data-lang="en">EN</button>
-    </div>
-    <div class="contact-bar">
-      <a href="tel:+48720852075">+48 720 852 075</a>
-      <a href="mailto:alex.sevoz.photo@gmail.com">alex.sevoz.photo@gmail.com</a>
-    </div>
+<div class="lang-switch">
+  <button data-lang="pl">PL</button><span>·</span>
+  <button data-lang="fr">FR</button><span>·</span>
+  <button data-lang="en">EN</button>
 </div>
-
 <div class="split">
-  <a class="door door-wedding" href="/wedding-photography">
+  <a class="door door-wedding" href="wedding.html">
     <div class="door-bg"></div>
     <div class="door-content">
+      <div class="door-eyebrow" data-i18n="wedding_eyebrow"></div>
       <h2 data-i18n="wedding_title"></h2>
       <p class="door-sub" data-i18n="wedding_sub"></p>
       <div class="door-cta" data-i18n="wedding_cta"></div>
     </div>
   </a>
-  <a class="door door-dogs" href="/dog-photography">
+  <a class="door door-dogs" href="dogs.html">
     <div class="door-bg"></div>
     <div class="door-content">
+      <div class="door-eyebrow" data-i18n="dogs_eyebrow"></div>
       <h2 data-i18n="dogs_title"></h2>
       <p class="door-sub" data-i18n="dogs_sub"></p>
       <div class="door-cta" data-i18n="dogs_cta"></div>
     </div>
   </a>
 </div>
-
+<footer class="site-footer">
+  <div class="contact-bar">
+    <a href="mailto:alex.sevoz.photo@gmail.com">alex.sevoz.photo@gmail.com</a>
+    <a href="tel:+48720852075">+48 720 852 075</a>
+  </div>
+</footer>
 <script>
   const translations = {
     pl:{
-      page_title:"Alex Sevoz — Photography",
-      topbar_sub:"Photography",
-      wedding_title:"Śluby",
-      wedding_sub:"To Wasza historia. Jestem tam, by uchwycić jej momenty.",
+      page_title:"Alex Sevoz — Fotograf",
+      tagline:"Jeden instynkt — wyłapywać chwilę, zanim zdąży zniknąć. Dwie dziedziny, w których się nim kieruję.",
+      wedding_eyebrow:"Międzynarodowy fotograf ślubny",
+      wedding_title:"ŚLUBY",
+      wedding_sub:"Piszecie swoją historię — ja jestem tam, by uchwycić chwilę.",
       wedding_cta:"Zobacz więcej →",
-      dogs_title:"Psy w locie",
-      dogs_sub:"Kto powiedział, że psy nie latają?",
-      dogs_cta:"Zobacz więcej →"
+      dogs_eyebrow:"Flying Dog Photography",
+      dogs_title:"PSY W LOCIE",
+      dogs_sub:"Pół sekundy w powietrzu, uchwycona ostro i bez pozowania.",
+      dogs_cta:"ZOBACZ WIĘCEJ →"
     },
     fr:{
-      page_title:"Alex Sevoz — Photography",
-      topbar_sub:"Photography",
-      wedding_title:"Mariages",
-      wedding_sub:"Vous écrivez l'histoire. Je suis là pour cadrer les moments.",
+      page_title:"Alex Sevoz — Photographe",
+      tagline:"Un seul instinct — saisir l'instant avant qu'il ne disparaisse. Deux terrains où je le mets en pratique.",
+      wedding_eyebrow:"Photographe de mariage international",
+      wedding_title:"MARIAGES",
+      wedding_sub:"Vous écrivez votre histoire — je suis là pour cadrer le moment.",
       wedding_cta:"Voir plus →",
-      dogs_title:"Chiens en vol",
-      dogs_sub:"Qui a dit que les chiens ne volaient pas ?",
-      dogs_cta:"Voir plus →"
+      dogs_eyebrow:"Flying Dog Photography",
+      dogs_title:"CHIENS EN VOL",
+      dogs_sub:"Une demi-seconde en plein vol, saisie nette et sans pose.",
+      dogs_cta:"VOIR PLUS →"
     },
     en:{
-      page_title:"Alex Sevoz — Photography",
-      topbar_sub:"Photography",
-      wedding_title:"Weddings",
-      wedding_sub:"You write the story. I'm there to frame the moments.",
+      page_title:"Alex Sevoz — Photographer",
+      tagline:"One instinct — catching the moment before it disappears. Two fields where I put it to work.",
+      wedding_eyebrow:"International Wedding Photographer",
+      wedding_title:"WEDDINGS",
+      wedding_sub:"You write your story, I am there to frame the moment.",
       wedding_cta:"See more →",
-      dogs_title:"Flying Dogs",
-      dogs_sub:"Who says dogs can't fly?",
-      dogs_cta:"See more →"
+      dogs_eyebrow:"Flying Dog Photography",
+      dogs_title:"FLYING DOGS",
+      dogs_sub:"Half a second in mid-air, caught sharp and unposed.",
+      dogs_cta:"SEE MORE →"
     }
   };
   function setLang(lang){
@@ -210,14 +179,6 @@
   }
   document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>setLang(btn.getAttribute('data-lang'))));
   setLang('en');
-
-  // Sync topbar-right height to topbar
-  function syncBarHeight(){
-    const h = document.querySelector('.topbar').offsetHeight;
-    document.querySelector('.topbar-right').style.maxHeight = h + 'px';
-  }
-  syncBarHeight();
-  window.addEventListener('resize', syncBarHeight);
 </script>
 </body>
 </html>
