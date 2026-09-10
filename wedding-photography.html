@@ -62,8 +62,10 @@
   nav.scrolled{background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--line);}
   .nav-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:14px;}
   nav.scrolled .nav-top{padding-bottom:10px;}
-  .nav-sub{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--sand);text-align:center;padding:6px 0 10px;border-top:1px solid var(--line);opacity:0;max-height:0;overflow:hidden;transition:opacity 0.4s ease,max-height 0.4s ease,padding 0.4s ease;}
+  .nav-sub{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sand);padding:6px 0 10px;border-top:1px solid var(--line);opacity:0;max-height:40px;overflow:hidden;transition:opacity 0.4s ease,max-height 0.4s ease,padding 0.4s ease;display:flex;justify-content:space-between;align-items:center;}
   nav.scrolled .nav-sub{opacity:1;max-height:40px;padding:8px 0 10px;}
+  .nav-sub-contact a{color:var(--sand);text-decoration:none;font-size:0.65rem;letter-spacing:0.12em;}
+  .nav-sub-contact a:hover{color:var(--wine);}
   .logo{font-family:'Backstreet','Cormorant Garamond',serif;font-size:1.6rem;letter-spacing:0.04em;}
   .logo-sub{font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,0,0,0.35);font-weight:400;vertical-align:middle;margin-left:0.5rem;}
   nav:not(.scrolled) .logo-sub{color:rgba(255,255,255,0.5);}
@@ -200,7 +202,7 @@
       <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
     </div>
   </div>
-  <div class="nav-sub">WEDDING PHOTOGRAPHER — POLAND & DESTINATION</div>
+  <div class="nav-sub"><span>WEDDING PHOTOGRAPHER — POLAND & DESTINATION</span><span class="nav-sub-contact"><a href="tel:+48720852075" style="margin-right:1.4rem;">+48 720 852 075</a><a href="mailto:alex.sevoz.photo@gmail.com">alex.sevoz.photo@gmail.com</a></span></div>
 </nav>
 <div class="lang-switch mobile-lang" id="langSwitchMobile">
   <a href="fotograf-slubny.html">PL</a><span>·</span>
