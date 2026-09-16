@@ -94,7 +94,7 @@ nav.scrolled .nav-sub { display: flex; }
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background: url('images/wedding/slideshow-1.webp') center/cover no-repeat;
+  background: url('images/wedding/slideshow-2.webp') center/cover no-repeat;
   transform: scale(1.04);
   animation: heroZoom 18s ease-in-out infinite alternate;
 }
@@ -315,35 +315,22 @@ nav.scrolled .nav-sub { display: flex; }
   padding-bottom: 2px; font-weight: 400;
 }
 
-.mosaic {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  height: 52vw; max-height: 560px; gap: 4px;
-}
-.mosaic figure {
-  overflow: hidden; cursor: pointer; position: relative;
-}
-.mosaic figure img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.6s ease;
-}
-.mosaic figure:hover img { transform: scale(1.04); }
-.mosaic figure::after {
-  content: ''; position: absolute; inset: 0;
-  background: rgba(14,14,14,0); transition: background 0.4s ease;
-}
-.mosaic figure:hover::after { background: rgba(14,14,14,0.10); }
 
 
 
-/* mosaic layout — 6 photos, left col spans 2 rows */
-.m1 { grid-column: 1/2; grid-row: 1/3; }
-.m2 { grid-column: 2/3; grid-row: 1/2; }
-.m3 { grid-column: 3/4; grid-row: 1/2; }
-.m4 { grid-column: 2/3; grid-row: 2/3; }
-.m5 { grid-column: 3/4; grid-row: 2/3; }
-.m6 { display: none; }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ── ADD-ONS ── */
 .addons-section {
@@ -598,7 +585,7 @@ footer {
 @media (max-width: 768px) {
   .mood-strip { grid-template-columns: 1fr; }
   .mood-img:nth-child(3) { display: none; }
-  .gallery-fade { height: 72vw; max-height: none; }
+  .photo-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 42vw); max-height: none; }
   .included-strip { grid-template-columns: 1fr; border: none; }
   .incl-item { border-right: none; border-top: 1px solid var(--line); }
   .incl-item:first-child { border-top: none; }
@@ -768,9 +755,9 @@ footer {
           </tr>
           <tr>
             <td>Travel</td>
-            <td class="val">free within 50 km</td>
-            <td class="val featured-col">free within 50 km</td>
-            <td class="val">free within 50 km</td>
+            <td class="val">free within 50 km<br><small>from Poznań</small></td>
+            <td class="val featured-col">free within 50 km<br><small>from Poznań</small></td>
+            <td class="val">free within 50 km<br><small>from Poznań</small></td>
           </tr>
         </tbody>
       </table>
@@ -784,17 +771,16 @@ footer {
     <h2>From real weddings</h2>
     <a href="https://alexsevoz.com/wedding.html" class="gallery-link">View full portfolio →</a>
   </div>
-  <div class="gallery-fade" id="galleryFade">
-    <div class="gf-slide active"><img src="images/wedding/portfolio-14.webp" alt="" loading="lazy"></div>
-    <div class="gf-slide"><img src="images/wedding/portfolio-16.webp" alt="" loading="lazy"></div>
-    <div class="gf-slide"><img src="images/wedding/portfolio-18.webp" alt="" loading="lazy"></div>
-    <div class="gf-slide"><img src="images/wedding/portfolio-20.webp" alt="" loading="lazy"></div>
-    <div class="gf-slide"><img src="images/wedding/portfolio-22.webp" alt="" loading="lazy"></div>
-    <div class="gf-slide"><img src="images/wedding/portfolio-9.webp" alt="" loading="lazy"></div>
-    <div class="gf-slide"><img src="images/wedding/portfolio-11.webp" alt="" loading="lazy"></div>
-    <div class="gf-slide"><img src="images/wedding/portfolio-13.webp" alt="" loading="lazy"></div>
+  <div class="photo-grid" id="photoGrid">
+    <div class="photo-cell"></div>
+    <div class="photo-cell"></div>
+    <div class="photo-cell"></div>
+    <div class="photo-cell"></div>
+    <div class="photo-cell"></div>
+    <div class="photo-cell"></div>
+    <div class="photo-cell"></div>
+    <div class="photo-cell"></div>
   </div>
-  <div class="gallery-dots" id="galleryDots"></div>
 </section>
 
 <!-- WHAT'S INCLUDED -->
@@ -973,45 +959,78 @@ document.querySelectorAll('.faq-btn').forEach(btn => {
   });
 });
 
-/* ── GALLERY CROSSFADE ── */
+/* ── PHOTO GRID — per-cell crossfade ── */
 (function() {
-  const slides = Array.from(document.querySelectorAll('#galleryFade .gf-slide'));
-  const dotsEl = document.getElementById('galleryDots');
-  let current = 0, timer;
+  const photos = [
+    'images/wedding/portfolio-2.webp',
+    'images/wedding/portfolio-3.webp',
+    'images/wedding/portfolio-5.webp',
+    'images/wedding/portfolio-6.webp',
+    'images/wedding/portfolio-7.webp',
+    'images/wedding/portfolio-8.webp',
+    'images/wedding/portfolio-9.webp',
+    'images/wedding/portfolio-10.webp',
+    'images/wedding/portfolio-11.webp',
+    'images/wedding/portfolio-12.webp',
+    'images/wedding/portfolio-13.webp',
+    'images/wedding/portfolio-14.webp',
+    'images/wedding/portfolio-15.webp',
+    'images/wedding/portfolio-16.webp',
+    'images/wedding/portfolio-17.webp',
+    'images/wedding/portfolio-18.webp',
+    'images/wedding/portfolio-19.webp',
+    'images/wedding/portfolio-20.webp',
+    'images/wedding/portfolio-21.webp',
+    'images/wedding/portfolio-22.webp',
+  ];
 
-  // shuffle slides randomly
-  for (let i = slides.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const parent = slides[0].parentNode;
-    parent.insertBefore(slides[j], slides[i]);
-    [slides[i], slides[j]] = [slides[j], slides[i]];
+  // shuffle array
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
   }
 
-  // build dots
-  slides.forEach((_, i) => {
-    const d = document.createElement('span');
-    if (i === 0) d.classList.add('active');
-    d.addEventListener('click', () => goTo(i));
-    dotsEl.appendChild(d);
+  const cells = Array.from(document.querySelectorAll('#photoGrid .photo-cell'));
+
+  // Each cell gets 2 img tags for crossfade, starts with different photo
+  cells.forEach((cell, idx) => {
+    const pool = shuffle([...photos]);
+    let current = idx % pool.length;
+
+    // create two img layers
+    const imgA = document.createElement('img');
+    const imgB = document.createElement('img');
+    imgA.alt = imgB.alt = '';
+    cell.appendChild(imgA);
+    cell.appendChild(imgB);
+
+    let active = imgA;
+    let next = imgB;
+
+    // load first image immediately
+    active.src = pool[current];
+    active.classList.add('visible');
+
+    function cyclePhoto() {
+      current = (current + 1) % pool.length;
+      next.src = pool[current];
+      next.onload = () => {
+        next.classList.add('visible');
+        active.classList.remove('visible');
+        [active, next] = [next, active];
+      };
+      // random delay 3–7s, staggered per cell
+      const delay = 3000 + Math.random() * 4000;
+      setTimeout(cyclePhoto, delay);
+    }
+
+    // stagger start per cell so they don't all change at once
+    const startDelay = idx * 800 + Math.random() * 1000;
+    setTimeout(cyclePhoto, startDelay + 3000);
   });
-  const dots = Array.from(dotsEl.querySelectorAll('span'));
-
-  function goTo(n) {
-    slides[current].classList.remove('active');
-    dots[current].classList.remove('active');
-    current = (n + slides.length) % slides.length;
-    slides[current].classList.add('active');
-    dots[current].classList.add('active');
-  }
-
-  function next() { goTo(current + 1); }
-
-  // random interval between 2.5s and 4.5s
-  function scheduleNext() {
-    const delay = 2500 + Math.random() * 2000;
-    timer = setTimeout(() => { next(); scheduleNext(); }, delay);
-  }
-  scheduleNext();
 })();
 
 
