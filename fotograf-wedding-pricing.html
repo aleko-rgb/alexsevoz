@@ -57,7 +57,7 @@ nav.scrolled { background: rgba(250,248,244,0.95); backdrop-filter: blur(10px); 
 
 .logo {
   font-family: 'Backstreet', 'Cormorant Garamond', serif;
-  font-size: 1.5rem; letter-spacing: 0.04em;
+  font-size: 2.2rem; letter-spacing: 0.03em;
   color: var(--paper);
   transition: color 0.4s ease;
 }
@@ -196,9 +196,9 @@ nav.scrolled .nav-sub { display: flex; }
 }
 .meta-item {
   display: flex; gap: 1rem; align-items: flex-start;
-  font-size: 0.8rem; color: var(--muted); line-height: 1.5;
+  font-size: 1rem; color: var(--muted); line-height: 1.6;
 }
-.meta-dot { color: var(--wine); font-size: 0.6rem; margin-top: 0.3rem; flex-shrink: 0; }
+.meta-dot { color: var(--wine); font-size: 0.75rem; margin-top: 0.3rem; flex-shrink: 0; }
 .intro-right p {
   font-size: 1.05rem; line-height: 1.85; color: var(--muted);
   font-weight: 300; margin-bottom: 1.5rem; max-width: 54ch;
@@ -409,10 +409,10 @@ nav.scrolled .nav-sub { display: flex; }
 }
 .incl-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem; font-weight: 500; color: var(--ink);
+  font-size: 1.4rem; font-weight: 500; color: var(--ink);
   margin-bottom: 0.5rem;
 }
-.incl-text { font-size: 0.78rem; color: var(--muted); line-height: 1.65; }
+.incl-text { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
 
 
 
@@ -432,7 +432,16 @@ nav.scrolled .nav-sub { display: flex; }
 }
 .cta-bg {
   position: absolute; inset: 0;
-  background: url('images/wedding/slideshow-3.webp') center/cover no-repeat;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.cta-bg figure {
+  margin: 0; overflow: hidden;
+}
+.cta-bg figure img {
+  width: 100%; height: 100%; object-fit: cover;
+  max-width: none; display: block;
 }
 .cta-bg::after {
   content: ''; position: absolute; inset: 0;
@@ -543,7 +552,7 @@ footer {
 <!-- NAV -->
 <nav id="mainNav">
   <div class="nav-main">
-    <a href="https://alexsevoz.com" class="logo">Alex Sevoz</a>
+    <a href="https://alexsevoz.com" class="logo">Alex Koscinski</a>
     <div class="nav-right">
       <div class="nav-links">
         <a href="https://alexsevoz.com">Portfolio</a>
@@ -744,7 +753,11 @@ footer {
 
 <!-- CTA -->
 <section class="cta-section">
-  <div class="cta-bg"></div>
+  <div class="cta-bg">
+    <figure><img src="images/wedding/portfolio-6.webp" alt=""></figure>
+    <figure><img src="images/wedding/portfolio-10.webp" alt=""></figure>
+    <figure><img src="images/wedding/portfolio-5.webp" alt=""></figure>
+  </div>
   <div class="cta-content">
     <div class="cta-left reveal">
       <p class="intro-label">Reserve your date</p>
