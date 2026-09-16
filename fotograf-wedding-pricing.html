@@ -129,7 +129,7 @@ nav.scrolled .nav-sub { display: flex; }
 }
 .hero h1 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-size: clamp(3.5rem, 8vw, 7.5rem);
   font-weight: 300; line-height: 1.0; letter-spacing: -0.01em;
   color: #fff; margin-bottom: 1.5rem;
 }
@@ -223,7 +223,7 @@ nav.scrolled .nav-sub { display: flex; }
   font-weight: 300; color: var(--ink); margin-top: 0.75rem;
   line-height: 1.05;
 }
-.packages-header h2 em { font-style: italic; color: var(--muted); }
+
 
 .pkg-table-wrap {
   max-width: 900px; margin: 0 auto;
@@ -414,97 +414,15 @@ nav.scrolled .nav-sub { display: flex; }
 }
 .incl-text { font-size: 0.78rem; color: var(--muted); line-height: 1.65; }
 
-/* ── TIMELINE MOMENT ── */
-.timeline-section {
-  padding: 6rem 7vw;
-  background: var(--card);
-}
-.timeline-inner { max-width: 1200px; margin: 0 auto; }
-.timeline-head { text-align: center; margin-bottom: 4rem; }
-.timeline-head h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.5rem; font-weight: 300; color: var(--ink); margin-top: 0.5rem;
-}
-.timeline-head .intro-label { color: var(--wine); }
 
-.timeline-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 0; border: 1px solid var(--line);
-}
-.tl-item {
-  padding: 3rem 2.5rem;
-  border-right: 1px solid var(--line);
-  display: flex; flex-direction: column; justify-content: center;
-}
-.tl-item:last-child { border-right: none; }
-.tl-time { color: var(--wine) !important; }
-.tl-title { color: var(--ink) !important; }
-.tl-text { color: var(--muted) !important; }
-.tl-time {
-  font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--wine); margin-bottom: 0.6rem;
-}
-.tl-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem; font-weight: 400; color: var(--ink);
-  margin-bottom: 0.5rem;
-}
-.tl-text { font-size: 0.78rem; color: var(--muted); line-height: 1.7; }
 
-/* ── FAQ ── */
-.faq-section { padding: 6rem 7vw; }
-.faq-inner { max-width: 800px; margin: 0 auto; }
-.faq-header { margin-bottom: 3rem; }
-.faq-header h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.5rem; font-weight: 300; margin-top: 0.5rem;
-}
-.faq-item { border-bottom: 1px solid var(--line); }
-.faq-btn {
-  width: 100%; background: none; border: none; cursor: pointer;
-  padding: 1.5rem 0;
-  display: flex; justify-content: space-between; align-items: center;
-  gap: 1rem; text-align: left;
-}
-.faq-btn span {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem; font-weight: 400; color: var(--ink); line-height: 1.3;
-}
-.faq-icon {
-  font-size: 1.4rem; color: var(--wine); flex-shrink: 0;
-  transition: transform 0.3s ease; font-family: serif; line-height: 1;
-}
-.faq-item.open .faq-icon { transform: rotate(45deg); }
-.faq-body {
-  max-height: 0; overflow: hidden; transition: max-height 0.35s ease;
-}
-.faq-item.open .faq-body { max-height: 350px; }
+
 .faq-body p {
   font-size: 0.85rem; color: var(--muted); line-height: 1.8;
   padding-bottom: 1.5rem;
 }
 
-/* ── TESTIMONIAL ── */
-.testimonial-section {
-  background: var(--card); padding: 6rem 7vw;
-  text-align: center;
-}
-.testimonial-inner { max-width: 700px; margin: 0 auto; }
-.testimonial-mark {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 5rem; color: var(--wine); line-height: 0.8;
-  opacity: 0.4; margin-bottom: 1rem;
-}
-.testimonial-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.6rem; font-style: italic; font-weight: 300;
-  color: var(--ink); line-height: 1.5; margin-bottom: 2rem;
-}
-.testimonial-author {
-  font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--muted);
-}
-.testimonial-author span { color: var(--wine); }
+
 
 /* ── CTA ── */
 .cta-section {
@@ -648,7 +566,7 @@ footer {
   <div class="hero-bg"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Wedding Photography</p>
-    <h1>Let the moments<br><em>happen.</em></h1>
+    <h1>Let the moments<br>happen.</h1>
     <p class="hero-sub">Enjoy yourselves. Laugh too loud. Cry if you do. Forget the camera is there. I'll take care of the rest.</p>
     <div class="hero-scroll">Discover</div>
   </div>
@@ -672,8 +590,7 @@ footer {
 <!-- PACKAGES -->
 <section class="packages-section">
   <div class="packages-header reveal">
-    <p class="intro-label">Wedding Packages</p>
-    <h2>Wedding<br><em>packages</em></h2>
+    <h2>Wedding packages</h2>
   </div>
   <div class="packages-grid">
 
@@ -717,7 +634,7 @@ footer {
             <td class="val">700–900</td>
           </tr>
           <tr>
-            <td>Getting ready</td>
+            <td>Preparation</td>
             <td class="dash"></td>
             <td class="check featured-col"></td>
             <td class="check"></td>
@@ -790,8 +707,8 @@ footer {
   </div>
   <div class="photo-strip">
     <figure><img src="images/wedding/portfolio-6.webp" alt=""></figure>
-    <figure><img src="images/wedding/portfolio-10.webp" alt=""></figure>
-    <figure><img src="images/wedding/portfolio-5.webp" alt=""></figure>
+    <figure><img src="images/wedding/portfolio-2.webp" alt=""></figure>
+    <figure><img src="images/wedding/portfolio-14.webp" alt=""></figure>
   </div>
 </section>
 
@@ -800,12 +717,12 @@ footer {
   <div class="incl-item reveal">
     <div class="incl-num">01</div>
     <div class="incl-title">Preview next day</div>
-    <div class="incl-text">50–60 representative images in your private gallery within 24 hours.</div>
+    <div class="incl-text">30 images in your private gallery within 24 hours.</div>
   </div>
   <div class="incl-item reveal">
     <div class="incl-num">02</div>
     <div class="incl-title">Full edited gallery</div>
-    <div class="incl-text">Every image processed and delivered within 2 months. High-res + web versions, shareable with family.</div>
+    <div class="incl-text">Every professionally edited image delivered within 2 months. High-res + web versions, shareable with family.</div>
   </div>
   <div class="incl-item reveal">
     <div class="incl-num">03</div>
@@ -819,104 +736,11 @@ footer {
   </div>
 </div>
 
-<!-- WHAT I DOCUMENT STRIP -->
-<section class="timeline-section">
-  <div class="timeline-inner">
-    <div class="timeline-head reveal">
-      <p class="intro-label">Your wedding day</p>
-      <h2>What I document</h2>
-    </div>
-    <div class="timeline-grid">
-      <div class="tl-item reveal">
-        <p class="tl-time">Morning</p>
-        <p class="tl-title">Preparation</p>
-        <p class="tl-text">The quiet moments before everything begins. Getting ready, nerves, anticipation — all of it worth capturing.</p>
-      </div>
-      <div class="tl-item reveal">
-        <p class="tl-time">Midday</p>
-        <p class="tl-title">Ceremony</p>
-        <p class="tl-text">The moment you become each other's. Every glance, every tear, every laugh in the crowd.</p>
-      </div>
-      <div class="tl-item reveal">
-        <p class="tl-time">Afternoon</p>
-        <p class="tl-title">Portraits</p>
-        <p class="tl-text">Golden light, just the two of you. Simple directions, natural connection — the photos that will matter most.</p>
-      </div>
-      <div class="tl-item reveal">
-        <p class="tl-time">Evening</p>
-        <p class="tl-title">Party</p>
-        <p class="tl-text">Dancing, speeches, laughter. The full energy of people who love each other in one room.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- FAQ -->
-<section class="faq-section">
-  <div class="faq-inner">
-    <div class="faq-header reveal">
-      <p class="intro-label">Questions</p>
-      <h2>Before you write to me</h2>
-    </div>
 
-    <div class="faq-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span>How many photos will we receive?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body"><p>It depends on the day — number of guests, ceremony type, events planned. At an intimate wedding expect 300–400 images; a large celebration can yield over 1 000. The average across a full-day package is 700–800.</p></div>
-    </div>
 
-    <div class="faq-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span>Do we need to know how to pose?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body"><p>Not at all. During the couple's session I'll give you simple, natural directions. The rest of the day, you live it — I document it. The best photographs happen when people stop thinking about the camera.</p></div>
-    </div>
 
-    <div class="faq-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span>When do we receive our photos?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body"><p>A preview gallery of 50–60 images is delivered the day after. The complete edited gallery follows within two months.</p></div>
-    </div>
 
-    <div class="faq-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span>Do you photograph destination weddings?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body"><p>Yes — I'm available across Poland and throughout Europe. For international weddings, travel and accommodation are required. Contact me and we'll work out the logistics together.</p></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span>What if something unexpected happens on your end?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body"><p>In the unlikely event I'm unable to attend due to illness or force majeure, I will arrange a replacement photographer of equivalent experience. Your day is never left uncovered.</p></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span>Is a contract required?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body"><p>Always. The contract covers locations, schedule, payment terms, delivery dates, and cancellation policy. It protects both of us — and it's how I take your wedding seriously.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIAL -->
-<section class="testimonial-section reveal">
-  <div class="testimonial-inner">
-    <div class="testimonial-mark">"</div>
-    <p class="testimonial-text">Alex made us forget he was there. We looked at the photos the next morning and couldn't believe someone had caught all those moments we didn't even notice living.</p>
-    <p class="testimonial-author"><span>Marta & Tomasz</span> · Warsaw, 2024</p>
-  </div>
-</section>
 
 <!-- CTA -->
 <section class="cta-section">
