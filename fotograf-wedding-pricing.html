@@ -991,10 +991,8 @@ document.querySelectorAll('.faq-btn').forEach(btn => {
   });
 });
 
-/* ── PHOTO GRID — rotating empty slot ── */
+/* ── PHOTO GRID — rotating empty slot, no duplicate photos ── */
 (function() {
-  // Cell 0 (left, tall) → portrait format photos
-  // Cells 1-4 (right, wide) → landscape format photos
   const portraitPhotos = [
     'images/wedding/portfolio-2.webp',
     'images/wedding/portfolio-5.webp',
@@ -1006,77 +1004,104 @@ document.querySelectorAll('.faq-btn').forEach(btn => {
     'images/wedding/portfolio-14.webp',
   ];
 
-  const FADE = 1200; // ms for opacity transition
-  const HOLD = 3500; // ms a photo stays visible before the slot moves
+  const FADE = 1200;
+  const HOLD = 4000;
 
   const cells = Array.from(document.querySelectorAll('#photoGrid .pc'));
+  // cells[0] = left tall (portrait), cells[1-4] = right (landscape)
 
-  // Each cell gets one img, loaded with appropriate format
-  function photoFor(cellIdx, photoIdx) {
-    const pool = cellIdx === 0 ? portraitPhotos : landscapePhotos;
-    return pool[photoIdx % pool.length];
-  }
+  // Track which photo is currently shown in each cell (null = empty)
+  // We assign distinct photos to each visible cell at start
+  const cellPhoto = [null, null, null, null, null];
 
-  let portraits = 0, landscapes = 0;
-  cells.forEach((cell, i) => {
+  // Portrait cell (0): always rotates through portraitPhotos, never empty
+  let portraitIdx = 0;
+
+  // Right cells (1-4): 3 photos, 4 slots → one slot always empty
+  // Assign 3 distinct landscape photos to 3 of the 4 right cells
+  let emptyRightCell = 3; // index in cells[] that starts empty (cell index 3)
+  const rightCellPhotoIdx = [0, 1, 2, -1]; // which landscapePhoto each right cell shows (-1=empty)
+  // rightCellPhotoIdx[i] maps to cells[i+1]
+
+  function createImg(cell, src, visible) {
     const img = document.createElement('img');
     img.alt = '';
-    if (i === 0) {
-      img.src = photoFor(0, portraits++);
-    } else {
-      img.src = photoFor(i, landscapes++);
-    }
+    img.src = src;
     img.style.transition = `opacity ${FADE}ms ease`;
+    img.style.opacity = visible ? '1' : '0';
     cell.appendChild(img);
-    cell._img = img;
-    cell._photoIdx = i === 0 ? 0 : i - 1;
-  });
-
-  // The "empty" slot index — starts at cell 2 (top-right small)
-  let emptyIdx = 2;
-
-  // Track which landscape photo index each right cell is on
-  const lsIdx = [0, 1, 2, 0]; // cells 1-4
-
-  function step() {
-    const emptyCell = cells[emptyIdx];
-    const emptyImg  = emptyCell._img;
-
-    // 1. Decide next empty slot (pick randomly among the 4 right cells, not same as current)
-    const rightCells = [1, 2, 3, 4];
-    const nextOptions = rightCells.filter(i => i !== emptyIdx);
-    const nextEmptyIdx = nextOptions[Math.floor(Math.random() * nextOptions.length)];
-    const nextEmptyCell = cells[nextEmptyIdx];
-    const nextEmptyImg  = nextEmptyCell._img;
-
-    // 2. Fade IN the currently empty cell (with a new photo)
-    const lsPoolIdx = emptyIdx - 1; // 0-3 for right cells
-    lsIdx[lsPoolIdx] = (lsIdx[lsPoolIdx] + 1) % landscapePhotos.length;
-    const newSrc = landscapePhotos[lsIdx[lsPoolIdx]];
-
-    // Load new image silently first
-    const loader = new Image();
-    loader.onload = () => {
-      emptyImg.src = newSrc;
-      // fade in
-      emptyImg.style.opacity = '1';
-
-      // 3. After HOLD ms, fade OUT the next-empty cell
-      setTimeout(() => {
-        nextEmptyImg.style.opacity = '0';
-        emptyIdx = nextEmptyIdx;
-
-        // 4. Schedule next step after fade completes
-        setTimeout(step, FADE + 200);
-      }, HOLD);
-    };
-    loader.src = newSrc;
+    return img;
   }
 
-  // Initial state: fade out the starting empty cell immediately, then begin loop
+  // Init portrait cell
+  const portraitImg = createImg(cells[0], portraitPhotos[portraitIdx], true);
+  cells[0]._img = portraitImg;
+
+  // Init right cells
+  for (let r = 0; r < 4; r++) {
+    const cellIdx = r + 1;
+    const photoIdx = rightCellPhotoIdx[r];
+    const src = photoIdx >= 0 ? landscapePhotos[photoIdx] : landscapePhotos[0];
+    const visible = photoIdx >= 0;
+    const img = createImg(cells[cellIdx], src, visible);
+    cells[cellIdx]._img = img;
+  }
+
+  // Which landscape photos are currently visible (indices into landscapePhotos)
+  function visibleLandscapePhotos() {
+    return rightCellPhotoIdx.filter(i => i >= 0);
+  }
+
+  // Find a landscape photo index not currently visible
+  function nextLandscapePhoto() {
+    const visible = visibleLandscapePhotos();
+    const available = [0, 1, 2].filter(i => !visible.includes(i));
+    // Should always have exactly 1 available (4 slots, 3 photos, 1 empty)
+    return available[0];
+  }
+
+  function step() {
+    // 1. Find the empty right slot
+    const emptyR = rightCellPhotoIdx.indexOf(-1); // 0-3
+    const emptyCell = cells[emptyR + 1];
+    const emptyImg  = emptyCell._img;
+
+    // 2. Fill it with the one landscape photo not currently shown
+    const newPhotoIdx = nextLandscapePhoto();
+    const newSrc = landscapePhotos[newPhotoIdx];
+
+    emptyImg.src = newSrc;
+    emptyImg.style.opacity = '1';
+    rightCellPhotoIdx[emptyR] = newPhotoIdx;
+
+    // 3. After HOLD, pick a different right cell to become the new empty
+    setTimeout(() => {
+      // Pick randomly from the 3 visible right cells
+      const visibleR = rightCellPhotoIdx.map((v, i) => v >= 0 ? i : -1).filter(i => i >= 0);
+      const nextEmptyR = visibleR[Math.floor(Math.random() * visibleR.length)];
+      const nextEmptyCell = cells[nextEmptyR + 1];
+      const nextEmptyImg  = nextEmptyCell._img;
+
+      nextEmptyImg.style.opacity = '0';
+      rightCellPhotoIdx[nextEmptyR] = -1;
+
+      // 4. Also rotate portrait cell to a different photo
+      const nextPortraitIdx = (portraitIdx + 1) % portraitPhotos.length;
+      if (nextPortraitIdx !== portraitIdx) {
+        const pImg = cells[0]._img;
+        pImg.style.opacity = '0';
+        setTimeout(() => {
+          portraitIdx = nextPortraitIdx;
+          pImg.src = portraitPhotos[portraitIdx];
+          pImg.style.opacity = '1';
+        }, FADE + 200);
+      }
+
+      setTimeout(step, FADE + 300);
+    }, HOLD);
+  }
+
   window.addEventListener('load', () => {
-    // Start: hide cell 2
-    cells[emptyIdx]._img.style.opacity = '0';
     setTimeout(step, HOLD);
   });
 })();
