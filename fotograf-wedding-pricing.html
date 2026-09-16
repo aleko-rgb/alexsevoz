@@ -57,7 +57,7 @@ nav.scrolled { background: rgba(250,248,244,0.95); backdrop-filter: blur(10px); 
 
 .logo {
   font-family: 'Backstreet', 'Cormorant Garamond', serif;
-  font-size: 1.3rem; letter-spacing: 0.04em;
+  font-size: 2rem; letter-spacing: 0.02em;
   color: var(--paper);
   transition: color 0.4s ease;
 }
@@ -78,19 +78,7 @@ nav.scrolled .nav-links a { color: var(--muted); }
 nav.scrolled 
 
 
-.nav-sub {
-  display: none;
-  background: var(--wine);
-  text-align: center;
-  padding: 0.45rem 5vw;
-  font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
-  color: rgba(255,255,255,0.85); font-weight: 400;
-  justify-content: center; align-items: center; gap: 1.5rem;
-}
-nav.scrolled .nav-sub { display: flex; }
-.nav-sub a { color: rgba(255,255,255,0.7); font-size: 0.65rem; letter-spacing: 0.12em; }
-.nav-sub a:hover { color: #fff; }
-.nav-sub .sep { color: rgba(255,255,255,0.3); }
+
 
 /* ── HERO ── */
 .hero {
@@ -232,66 +220,76 @@ nav.scrolled .nav-sub { display: flex; }
 }
 .packages-header h2 em { font-style: italic; color: var(--muted); }
 
-.packages-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  max-width: 1200px; margin: 0 auto;
-  gap: 1px; background: var(--line);
-  border: 1px solid var(--line);
+.pkg-table-wrap {
+  max-width: 900px; margin: 0 auto;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
 }
-.package {
-  background: var(--paper);
-  padding: 3rem 2.5rem;
-  position: relative;
-  transition: background 0.3s ease;
+.pkg-table {
+  width: 100%; border-collapse: collapse;
+  font-family: 'Jost', sans-serif;
 }
-.package:hover { background: #fff; }
-.package.featured {
-  background: var(--wine);
-}
-.package.featured:hover { background: #7e2434; }
+/* column widths */
+.pkg-table col.col-feature { width: 36%; }
+.pkg-table col.col-pkg     { width: 21.3%; }
 
-.pkg-badge {
-  position: absolute; top: 1.5rem; right: 1.5rem;
-  font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--gold); font-weight: 400;
+/* header row */
+.pkg-table thead tr {
+  border-bottom: 2px solid var(--ink);
 }
-.pkg-name {
+.pkg-table thead th {
+  padding: 0 1.5rem 1.25rem;
+  text-align: center; vertical-align: bottom;
+}
+.pkg-table thead th:first-child { text-align: left; padding-left: 0; }
+
+.th-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.2rem; font-weight: 400; color: var(--ink);
-  margin-bottom: 0.2rem; line-height: 1;
+  font-size: 1.6rem; font-weight: 400; color: var(--ink);
+  display: block; line-height: 1;
 }
-.pkg-hours {
-  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 2.5rem;
-}
-.pkg-price {
+.th-name.featured { color: var(--wine); }
+.th-price {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 4rem; font-weight: 300; line-height: 1;
-  color: var(--gold); margin-bottom: 0.2rem;
+  font-size: 2.2rem; font-weight: 300; color: var(--gold);
+  display: block; line-height: 1; margin-top: 0.2rem;
 }
-.pkg-sup { font-size: 1.3rem; vertical-align: super; }
-.pkg-images {
-  font-size: 0.75rem; color: var(--muted);
-  margin-bottom: 2.5rem;
+.th-price sup { font-size: 0.9rem; vertical-align: super; }
+.th-badge {
+  display: inline-block;
+  font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--wine); border: 1px solid var(--wine);
+  padding: 0.2rem 0.5rem; margin-bottom: 0.5rem;
 }
-.pkg-list {
-  list-style: none;
-  border-top: 1px solid var(--line);
-  padding-top: 2rem;
-}
-.pkg-list li {
-  font-size: 0.82rem; color: var(--muted);
-  padding: 0.55rem 0 0.55rem 1.2rem;
+
+/* body rows */
+.pkg-table tbody tr {
   border-bottom: 1px solid var(--line);
-  position: relative; line-height: 1.4;
+  transition: background 0.15s;
 }
-.pkg-list li:last-child { border-bottom: none; }
-.pkg-list li::before {
-  content: ''; position: absolute; left: 0; top: 1.05rem;
-  width: 6px; height: 1px; background: var(--gold);
+.pkg-table tbody tr:last-child { border-bottom: none; }
+.pkg-table tbody tr:hover { background: rgba(200,169,122,0.05); }
+
+.pkg-table td {
+  padding: 0.9rem 1.5rem;
+  font-size: 0.82rem; color: var(--muted);
+  text-align: center; vertical-align: middle;
+  line-height: 1.4;
 }
-.package.featured .pkg-list li { color: rgba(255,255,255,0.75); }
-.package.featured .pkg-list li { border-color: rgba(255,255,255,0.12); }
+.pkg-table td:first-child {
+  text-align: left; padding-left: 0;
+  color: var(--ink); font-weight: 400;
+}
+.pkg-table td.featured-col {
+  background: rgba(109,31,44,0.04);
+}
+.pkg-table td.featured-col.check { color: var(--wine); }
+
+/* check / dash / partial */
+.check::after  { content: '✓'; font-size: 1rem; color: var(--wine); }
+.dash::after   { content: '—'; font-size: 0.9rem; color: var(--line); }
+.partial::after { content: '—/partial'; font-size: 0.75rem; color: var(--muted); }
+.val { font-weight: 400; color: var(--ink); }
+.val.featured-col { color: var(--wine); font-weight: 500; }
 
 /* ── GALLERY MOSAIC ── */
 .gallery-section {
@@ -332,10 +330,7 @@ nav.scrolled .nav-sub { display: flex; }
 }
 .mosaic figure:hover::after { background: rgba(14,14,14,0.10); }
 
-.package.featured .pkg-name { color: #fff; }
-.package.featured .pkg-hours { color: rgba(255,255,255,0.5); }
-.package.featured .pkg-images { color: rgba(255,255,255,0.4); }
-.package.featured .pkg-list { border-color: rgba(255,255,255,0.15); }
+
 
 /* mosaic layout — 6 photos, left col spans 2 rows */
 .m1 { grid-column: 1/2; grid-row: 1/3; }
@@ -606,7 +601,11 @@ footer {
   .tl-item { border-right: none; border-top: 1px solid var(--line); }
   .tl-item:first-child { border-top: none; }
   nav .nav-links { display: none; }
-  .packages-section, .addons-section { padding: 4rem 5vw; }
+  .packages-section { padding: 4rem 5vw; }
+  .pkg-table td, .pkg-table th { padding: 0.75rem 0.75rem; font-size: 0.78rem; }
+  .pkg-table td:first-child { padding-left: 0; }
+  .th-price { font-size: 1.5rem; }
+  .th-name { font-size: 1.2rem; }
   .faq-section, .gallery-section, .intro-section { padding: 4rem 5vw; }
   .hero-content { padding: 0 5vw 4rem; }
 }
@@ -626,13 +625,7 @@ footer {
       </div>
     </div>
   </div>
-  <div class="nav-sub">
-    <span>Wedding Photographer — Poland & Europe</span>
-    <span class="sep">·</span>
-    <a href="tel:+48720852075">+48 720 852 075</a>
-    <span class="sep">·</span>
-    <a href="mailto:alex.sevoz.photo@gmail.com">alex.sevoz.photo@gmail.com</a>
-  </div>
+
 </nav>
 
 <!-- HERO -->
@@ -676,55 +669,107 @@ footer {
   </div>
   <div class="packages-grid">
 
-    <div class="package reveal">
-      <p class="pkg-name">Standard</p>
-      <p class="pkg-hours">5 hours</p>
-      <p class="pkg-price"><span class="pkg-sup">PLN</span> 3 000</p>
-      <p class="pkg-images">300 – 400 edited photographs</p>
-      <ul class="pkg-list">
-        <li>Preparations & getting ready</li>
-        <li>Ceremony documentation</li>
-        <li>Family portraits</li>
-        <li>Couple's golden-hour session</li>
-        <li>Preview next day</li>
-        <li>Full gallery within 2 months</li>
-        <li>Free travel within 50 km</li>
-      </ul>
-    </div>
-
-    <div class="package featured reveal">
-      <p class="pkg-badge">Most chosen</p>
-      <p class="pkg-name">Plus</p>
-      <p class="pkg-hours">10 hours</p>
-      <p class="pkg-price"><span class="pkg-sup">PLN</span> 3 500</p>
-      <p class="pkg-images">600 – 800 edited photographs</p>
-      <ul class="pkg-list">
-        <li>Preparations & getting ready</li>
-        <li>Ceremony documentation</li>
-        <li>Family portraits</li>
-        <li>Couple's golden-hour session</li>
-        <li>Reception & evening events</li>
-        <li>Preview next day</li>
-        <li>Full gallery within 2 months</li>
-        <li>Free travel within 50 km</li>
-      </ul>
-    </div>
-
-    <div class="package reveal">
-      <p class="pkg-name">Premium</p>
-      <p class="pkg-hours">12 hours</p>
-      <p class="pkg-price"><span class="pkg-sup">PLN</span> 4 000</p>
-      <p class="pkg-images">700 – 900 edited photographs</p>
-      <ul class="pkg-list">
-        <li>Preparations & getting ready</li>
-        <li>Ceremony documentation</li>
-        <li>Family portraits</li>
-        <li>Couple's golden-hour session</li>
-        <li>Reception, dancing & late night</li>
-        <li>Preview next day</li>
-        <li>Full gallery within 2 months</li>
-        <li>Free travel within 50 km</li>
-      </ul>
+    <div class="pkg-table-wrap reveal">
+      <table class="pkg-table">
+        <colgroup>
+          <col class="col-feature">
+          <col class="col-pkg">
+          <col class="col-pkg">
+          <col class="col-pkg">
+        </colgroup>
+        <thead>
+          <tr>
+            <th></th>
+            <th>
+              <span class="th-name">Standard</span>
+              <span class="th-price"><sup>PLN</sup> 3 000</span>
+            </th>
+            <th>
+              <span class="th-badge">Most chosen</span>
+              <span class="th-name featured">Plus</span>
+              <span class="th-price"><sup>PLN</sup> 3 500</span>
+            </th>
+            <th>
+              <span class="th-name">Premium</span>
+              <span class="th-price"><sup>PLN</sup> 4 000</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Duration</td>
+            <td class="val">5 h</td>
+            <td class="val featured-col">10 h</td>
+            <td class="val">12 h</td>
+          </tr>
+          <tr>
+            <td>Photographs</td>
+            <td class="val">300–400</td>
+            <td class="val featured-col">600–800</td>
+            <td class="val">700–900</td>
+          </tr>
+          <tr>
+            <td>Getting ready</td>
+            <td class="dash"></td>
+            <td class="check featured-col"></td>
+            <td class="check"></td>
+          </tr>
+          <tr>
+            <td>Ceremony</td>
+            <td class="check"></td>
+            <td class="check featured-col"></td>
+            <td class="check"></td>
+          </tr>
+          <tr>
+            <td>Family portraits</td>
+            <td class="check"></td>
+            <td class="check featured-col"></td>
+            <td class="check"></td>
+          </tr>
+          <tr>
+            <td>Couple session</td>
+            <td class="check"></td>
+            <td class="check featured-col"></td>
+            <td class="check"></td>
+          </tr>
+          <tr>
+            <td>Reception</td>
+            <td class="check"></td>
+            <td class="check featured-col"></td>
+            <td class="check"></td>
+          </tr>
+          <tr>
+            <td>Late night</td>
+            <td class="dash"></td>
+            <td class="partial featured-col"></td>
+            <td class="check"></td>
+          </tr>
+          <tr>
+            <td>Next-day preview</td>
+            <td class="val">30 photos</td>
+            <td class="val featured-col">30 photos</td>
+            <td class="val">30 photos</td>
+          </tr>
+          <tr>
+            <td>Online gallery</td>
+            <td class="check"></td>
+            <td class="check featured-col"></td>
+            <td class="check"></td>
+          </tr>
+          <tr>
+            <td>Full gallery</td>
+            <td class="val">within 2 months</td>
+            <td class="val featured-col">within 2 months</td>
+            <td class="val">within 2 months</td>
+          </tr>
+          <tr>
+            <td>Travel</td>
+            <td class="val">free within 50 km</td>
+            <td class="val featured-col">free within 50 km</td>
+            <td class="val">free within 50 km</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
