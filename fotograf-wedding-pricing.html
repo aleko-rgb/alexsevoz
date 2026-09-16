@@ -57,7 +57,7 @@ nav.scrolled { background: rgba(250,248,244,0.95); backdrop-filter: blur(10px); 
 
 .logo {
   font-family: 'Backstreet', 'Cormorant Garamond', serif;
-  font-size: 2rem; letter-spacing: 0.02em;
+  font-size: 1.5rem; letter-spacing: 0.04em;
   color: var(--paper);
   transition: color 0.4s ease;
 }
@@ -73,14 +73,19 @@ nav.scrolled .logo { color: var(--ink); }
 nav.scrolled .nav-links a { color: var(--muted); }
 .nav-links a:hover { color: var(--wine) !important; }
 
-
-
-nav.scrolled 
-
-
-
-
-/* ── HERO ── */
+.nav-sub {
+  display: none;
+  background: var(--wine);
+  text-align: center;
+  padding: 0.45rem 5vw;
+  font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.9); font-weight: 400;
+  justify-content: center; align-items: center; gap: 1.5rem;
+}
+nav.scrolled .nav-sub { display: flex; }
+.nav-sub a { color: rgba(255,255,255,0.85); font-size: 0.65rem; letter-spacing: 0.12em; }
+.nav-sub a:hover { color: #fff; }
+.nav-sub .sep { color: rgba(255,255,255,0.4); }/* ── HERO ── */
 .hero {
   position: relative;
   height: 100svh; min-height: 600px;
@@ -625,7 +630,13 @@ footer {
       </div>
     </div>
   </div>
-
+  <div class="nav-sub">
+    <span>Wedding Photographer — Poland &amp; Europe</span>
+    <span class="sep">·</span>
+    <a href="tel:+48720852075">+48 720 852 075</a>
+    <span class="sep">·</span>
+    <a href="mailto:alex.sevoz.photo@gmail.com">alex.sevoz.photo@gmail.com</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -638,13 +649,6 @@ footer {
     <div class="hero-scroll">Discover</div>
   </div>
 </section>
-
-<!-- MOOD STRIP -->
-<div class="mood-strip">
-  <div class="mood-img"><img src="images/wedding/slideshow-2.webp" alt="" loading="lazy"></div>
-  <div class="mood-img"><img src="images/wedding/slideshow-4.webp" alt="" loading="lazy"></div>
-  <div class="mood-img"><img src="images/wedding/slideshow-3.webp" alt="" loading="lazy"></div>
-</div>
 
 <!-- INTRO -->
 <section class="intro-section">
