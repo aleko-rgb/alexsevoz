@@ -315,34 +315,19 @@ nav.scrolled .nav-sub { display: flex; }
   padding-bottom: 2px; font-weight: 400;
 }
 
-.photo-grid {
+.photo-strip {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  height: 52vw; max-height: 560px;
+  grid-template-columns: repeat(3, 1fr);
   gap: 4px;
+  height: 34vw; max-height: 420px;
 }
-.photo-grid .pc:nth-child(1) { grid-column: 1/2; grid-row: 1/3; }
-.photo-grid .pc:nth-child(2) { grid-column: 2/3; grid-row: 1/2; }
-.photo-grid .pc:nth-child(3) { grid-column: 3/4; grid-row: 1/2; }
-.photo-grid .pc:nth-child(4) { grid-column: 2/3; grid-row: 2/3; }
-.photo-grid .pc:nth-child(5) { grid-column: 3/4; grid-row: 2/3; }
-.pc {
-  position: relative; overflow: hidden;
-  background: var(--card);
+.photo-strip figure {
+  margin: 0; overflow: hidden;
 }
-.pc img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%; object-fit: cover;
-  object-position: center;
+.photo-strip figure img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
   max-width: none; display: block;
-  opacity: 1;
-  /* transition handled inline by JS */
-}
-/* Portrait cell — show full image without cropping sides */
-.photo-grid .pc:nth-child(1) img {
-  object-fit: contain;
-  background: var(--card);
 }
 
 
@@ -615,12 +600,9 @@ footer {
 @media (max-width: 768px) {
   .mood-strip { grid-template-columns: 1fr; }
   .mood-img:nth-child(3) { display: none; }
-  .photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 48vw); height: auto; max-height: none; }
-  .photo-grid .pc:nth-child(1) { grid-column: 1/3; grid-row: 1/2; }
-  .photo-grid .pc:nth-child(2) { grid-column: 1/2; grid-row: 2/3; }
-  .photo-grid .pc:nth-child(3) { grid-column: 2/3; grid-row: 2/3; }
-  .photo-grid .pc:nth-child(4) { grid-column: 1/2; grid-row: 3/4; }
-  .photo-grid .pc:nth-child(5) { grid-column: 2/3; grid-row: 3/4; }
+  .photo-strip { grid-template-columns: 1fr; height: auto; }
+  .photo-strip figure { height: 60vw; }
+  .photo-strip figure:nth-child(2), .photo-strip figure:nth-child(3) { display: none; }
   .included-strip { grid-template-columns: 1fr; border: none; }
   .incl-item { border-right: none; border-top: 1px solid var(--line); }
   .incl-item:first-child { border-top: none; }
@@ -806,12 +788,10 @@ footer {
     <h2>From real weddings</h2>
     <a href="https://alexsevoz.com/wedding.html" class="gallery-link">View full portfolio →</a>
   </div>
-  <div class="photo-grid" id="photoGrid">
-    <div class="pc"></div>
-    <div class="pc"></div>
-    <div class="pc"></div>
-    <div class="pc"></div>
-    <div class="pc"></div>
+  <div class="photo-strip">
+    <figure><img src="images/wedding/portfolio-6.webp" alt=""></figure>
+    <figure><img src="images/wedding/portfolio-2.webp" alt=""></figure>
+    <figure><img src="images/wedding/portfolio-14.webp" alt=""></figure>
   </div>
 </section>
 
@@ -991,120 +971,7 @@ document.querySelectorAll('.faq-btn').forEach(btn => {
   });
 });
 
-/* ── PHOTO GRID — rotating empty slot, no duplicate photos ── */
-(function() {
-  const portraitPhotos = [
-    'images/wedding/portfolio-2.webp',
-    'images/wedding/portfolio-5.webp',
-    'images/wedding/portfolio-10.webp',
-  ];
-  const landscapePhotos = [
-    'images/wedding/portfolio-1.webp',
-    'images/wedding/portfolio-6.webp',
-    'images/wedding/portfolio-14.webp',
-  ];
 
-  const FADE = 1200;
-  const HOLD = 4000;
-
-  const cells = Array.from(document.querySelectorAll('#photoGrid .pc'));
-  // cells[0] = left tall (portrait), cells[1-4] = right (landscape)
-
-  // Track which photo is currently shown in each cell (null = empty)
-  // We assign distinct photos to each visible cell at start
-  const cellPhoto = [null, null, null, null, null];
-
-  // Portrait cell (0): always rotates through portraitPhotos, never empty
-  let portraitIdx = 0;
-
-  // Right cells (1-4): 3 photos, 4 slots → one slot always empty
-  // Assign 3 distinct landscape photos to 3 of the 4 right cells
-  let emptyRightCell = 3; // index in cells[] that starts empty (cell index 3)
-  const rightCellPhotoIdx = [0, 1, 2, -1]; // which landscapePhoto each right cell shows (-1=empty)
-  // rightCellPhotoIdx[i] maps to cells[i+1]
-
-  function createImg(cell, src, visible) {
-    const img = document.createElement('img');
-    img.alt = '';
-    img.src = src;
-    img.style.transition = `opacity ${FADE}ms ease`;
-    img.style.opacity = visible ? '1' : '0';
-    cell.appendChild(img);
-    return img;
-  }
-
-  // Init portrait cell
-  const portraitImg = createImg(cells[0], portraitPhotos[portraitIdx], true);
-  cells[0]._img = portraitImg;
-
-  // Init right cells
-  for (let r = 0; r < 4; r++) {
-    const cellIdx = r + 1;
-    const photoIdx = rightCellPhotoIdx[r];
-    const src = photoIdx >= 0 ? landscapePhotos[photoIdx] : landscapePhotos[0];
-    const visible = photoIdx >= 0;
-    const img = createImg(cells[cellIdx], src, visible);
-    cells[cellIdx]._img = img;
-  }
-
-  // Which landscape photos are currently visible (indices into landscapePhotos)
-  function visibleLandscapePhotos() {
-    return rightCellPhotoIdx.filter(i => i >= 0);
-  }
-
-  // Find a landscape photo index not currently visible
-  function nextLandscapePhoto() {
-    const visible = visibleLandscapePhotos();
-    const available = [0, 1, 2].filter(i => !visible.includes(i));
-    // Should always have exactly 1 available (4 slots, 3 photos, 1 empty)
-    return available[0];
-  }
-
-  function step() {
-    // 1. Find the empty right slot
-    const emptyR = rightCellPhotoIdx.indexOf(-1); // 0-3
-    const emptyCell = cells[emptyR + 1];
-    const emptyImg  = emptyCell._img;
-
-    // 2. Fill it with the one landscape photo not currently shown
-    const newPhotoIdx = nextLandscapePhoto();
-    const newSrc = landscapePhotos[newPhotoIdx];
-
-    emptyImg.src = newSrc;
-    emptyImg.style.opacity = '1';
-    rightCellPhotoIdx[emptyR] = newPhotoIdx;
-
-    // 3. After HOLD, pick a different right cell to become the new empty
-    setTimeout(() => {
-      // Pick randomly from the 3 visible right cells
-      const visibleR = rightCellPhotoIdx.map((v, i) => v >= 0 ? i : -1).filter(i => i >= 0);
-      const nextEmptyR = visibleR[Math.floor(Math.random() * visibleR.length)];
-      const nextEmptyCell = cells[nextEmptyR + 1];
-      const nextEmptyImg  = nextEmptyCell._img;
-
-      nextEmptyImg.style.opacity = '0';
-      rightCellPhotoIdx[nextEmptyR] = -1;
-
-      // 4. Also rotate portrait cell to a different photo
-      const nextPortraitIdx = (portraitIdx + 1) % portraitPhotos.length;
-      if (nextPortraitIdx !== portraitIdx) {
-        const pImg = cells[0]._img;
-        pImg.style.opacity = '0';
-        setTimeout(() => {
-          portraitIdx = nextPortraitIdx;
-          pImg.src = portraitPhotos[portraitIdx];
-          pImg.style.opacity = '1';
-        }, FADE + 200);
-      }
-
-      setTimeout(step, FADE + 300);
-    }, HOLD);
-  }
-
-  window.addEventListener('load', () => {
-    setTimeout(step, HOLD);
-  });
-})();
 
 
 </script>
