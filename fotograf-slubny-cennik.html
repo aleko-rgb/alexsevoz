@@ -105,7 +105,7 @@ nav.scrolled .nav-sub { display: flex; }
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background: url('images/wedding/slideshow-2.webp') center/cover no-repeat;
+  background: url('images/wedding/slideshow-1.webp') center/cover no-repeat;
   transform: scale(1.04);
   animation: heroZoom 18s ease-in-out infinite alternate;
 }
@@ -166,7 +166,7 @@ nav.scrolled .nav-sub { display: flex; }
 
 /* ── MOOD STRIP (4 photos) ── */
 .mood-strip {
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  display: grid; grid-template-columns: 1.2fr 1fr 0.9fr;
   height: 38vw; max-height: 480px; min-height: 240px;
   overflow: hidden;
 }
@@ -222,33 +222,33 @@ nav.scrolled .nav-sub { display: flex; }
 
 /* ── PACKAGES ── */
 .packages-section {
-  background: #1c1008; padding: 7rem 7vw;
+  background: var(--card); padding: 7rem 7vw;
 }
 .packages-header {
   text-align: center; margin-bottom: 5rem;
 }
-.packages-header .intro-label { color: var(--gold); }
+.packages-header .intro-label { color: var(--wine); }
 .packages-header h2 {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 300; color: #fff; margin-top: 0.75rem;
+  font-weight: 300; color: var(--ink); margin-top: 0.75rem;
   line-height: 1.05;
 }
-.packages-header h2 em { font-style: italic; color: rgba(255,255,255,0.6); }
+.packages-header h2 em { font-style: italic; color: var(--muted); }
 
 .packages-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
   max-width: 1200px; margin: 0 auto;
-  gap: 1px; background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.08);
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line);
 }
 .package {
-  background: #1c1008;
+  background: var(--paper);
   padding: 3rem 2.5rem;
   position: relative;
   transition: background 0.3s ease;
 }
-.package:hover { background: #261608; }
+.package:hover { background: #fff; }
 .package.featured {
   background: var(--wine);
 }
@@ -261,12 +261,12 @@ nav.scrolled .nav-sub { display: flex; }
 }
 .pkg-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.2rem; font-weight: 400; color: #fff;
+  font-size: 2.2rem; font-weight: 400; color: var(--ink);
   margin-bottom: 0.2rem; line-height: 1;
 }
 .pkg-hours {
   font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: rgba(255,255,255,0.4); margin-bottom: 2.5rem;
+  color: var(--muted); margin-bottom: 2.5rem;
 }
 .pkg-price {
   font-family: 'Cormorant Garamond', serif;
@@ -275,18 +275,18 @@ nav.scrolled .nav-sub { display: flex; }
 }
 .pkg-sup { font-size: 1.3rem; vertical-align: super; }
 .pkg-images {
-  font-size: 0.75rem; color: rgba(255,255,255,0.35);
+  font-size: 0.75rem; color: var(--muted);
   margin-bottom: 2.5rem;
 }
 .pkg-list {
   list-style: none;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid var(--line);
   padding-top: 2rem;
 }
 .pkg-list li {
-  font-size: 0.82rem; color: rgba(255,255,255,0.55);
+  font-size: 0.82rem; color: var(--muted);
   padding: 0.55rem 0 0.55rem 1.2rem;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid var(--line);
   position: relative; line-height: 1.4;
 }
 .pkg-list li:last-child { border-bottom: none; }
@@ -294,8 +294,8 @@ nav.scrolled .nav-sub { display: flex; }
   content: ''; position: absolute; left: 0; top: 1.05rem;
   width: 6px; height: 1px; background: var(--gold);
 }
-.package.featured .pkg-list li { color: rgba(255,255,255,0.7); }
-.package.featured .pkg-list li { border-color: rgba(255,255,255,0.1); }
+.package.featured .pkg-list li { color: rgba(255,255,255,0.75); }
+.package.featured .pkg-list li { border-color: rgba(255,255,255,0.12); }
 
 /* ── GALLERY MOSAIC ── */
 .gallery-section {
@@ -318,9 +318,9 @@ nav.scrolled .nav-sub { display: flex; }
 
 .mosaic {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(3, 22vw);
-  max-height: 600px; gap: 4px;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 52vw; max-height: 560px; gap: 4px;
 }
 .mosaic figure {
   overflow: hidden; cursor: pointer; position: relative;
@@ -329,23 +329,25 @@ nav.scrolled .nav-sub { display: flex; }
   width: 100%; height: 100%; object-fit: cover;
   transition: transform 0.6s ease;
 }
-.mosaic figure:hover img { transform: scale(1.06); }
+.mosaic figure:hover img { transform: scale(1.04); }
 .mosaic figure::after {
   content: ''; position: absolute; inset: 0;
   background: rgba(14,14,14,0); transition: background 0.4s ease;
 }
-.mosaic figure:hover::after { background: rgba(14,14,14,0.12); }
+.mosaic figure:hover::after { background: rgba(14,14,14,0.10); }
 
-/* mosaic layout */
-.m1  { grid-column: 1/3; grid-row: 1/3; }
-.m2  { grid-column: 3/4; grid-row: 1/2; }
-.m3  { grid-column: 4/5; grid-row: 1/2; }
-.m4  { grid-column: 5/7; grid-row: 1/3; }
-.m5  { grid-column: 3/5; grid-row: 2/3; }
-.m6  { grid-column: 1/2; grid-row: 3/4; }
-.m7  { grid-column: 2/4; grid-row: 3/4; }
-.m8  { grid-column: 4/6; grid-row: 3/4; }
-.m9  { grid-column: 6/7; grid-row: 3/4; }
+.package.featured .pkg-name { color: #fff; }
+.package.featured .pkg-hours { color: rgba(255,255,255,0.5); }
+.package.featured .pkg-images { color: rgba(255,255,255,0.4); }
+.package.featured .pkg-list { border-color: rgba(255,255,255,0.15); }
+
+/* mosaic layout — 6 photos, left col spans 2 rows */
+.m1 { grid-column: 1/2; grid-row: 1/3; }
+.m2 { grid-column: 2/3; grid-row: 1/2; }
+.m3 { grid-column: 3/4; grid-row: 1/2; }
+.m4 { grid-column: 2/3; grid-row: 2/3; }
+.m5 { grid-column: 3/4; grid-row: 2/3; }
+.m6 { display: none; }
 
 /* ── ADD-ONS ── */
 .addons-section {
@@ -417,40 +419,39 @@ nav.scrolled .nav-sub { display: flex; }
 /* ── TIMELINE MOMENT ── */
 .timeline-section {
   padding: 6rem 7vw;
-  background: #1c1008;
+  background: var(--card);
 }
 .timeline-inner { max-width: 1200px; margin: 0 auto; }
 .timeline-head { text-align: center; margin-bottom: 4rem; }
 .timeline-head h2 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.5rem; font-weight: 300; color: #fff; margin-top: 0.5rem;
+  font-size: 2.5rem; font-weight: 300; color: var(--ink); margin-top: 0.5rem;
 }
-.timeline-head .intro-label { color: var(--gold); }
+.timeline-head .intro-label { color: var(--wine); }
 
 .timeline-grid {
   display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 0; border: 1px solid rgba(255,255,255,0.08);
+  gap: 0; border: 1px solid var(--line);
 }
 .tl-item {
-  padding: 2.5rem 2rem;
-  border-right: 1px solid rgba(255,255,255,0.08);
+  padding: 3rem 2.5rem;
+  border-right: 1px solid var(--line);
+  display: flex; flex-direction: column; justify-content: center;
 }
 .tl-item:last-child { border-right: none; }
-.tl-img {
-  width: 100%; aspect-ratio: 3/4; overflow: hidden;
-  margin-bottom: 1.5rem;
-}
-.tl-img img { width: 100%; height: 100%; object-fit: cover; }
+.tl-time { color: var(--wine) !important; }
+.tl-title { color: var(--ink) !important; }
+.tl-text { color: var(--muted) !important; }
 .tl-time {
   font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 0.6rem;
+  color: var(--wine); margin-bottom: 0.6rem;
 }
 .tl-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem; font-weight: 400; color: #fff;
+  font-size: 1.4rem; font-weight: 400; color: var(--ink);
   margin-bottom: 0.5rem;
 }
-.tl-text { font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 1.7; }
+.tl-text { font-size: 0.78rem; color: var(--muted); line-height: 1.7; }
 
 /* ── FAQ ── */
 .faq-section { padding: 6rem 7vw; }
@@ -515,7 +516,7 @@ nav.scrolled .nav-sub { display: flex; }
 }
 .cta-bg {
   position: absolute; inset: 0;
-  background: url('images/wedding/slideshow-4.webp') center/cover no-repeat;
+  background: url('images/wedding/slideshow-3.webp') center/cover no-repeat;
 }
 .cta-bg::after {
   content: ''; position: absolute; inset: 0;
@@ -558,7 +559,7 @@ nav.scrolled .nav-sub { display: flex; }
 
 /* ── FOOTER ── */
 footer {
-  background: #1c1008; padding: 2.5rem 7vw;
+  background: var(--ink); padding: 2.5rem 7vw;
   display: flex; justify-content: space-between; align-items: center;
   border-top: 1px solid rgba(255,255,255,0.06);
 }
@@ -572,31 +573,7 @@ footer {
 }
 .footer-info a { color: var(--gold); }
 
-/* ── LIGHTBOX ── */
-.lb {
-  display: none; position: fixed; inset: 0; z-index: 999;
-  background: rgba(14,14,14,0.97);
-  align-items: center; justify-content: center;
-  cursor: pointer;
-}
-.lb.open { display: flex; }
-.lb-img { max-width: 90vw; max-height: 90vh; object-fit: contain; cursor: default; }
-.lb-close {
-  position: fixed; top: 2rem; right: 2rem;
-  font-size: 1.5rem; color: rgba(255,255,255,0.5); cursor: pointer;
-  font-family: serif; line-height: 1; background: none; border: none;
-  transition: color 0.2s;
-}
-.lb-close:hover { color: #fff; }
-.lb-prev, .lb-next {
-  position: fixed; top: 50%; transform: translateY(-50%);
-  background: none; border: none; cursor: pointer;
-  font-size: 2rem; color: rgba(255,255,255,0.4);
-  padding: 1rem; transition: color 0.2s; font-family: serif;
-}
-.lb-prev { left: 2rem; }
-.lb-next { right: 2rem; }
-.lb-prev:hover, .lb-next:hover { color: #fff; }
+
 
 /* ── SCROLL REVEAL ── */
 .reveal {
@@ -611,8 +588,8 @@ footer {
   .packages-grid { grid-template-columns: 1fr; }
   .timeline-grid { grid-template-columns: repeat(2, 1fr); }
   .tl-item:nth-child(2) { border-right: none; }
-  .tl-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.08); }
-  .tl-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.08); border-right: none; }
+  .tl-item:nth-child(3) { border-top: 1px solid var(--line); }
+  .tl-item:nth-child(4) { border-top: 1px solid var(--line); border-right: none; }
   .addons-grid { grid-template-columns: 1fr; max-width: 100%; }
   .included-strip { grid-template-columns: repeat(2, 1fr); }
   .incl-item:nth-child(2) { border-right: none; }
@@ -623,27 +600,14 @@ footer {
   .footer-info { text-align: center; }
 }
 @media (max-width: 768px) {
-  .mood-strip { grid-template-columns: 1fr 1fr; height: 60vw; }
-  .mood-img:nth-child(3), .mood-img:nth-child(4) { display: none; }
-  .mosaic {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 32vw);
-    max-height: none;
-  }
-  .m1 { grid-column: 1/3; grid-row: 1/3; }
-  .m2 { grid-column: 3/4; grid-row: 1/2; }
-  .m3 { grid-column: 3/4; grid-row: 2/3; }
-  .m4 { grid-column: 1/2; grid-row: 3/4; }
-  .m5 { grid-column: 2/4; grid-row: 3/4; }
-  .m6 { grid-column: 1/2; grid-row: 4/5; }
-  .m7 { grid-column: 2/3; grid-row: 4/5; }
-  .m8 { grid-column: 3/4; grid-row: 4/5; }
-  .m9 { display: none; }
+  .mood-strip { grid-template-columns: 1fr; }
+  .mood-img:nth-child(3) { display: none; }
+  .gallery-fade { height: 72vw; max-height: none; }
   .included-strip { grid-template-columns: 1fr; border: none; }
   .incl-item { border-right: none; border-top: 1px solid var(--line); }
   .incl-item:first-child { border-top: none; }
   .timeline-grid { grid-template-columns: 1fr; }
-  .tl-item { border-right: none; border-top: 1px solid rgba(255,255,255,0.08); }
+  .tl-item { border-right: none; border-top: 1px solid var(--line); }
   .tl-item:first-child { border-top: none; }
   nav .nav-links { display: none; }
   .packages-section, .addons-section { padding: 4rem 5vw; }
@@ -693,10 +657,9 @@ footer {
 
 <!-- MOOD STRIP -->
 <div class="mood-strip">
-  <div class="mood-img"><img src="images/wedding/portfolio-3.webp" alt="Wedding moment" loading="lazy"></div>
-  <div class="mood-img"><img src="images/wedding/portfolio-6.webp" alt="Wedding moment" loading="lazy"></div>
-  <div class="mood-img"><img src="images/wedding/portfolio-11.webp" alt="Wedding moment" loading="lazy"></div>
-  <div class="mood-img"><img src="images/wedding/portfolio-14.webp" alt="Wedding moment" loading="lazy"></div>
+  <div class="mood-img"><img src="images/wedding/slideshow-2.webp" alt="" loading="lazy"></div>
+  <div class="mood-img"><img src="images/wedding/slideshow-4.webp" alt="" loading="lazy"></div>
+  <div class="mood-img"><img src="images/wedding/slideshow-3.webp" alt="" loading="lazy"></div>
 </div>
 
 <!-- INTRO -->
@@ -785,17 +748,17 @@ footer {
     <h2 data-i18n="gal_h2">From real weddings</h2>
     <a href="https://alexsevoz.com/wedding.html" class="gallery-link" data-i18n="gal_link">View full portfolio →</a>
   </div>
-  <div class="mosaic" id="mosaic">
-    <figure class="m1"><img src="images/wedding/portfolio-4.webp" alt="" loading="lazy"></figure>
-    <figure class="m2"><img src="images/wedding/portfolio-6.webp" alt="" loading="lazy"></figure>
-    <figure class="m3"><img src="images/wedding/portfolio-8.webp" alt="" loading="lazy"></figure>
-    <figure class="m4"><img src="images/wedding/portfolio-12.webp" alt="" loading="lazy"></figure>
-    <figure class="m5"><img src="images/wedding/portfolio-5.webp" alt="" loading="lazy"></figure>
-    <figure class="m6"><img src="images/wedding/portfolio-9.webp" alt="" loading="lazy"></figure>
-    <figure class="m7"><img src="images/wedding/portfolio-13.webp" alt="" loading="lazy"></figure>
-    <figure class="m8"><img src="images/wedding/portfolio-18.webp" alt="" loading="lazy"></figure>
-    <figure class="m9"><img src="images/wedding/portfolio-20.webp" alt="" loading="lazy"></figure>
+  <div class="gallery-fade" id="galleryFade">
+    <div class="gf-slide active"><img src="images/wedding/portfolio-14.webp" alt="" loading="lazy"></div>
+    <div class="gf-slide"><img src="images/wedding/portfolio-16.webp" alt="" loading="lazy"></div>
+    <div class="gf-slide"><img src="images/wedding/portfolio-18.webp" alt="" loading="lazy"></div>
+    <div class="gf-slide"><img src="images/wedding/portfolio-20.webp" alt="" loading="lazy"></div>
+    <div class="gf-slide"><img src="images/wedding/portfolio-22.webp" alt="" loading="lazy"></div>
+    <div class="gf-slide"><img src="images/wedding/portfolio-9.webp" alt="" loading="lazy"></div>
+    <div class="gf-slide"><img src="images/wedding/portfolio-11.webp" alt="" loading="lazy"></div>
+    <div class="gf-slide"><img src="images/wedding/portfolio-13.webp" alt="" loading="lazy"></div>
   </div>
+  <div class="gallery-dots" id="galleryDots"></div>
 </section>
 
 <!-- ADD-ONS -->
@@ -850,7 +813,7 @@ footer {
   </div>
 </div>
 
-<!-- TIMELINE -->
+<!-- WHAT I DOCUMENT STRIP -->
 <section class="timeline-section">
   <div class="timeline-inner">
     <div class="timeline-head reveal">
@@ -859,33 +822,21 @@ footer {
     </div>
     <div class="timeline-grid">
       <div class="tl-item reveal">
-        <div class="tl-img">
-          <img src="images/wedding/portfolio-2.webp" alt="" loading="lazy">
-        </div>
         <p class="tl-time" data-i18n="tl1_time">Morning</p>
         <p class="tl-title" data-i18n="tl1_title">Preparation</p>
         <p class="tl-text" data-i18n="tl1_text">The quiet moments before everything begins. Getting ready, nerves, anticipation — all of it worth capturing.</p>
       </div>
       <div class="tl-item reveal">
-        <div class="tl-img">
-          <img src="images/wedding/portfolio-7.webp" alt="" loading="lazy">
-        </div>
         <p class="tl-time" data-i18n="tl2_time">Midday</p>
         <p class="tl-title" data-i18n="tl2_title">Ceremony</p>
         <p class="tl-text" data-i18n="tl2_text">The moment you become each other's. Every glance, every tear, every laugh in the crowd.</p>
       </div>
       <div class="tl-item reveal">
-        <div class="tl-img">
-          <img src="images/wedding/portfolio-10.webp" alt="" loading="lazy">
-        </div>
         <p class="tl-time" data-i18n="tl3_time">Afternoon</p>
         <p class="tl-title" data-i18n="tl3_title">Portraits</p>
         <p class="tl-text" data-i18n="tl3_text">Golden light, just the two of you. Simple directions, natural connection — the photos that will matter most.</p>
       </div>
       <div class="tl-item reveal">
-        <div class="tl-img">
-          <img src="images/wedding/portfolio-17.webp" alt="" loading="lazy">
-        </div>
         <p class="tl-time" data-i18n="tl4_time">Evening</p>
         <p class="tl-title" data-i18n="tl4_title">Party</p>
         <p class="tl-text" data-i18n="tl4_text">Dancing, speeches, laughter. The full energy of people who love each other in one room.</p>
@@ -986,13 +937,7 @@ footer {
   </div>
 </footer>
 
-<!-- LIGHTBOX -->
-<div class="lb" id="lb" role="dialog" aria-modal="true">
-  <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
-  <button class="lb-prev" id="lbPrev" aria-label="Previous">‹</button>
-  <img class="lb-img" id="lbImg" src="" alt="">
-  <button class="lb-next" id="lbNext" aria-label="Next">›</button>
-</div>
+
 
 <script>
 /* ── NAV SCROLL ── */
@@ -1020,40 +965,46 @@ document.querySelectorAll('.faq-btn').forEach(btn => {
   });
 });
 
-/* ── LIGHTBOX ── */
-const lbEl   = document.getElementById('lb');
-const lbImg  = document.getElementById('lbImg');
-const lbClose= document.getElementById('lbClose');
-const lbPrev = document.getElementById('lbPrev');
-const lbNext = document.getElementById('lbNext');
-let lbImages = [], lbIdx = 0;
+/* ── GALLERY CROSSFADE ── */
+(function() {
+  const slides = Array.from(document.querySelectorAll('#galleryFade .gf-slide'));
+  const dotsEl = document.getElementById('galleryDots');
+  let current = 0, timer;
 
-function lbOpen(imgs, idx) {
-  lbImages = imgs; lbIdx = idx;
-  lbImg.src = lbImages[lbIdx];
-  lbEl.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function lbClose_() { lbEl.classList.remove('open'); document.body.style.overflow = ''; }
-function lbStep(d) { lbIdx = (lbIdx + d + lbImages.length) % lbImages.length; lbImg.src = lbImages[lbIdx]; }
+  // shuffle slides randomly
+  for (let i = slides.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const parent = slides[0].parentNode;
+    parent.insertBefore(slides[j], slides[i]);
+    [slides[i], slides[j]] = [slides[j], slides[i]];
+  }
 
-lbClose.addEventListener('click', lbClose_);
-lbEl.addEventListener('click', e => { if (e.target === lbEl) lbClose_(); });
-lbPrev.addEventListener('click', (e) => { e.stopPropagation(); lbStep(-1); });
-lbNext.addEventListener('click', (e) => { e.stopPropagation(); lbStep(1); });
-document.addEventListener('keydown', e => {
-  if (!lbEl.classList.contains('open')) return;
-  if (e.key === 'Escape') lbClose_();
-  if (e.key === 'ArrowLeft') lbStep(-1);
-  if (e.key === 'ArrowRight') lbStep(1);
-});
+  // build dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('span');
+    if (i === 0) d.classList.add('active');
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  });
+  const dots = Array.from(dotsEl.querySelectorAll('span'));
 
-const mosaicFigs = document.querySelectorAll('#mosaic figure');
-const mosaicUrls = Array.from(mosaicFigs).map(f => f.querySelector('img').src);
-mosaicFigs.forEach((fig, i) => {
-  fig.addEventListener('click', () => lbOpen(mosaicUrls, i));
-  fig.style.cursor = 'zoom-in';
-});
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function next() { goTo(current + 1); }
+
+  // random interval between 2.5s and 4.5s
+  function scheduleNext() {
+    const delay = 2500 + Math.random() * 2000;
+    timer = setTimeout(() => { next(); scheduleNext(); }, delay);
+  }
+  scheduleNext();
+})();
 
 /* ── LANG i18n ── */
 const dict = {
