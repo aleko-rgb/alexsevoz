@@ -126,7 +126,7 @@ nav.scrolled .nav-sub { display: flex; }
 }
 .hero h1 em { font-style: italic; color: rgba(255,255,255,0.85); }
 .hero-sub {
-  font-size: 0.9rem; line-height: 1.75; color: rgba(255,255,255,0.65);
+  font-size: 1.2rem; line-height: 1.75; color: rgba(255,255,255,0.65);
   max-width: 44ch; font-weight: 300; margin-bottom: 2.5rem;
 }
 .hero-scroll {
@@ -278,14 +278,20 @@ nav.scrolled .nav-sub { display: flex; }
 .pkg-table td.featured-col {
   background: rgba(109,31,44,0.04);
 }
-.pkg-table td.featured-col.check { color: var(--wine); }
+.pkg-table td.featured-col.check { color: #4a9e6b; }
 
 /* check / dash / partial */
-.check::after  { content: '✓'; font-size: 1rem; color: var(--wine); }
-.dash::after   { content: '—'; font-size: 0.9rem; color: var(--line); }
+.check::after  { content: '✓'; font-size: 1rem; color: #4a9e6b; }
+.dash::after   { content: '✕'; font-size: 0.85rem; color: #d9a0a0; }
 .partial::after { content: '—/partial'; font-size: 0.75rem; color: var(--muted); }
 .val { font-weight: 400; color: var(--ink); }
 .val.featured-col { color: var(--wine); font-weight: 500; }
+
+.pkg-note {
+  max-width: 900px; margin: 1.5rem auto 0;
+  font-size: 0.78rem; color: var(--muted);
+  text-align: center; font-style: italic;
+}
 
 /* ── GALLERY MOSAIC ── */
 .gallery-section {
@@ -687,6 +693,7 @@ footer {
         </tbody>
       </table>
     </div>
+    <p class="pkg-note">Accommodation at the client's expense for venues more than 150 km from Poznań.</p>
   </div>
 </section>
 
