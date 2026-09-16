@@ -73,14 +73,10 @@ nav.scrolled .logo { color: var(--ink); }
 nav.scrolled .nav-links a { color: var(--muted); }
 .nav-links a:hover { color: var(--wine) !important; }
 
-.lang-sw { display: flex; gap: 0.5rem; font-size: 0.68rem; letter-spacing: 0.1em; }
-.lang-sw button {
-  background: none; border: none; cursor: pointer;
-  color: rgba(250,248,244,0.45); font-family: 'Jost', sans-serif;
-  transition: color 0.3s; padding: 2px 3px;
-}
-nav.scrolled .lang-sw button { color: var(--muted); }
-.lang-sw button:hover, .lang-sw button.active { color: var(--wine) !important; }
+
+
+nav.scrolled 
+
 
 .nav-sub {
   display: none;
@@ -188,8 +184,8 @@ nav.scrolled .nav-sub { display: flex; }
 /* ── INTRO ── */
 .intro-section {
   padding: 7rem 7vw;
-  display: grid; grid-template-columns: 1fr 1.6fr; gap: 6rem;
-  align-items: start; max-width: 1300px; margin: 0 auto;
+  display: block;
+  max-width: 800px; margin: 0 auto;
 }
 .intro-label {
   font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
@@ -628,11 +624,6 @@ footer {
         <a href="https://alexsevoz.com/wedding.html">Weddings</a>
         <a href="mailto:alex.sevoz.photo@gmail.com">Contact</a>
       </div>
-      <div class="lang-sw">
-        <button data-lang="en" class="active">EN</button>
-        <button data-lang="fr">FR</button>
-        <button data-lang="pl">PL</button>
-      </div>
     </div>
   </div>
   <div class="nav-sub">
@@ -648,10 +639,10 @@ footer {
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow" data-i18n="hero_eyebrow">Wedding Photography</p>
-    <h1 data-i18n="hero_h1">Your day,<br>told <em>honestly.</em></h1>
-    <p class="hero-sub" data-i18n="hero_sub">No forced poses, no missed light. Just the two of you, the people you love, and every moment in between.</p>
-    <div class="hero-scroll" data-i18n="hero_scroll">Discover</div>
+    <p class="hero-eyebrow">Wedding Photography</p>
+    <h1>Let the moments<br><em>happen.</em></h1>
+    <p class="hero-sub">Enjoy yourselves. Laugh too loud. Cry if you do. Forget the camera is there. I'll take care of the rest.</p>
+    <div class="hero-scroll">Discover</div>
   </div>
 </section>
 
@@ -665,78 +656,74 @@ footer {
 <!-- INTRO -->
 <section class="intro-section">
   <div class="intro-left reveal">
-    <p class="intro-label" data-i18n="intro_label">About this offer</p>
-    <h2 data-i18n="intro_h2">Transparent pricing,<br><em>no surprises.</em></h2>
+    <p class="intro-label">About this offer</p>
+    <h2>The day as it happened,<br><em>from beginning to end.</em></h2>
     <div class="intro-left-meta">
-      <div class="meta-item"><span class="meta-dot">◆</span><span data-i18n="meta1">Available across Poland & Europe</span></div>
-      <div class="meta-item"><span class="meta-dot">◆</span><span data-i18n="meta2">All styles & ceremonies welcome</span></div>
-      <div class="meta-item"><span class="meta-dot">◆</span><span data-i18n="meta3">Delivering since 2020</span></div>
-      <div class="meta-item"><span class="meta-dot">◆</span><span data-i18n="meta4">Poznań based · worldwide for destination</span></div>
+      <div class="meta-item"><span class="meta-dot">◆</span><span>Weddings across Poland & Europe</span></div>
+      <div class="meta-item"><span class="meta-dot">◆</span><span>Bilingual · fluent in Polish & English</span></div>
+      <div class="meta-item"><span class="meta-dot">◆</span><span>Next-day previews</span></div>
+      <div class="meta-item"><span class="meta-dot">◆</span><span>Private online gallery</span></div>
     </div>
   </div>
-  <div class="intro-right reveal">
-    <p data-i18n="intro_p1">Every couple I photograph gets <strong>the same level of care and attention,</strong> regardless of package. What changes is the time — and time is what lets me document the full arc of your day, from the quiet preparation to the last dance.</p>
-    <p data-i18n="intro_p2">I work in a documentary style: close, calm, and unobtrusive. You won't spend your day posing. I'll give you a few simple directions during the couple's session — the rest is yours to live, and mine to photograph.</p>
-    <p data-i18n="intro_p3">Below you'll find my packages for weddings in Poland. For destination weddings across Europe, get in touch — we'll build something that fits your plans.</p>
-  </div>
+
 </section>
 
 <!-- PACKAGES -->
 <section class="packages-section">
   <div class="packages-header reveal">
-    <p class="intro-label" data-i18n="pkg_label">Packages</p>
-    <h2 data-i18n="pkg_h2">Choose your<br><em>coverage</em></h2>
+    <p class="intro-label">Wedding Packages</p>
+    <h2>Wedding<br><em>packages</em></h2>
   </div>
   <div class="packages-grid">
 
     <div class="package reveal">
-      <p class="pkg-name">Essential</p>
-      <p class="pkg-hours" data-i18n="pkg1_hours">5 hours coverage</p>
-      <p class="pkg-price"><span class="pkg-sup">PLN</span> 4 600</p>
-      <p class="pkg-images" data-i18n="pkg1_imgs">300 – 400 edited photographs</p>
+      <p class="pkg-name">Standard</p>
+      <p class="pkg-hours">5 hours</p>
+      <p class="pkg-price"><span class="pkg-sup">PLN</span> 3 000</p>
+      <p class="pkg-images">300 – 400 edited photographs</p>
       <ul class="pkg-list">
-        <li data-i18n="pkg_li1">Preparations & getting ready</li>
-        <li data-i18n="pkg_li2">Ceremony documentation</li>
-        <li data-i18n="pkg_li3">Family portraits</li>
-        <li data-i18n="pkg_li4">Couple's golden-hour session</li>
-        <li data-i18n="pkg_li5">Preview gallery next morning</li>
-        <li data-i18n="pkg_li6">Full gallery within 2 months</li>
-        <li data-i18n="pkg_li7">Free travel within 50 km</li>
+        <li>Preparations & getting ready</li>
+        <li>Ceremony documentation</li>
+        <li>Family portraits</li>
+        <li>Couple's golden-hour session</li>
+        <li>Preview next day</li>
+        <li>Full gallery within 2 months</li>
+        <li>Free travel within 50 km</li>
       </ul>
     </div>
 
     <div class="package featured reveal">
-      <p class="pkg-badge" data-i18n="pkg_badge">Most chosen</p>
-      <p class="pkg-name">Full Day</p>
-      <p class="pkg-hours" data-i18n="pkg2_hours">10 hours coverage</p>
-      <p class="pkg-price"><span class="pkg-sup">PLN</span> 4 800</p>
-      <p class="pkg-images" data-i18n="pkg2_imgs">600 – 800 edited photographs</p>
+      <p class="pkg-badge">Most chosen</p>
+      <p class="pkg-name">Plus</p>
+      <p class="pkg-hours">10 hours</p>
+      <p class="pkg-price"><span class="pkg-sup">PLN</span> 3 500</p>
+      <p class="pkg-images">600 – 800 edited photographs</p>
       <ul class="pkg-list">
-        <li data-i18n="pkg_li1">Preparations & getting ready</li>
-        <li data-i18n="pkg_li2">Ceremony documentation</li>
-        <li data-i18n="pkg_li3">Family portraits</li>
-        <li data-i18n="pkg_li4">Couple's golden-hour session</li>
-        <li data-i18n="pkg2_li5">Reception & evening events</li>
-        <li data-i18n="pkg_li5">Preview gallery next morning</li>
-        <li data-i18n="pkg_li6">Full gallery within 2 months</li>
-        <li data-i18n="pkg_li7">Free travel within 50 km</li>
+        <li>Preparations & getting ready</li>
+        <li>Ceremony documentation</li>
+        <li>Family portraits</li>
+        <li>Couple's golden-hour session</li>
+        <li>Reception & evening events</li>
+        <li>Preview next day</li>
+        <li>Full gallery within 2 months</li>
+        <li>Free travel within 50 km</li>
       </ul>
     </div>
 
     <div class="package reveal">
-      <p class="pkg-name">Signature</p>
-      <p class="pkg-hours" data-i18n="pkg3_hours">12 hours coverage</p>
-      <p class="pkg-price"><span class="pkg-sup">PLN</span> 5 000</p>
-      <p class="pkg-images" data-i18n="pkg3_imgs">700 – 900 edited photographs</p>
+      <p class="pkg-name">Premium</p>
+      <p class="pkg-hours">12 hours</p>
+      <p class="pkg-price"><span class="pkg-sup">PLN</span> 4 000</p>
+      <p class="pkg-images">700 – 900 edited photographs</p>
       <ul class="pkg-list">
-        <li data-i18n="pkg_li1">Preparations & getting ready</li>
-        <li data-i18n="pkg_li2">Ceremony documentation</li>
-        <li data-i18n="pkg_li3">Family portraits</li>
-        <li data-i18n="pkg_li4">Couple's golden-hour session</li>
-        <li data-i18n="pkg3_li5">Reception, dancing & late night</li>
-        <li data-i18n="pkg_li5">Preview gallery next morning</li>
-        <li data-i18n="pkg_li6">Full gallery within 2 months</li>
-        <li data-i18n="pkg_li7">Free travel within 50 km</li>
+        <li>Preparations & getting ready</li>
+        <li>Ceremony documentation</li>
+        <li>Family portraits</li>
+        <li>Couple's golden-hour session</li>
+        <li>Reception, dancing & late night</li>
+        <li>Preview next day</li>
+        <li>Full gallery within 2 months</li>
+        <li>Free travel within 50 km</li>
       </ul>
     </div>
   </div>
@@ -745,8 +732,8 @@ footer {
 <!-- GALLERY MOSAIC -->
 <section class="gallery-section">
   <div class="gallery-header reveal">
-    <h2 data-i18n="gal_h2">From real weddings</h2>
-    <a href="https://alexsevoz.com/wedding.html" class="gallery-link" data-i18n="gal_link">View full portfolio →</a>
+    <h2>From real weddings</h2>
+    <a href="https://alexsevoz.com/wedding.html" class="gallery-link">View full portfolio →</a>
   </div>
   <div class="gallery-fade" id="galleryFade">
     <div class="gf-slide active"><img src="images/wedding/portfolio-14.webp" alt="" loading="lazy"></div>
@@ -761,55 +748,27 @@ footer {
   <div class="gallery-dots" id="galleryDots"></div>
 </section>
 
-<!-- ADD-ONS -->
-<section class="addons-section">
-  <div class="addons-inner">
-    <div class="addons-header reveal">
-      <p class="intro-label" data-i18n="ao_label">Optional extras</p>
-      <h2 data-i18n="ao_h2">Complete your day</h2>
-    </div>
-    <div class="addons-grid">
-      <div class="addon reveal">
-        <div class="addon-icon">📖</div>
-        <p class="addon-name" data-i18n="ao1_name">Premium Photo Book</p>
-        <p class="addon-desc" data-i18n="ao1_desc">30×30 cm fine-art album, museum-quality print. The kind of object you hand down. Designed and curated together.</p>
-        <div class="addon-price">695 PLN</div>
-      </div>
-      <div class="addon reveal">
-        <div class="addon-icon">🌿</div>
-        <p class="addon-name" data-i18n="ao2_name">Couple Session</p>
-        <p class="addon-desc" data-i18n="ao2_desc">A separate outdoor session on a different day — a chance to be yourselves in a place that matters to you.</p>
-        <div class="addon-price">
-          800 PLN <small data-i18n="ao2_note1">Poznań area</small>
-          1 500 PLN <small data-i18n="ao2_note2">Other cities in Poland</small>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <!-- WHAT'S INCLUDED -->
 <div class="included-strip">
   <div class="incl-item reveal">
     <div class="incl-num">01</div>
-    <div class="incl-title" data-i18n="inc1_t">Preview next morning</div>
-    <div class="incl-text" data-i18n="inc1_d">50–60 representative images in your private gallery within 24 hours.</div>
+    <div class="incl-title">Preview next day</div>
+    <div class="incl-text">50–60 representative images in your private gallery within 24 hours.</div>
   </div>
   <div class="incl-item reveal">
     <div class="incl-num">02</div>
-    <div class="incl-title" data-i18n="inc2_t">Full edited gallery</div>
-    <div class="incl-text" data-i18n="inc2_d">Every image processed and delivered within 2 months. High-res + web versions, shareable with family.</div>
+    <div class="incl-title">Full edited gallery</div>
+    <div class="incl-text">Every image processed and delivered within 2 months. High-res + web versions, shareable with family.</div>
   </div>
   <div class="incl-item reveal">
     <div class="incl-num">03</div>
-    <div class="incl-title" data-i18n="inc3_t">Signed contract</div>
-    <div class="incl-text" data-i18n="inc3_d">Your date is secured with a 20% advance payment. Transparent terms, no surprises.</div>
+    <div class="incl-title">Signed contract</div>
+    <div class="incl-text">Your date is secured with a 20% advance payment. Transparent terms, no surprises.</div>
   </div>
   <div class="incl-item reveal">
     <div class="incl-num">04</div>
-    <div class="incl-title" data-i18n="inc4_t">Travel included</div>
-    <div class="incl-text" data-i18n="inc4_d">Free travel within 50 km. Accommodation required for distances over 100 km.</div>
+    <div class="incl-title">Travel included</div>
+    <div class="incl-text">Free travel within 50 km. Accommodation required for distances over 100 km.</div>
   </div>
 </div>
 
@@ -817,29 +776,29 @@ footer {
 <section class="timeline-section">
   <div class="timeline-inner">
     <div class="timeline-head reveal">
-      <p class="intro-label" data-i18n="tl_label">Your wedding day</p>
-      <h2 data-i18n="tl_h2">What I document</h2>
+      <p class="intro-label">Your wedding day</p>
+      <h2>What I document</h2>
     </div>
     <div class="timeline-grid">
       <div class="tl-item reveal">
-        <p class="tl-time" data-i18n="tl1_time">Morning</p>
-        <p class="tl-title" data-i18n="tl1_title">Preparation</p>
-        <p class="tl-text" data-i18n="tl1_text">The quiet moments before everything begins. Getting ready, nerves, anticipation — all of it worth capturing.</p>
+        <p class="tl-time">Morning</p>
+        <p class="tl-title">Preparation</p>
+        <p class="tl-text">The quiet moments before everything begins. Getting ready, nerves, anticipation — all of it worth capturing.</p>
       </div>
       <div class="tl-item reveal">
-        <p class="tl-time" data-i18n="tl2_time">Midday</p>
-        <p class="tl-title" data-i18n="tl2_title">Ceremony</p>
-        <p class="tl-text" data-i18n="tl2_text">The moment you become each other's. Every glance, every tear, every laugh in the crowd.</p>
+        <p class="tl-time">Midday</p>
+        <p class="tl-title">Ceremony</p>
+        <p class="tl-text">The moment you become each other's. Every glance, every tear, every laugh in the crowd.</p>
       </div>
       <div class="tl-item reveal">
-        <p class="tl-time" data-i18n="tl3_time">Afternoon</p>
-        <p class="tl-title" data-i18n="tl3_title">Portraits</p>
-        <p class="tl-text" data-i18n="tl3_text">Golden light, just the two of you. Simple directions, natural connection — the photos that will matter most.</p>
+        <p class="tl-time">Afternoon</p>
+        <p class="tl-title">Portraits</p>
+        <p class="tl-text">Golden light, just the two of you. Simple directions, natural connection — the photos that will matter most.</p>
       </div>
       <div class="tl-item reveal">
-        <p class="tl-time" data-i18n="tl4_time">Evening</p>
-        <p class="tl-title" data-i18n="tl4_title">Party</p>
-        <p class="tl-text" data-i18n="tl4_text">Dancing, speeches, laughter. The full energy of people who love each other in one room.</p>
+        <p class="tl-time">Evening</p>
+        <p class="tl-title">Party</p>
+        <p class="tl-text">Dancing, speeches, laughter. The full energy of people who love each other in one room.</p>
       </div>
     </div>
   </div>
@@ -849,56 +808,56 @@ footer {
 <section class="faq-section">
   <div class="faq-inner">
     <div class="faq-header reveal">
-      <p class="intro-label" data-i18n="faq_label">Questions</p>
-      <h2 data-i18n="faq_h2">Before you write to me</h2>
+      <p class="intro-label">Questions</p>
+      <h2>Before you write to me</h2>
     </div>
 
     <div class="faq-item">
       <button class="faq-btn" aria-expanded="false">
-        <span data-i18n="faq1_q">How many photos will we receive?</span>
+        <span>How many photos will we receive?</span>
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-body"><p data-i18n="faq1_a">It depends on the day — number of guests, ceremony type, events planned. At an intimate wedding expect 300–400 images; a large celebration can yield over 1 000. The average across a full-day package is 700–800.</p></div>
+      <div class="faq-body"><p>It depends on the day — number of guests, ceremony type, events planned. At an intimate wedding expect 300–400 images; a large celebration can yield over 1 000. The average across a full-day package is 700–800.</p></div>
     </div>
 
     <div class="faq-item">
       <button class="faq-btn" aria-expanded="false">
-        <span data-i18n="faq2_q">Do we need to know how to pose?</span>
+        <span>Do we need to know how to pose?</span>
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-body"><p data-i18n="faq2_a">Not at all. During the couple's session I'll give you simple, natural directions. The rest of the day, you live it — I document it. The best photographs happen when people stop thinking about the camera.</p></div>
+      <div class="faq-body"><p>Not at all. During the couple's session I'll give you simple, natural directions. The rest of the day, you live it — I document it. The best photographs happen when people stop thinking about the camera.</p></div>
     </div>
 
     <div class="faq-item">
       <button class="faq-btn" aria-expanded="false">
-        <span data-i18n="faq3_q">When do we receive our photos?</span>
+        <span>When do we receive our photos?</span>
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-body"><p data-i18n="faq3_a">A preview gallery of 50–60 images is delivered the day after. The complete edited gallery follows within two months.</p></div>
+      <div class="faq-body"><p>A preview gallery of 50–60 images is delivered the day after. The complete edited gallery follows within two months.</p></div>
     </div>
 
     <div class="faq-item">
       <button class="faq-btn" aria-expanded="false">
-        <span data-i18n="faq4_q">Do you photograph destination weddings?</span>
+        <span>Do you photograph destination weddings?</span>
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-body"><p data-i18n="faq4_a">Yes — I'm available across Poland and throughout Europe. For international weddings, travel and accommodation are required. Contact me and we'll work out the logistics together.</p></div>
+      <div class="faq-body"><p>Yes — I'm available across Poland and throughout Europe. For international weddings, travel and accommodation are required. Contact me and we'll work out the logistics together.</p></div>
     </div>
 
     <div class="faq-item">
       <button class="faq-btn" aria-expanded="false">
-        <span data-i18n="faq5_q">What if something unexpected happens on your end?</span>
+        <span>What if something unexpected happens on your end?</span>
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-body"><p data-i18n="faq5_a">In the unlikely event I'm unable to attend due to illness or force majeure, I will arrange a replacement photographer of equivalent experience. Your day is never left uncovered.</p></div>
+      <div class="faq-body"><p>In the unlikely event I'm unable to attend due to illness or force majeure, I will arrange a replacement photographer of equivalent experience. Your day is never left uncovered.</p></div>
     </div>
 
     <div class="faq-item">
       <button class="faq-btn" aria-expanded="false">
-        <span data-i18n="faq6_q">Is a contract required?</span>
+        <span>Is a contract required?</span>
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-body"><p data-i18n="faq6_a">Always. The contract covers locations, schedule, payment terms, delivery dates, and cancellation policy. It protects both of us — and it's how I take your wedding seriously.</p></div>
+      <div class="faq-body"><p>Always. The contract covers locations, schedule, payment terms, delivery dates, and cancellation policy. It protects both of us — and it's how I take your wedding seriously.</p></div>
     </div>
   </div>
 </section>
@@ -907,8 +866,8 @@ footer {
 <section class="testimonial-section reveal">
   <div class="testimonial-inner">
     <div class="testimonial-mark">"</div>
-    <p class="testimonial-text" data-i18n="testi_text">Alex made us forget he was there. We looked at the photos the next morning and couldn't believe someone had caught all those moments we didn't even notice living.</p>
-    <p class="testimonial-author"><span data-i18n="testi_author">Marta & Tomasz</span> · Warsaw, 2024</p>
+    <p class="testimonial-text">Alex made us forget he was there. We looked at the photos the next morning and couldn't believe someone had caught all those moments we didn't even notice living.</p>
+    <p class="testimonial-author"><span>Marta & Tomasz</span> · Warsaw, 2024</p>
   </div>
 </section>
 
@@ -917,13 +876,13 @@ footer {
   <div class="cta-bg"></div>
   <div class="cta-content">
     <div class="cta-left reveal">
-      <p class="intro-label" data-i18n="cta_label">Reserve your date</p>
-      <h2 data-i18n="cta_h2">Let's talk about<br><em>your day</em></h2>
-      <p data-i18n="cta_sub">Dates fill quickly, especially for spring and summer. A short message is all it takes — tell me when and where, and I'll come back to you within 24 hours.</p>
+      <p class="intro-label">Reserve your date</p>
+      <h2>Let's talk about<br><em>your day</em></h2>
+      <p>Dates fill quickly, especially for spring and summer. A short message is all it takes — tell me when and where, and I'll come back to you within 24 hours.</p>
     </div>
     <div class="cta-right reveal">
-      <a href="mailto:alex.sevoz.photo@gmail.com" class="btn-primary" data-i18n="cta_btn1">Write to Alex</a>
-      <a href="https://alexsevoz.com/wedding.html" class="btn-secondary" data-i18n="cta_btn2">View portfolio</a>
+      <a href="mailto:alex.sevoz.photo@gmail.com" class="btn-primary">Write to Alex</a>
+      <a href="https://alexsevoz.com/wedding.html" class="btn-secondary">View portfolio</a>
     </div>
   </div>
 </section>
@@ -1006,171 +965,7 @@ document.querySelectorAll('.faq-btn').forEach(btn => {
   scheduleNext();
 })();
 
-/* ── LANG i18n ── */
-const dict = {
-  en: {
-    hero_eyebrow: 'Wedding Photography · Poland & Europe',
-    hero_h1: 'Your day,<br>told <em>honestly.</em>',
-    hero_sub: 'No forced poses, no missed light. Just the two of you, the people you love, and every moment in between.',
-    hero_scroll: 'Discover',
-    intro_label: 'About this offer',
-    intro_h2: 'Transparent pricing,<br><em>no surprises.</em>',
-    meta1: 'Available across Poland & Europe', meta2: 'All styles & ceremonies welcome',
-    meta3: 'Delivering since 2020', meta4: 'Poznań based · worldwide for destination',
-    intro_p1: 'Every couple I photograph gets <strong>the same level of care and attention,</strong> regardless of package. What changes is the time — and time is what lets me document the full arc of your day.',
-    intro_p2: 'I work in a documentary style: close, calm, and unobtrusive. You won\'t spend your day posing.',
-    intro_p3: 'Below are my packages for weddings in Poland. For destination weddings across Europe, get in touch.',
-    pkg_label: 'Packages', pkg_h2: 'Choose your<br><em>coverage</em>',
-    pkg1_hours: '5 hours coverage', pkg1_imgs: '300 – 400 edited photographs',
-    pkg2_hours: '10 hours coverage', pkg2_imgs: '600 – 800 edited photographs',
-    pkg3_hours: '12 hours coverage', pkg3_imgs: '700 – 900 edited photographs',
-    pkg_badge: 'Most chosen',
-    pkg_li1: 'Preparations & getting ready', pkg_li2: 'Ceremony documentation',
-    pkg_li3: 'Family portraits', pkg_li4: "Couple's golden-hour session",
-    pkg_li5: 'Preview gallery next morning', pkg_li6: 'Full gallery within 2 months',
-    pkg_li7: 'Free travel within 50 km', pkg2_li5: 'Reception & evening events',
-    pkg3_li5: 'Reception, dancing & late night',
-    gal_h2: 'From real weddings', gal_link: 'View full portfolio →',
-    ao_label: 'Optional extras', ao_h2: 'Complete your day',
-    ao1_name: 'Premium Photo Book', ao1_desc: '30×30 cm fine-art album, museum-quality print. The kind of object you hand down.',
-    ao2_name: 'Couple Session', ao2_desc: 'A separate outdoor session on a different day — a chance to be yourselves.',
-    ao2_note1: 'Poznań area', ao2_note2: 'Other cities in Poland',
-    inc1_t: 'Preview next morning', inc1_d: '50–60 representative images in your private gallery within 24 hours.',
-    inc2_t: 'Full edited gallery', inc2_d: 'Every image processed and delivered within 2 months.',
-    inc3_t: 'Signed contract', inc3_d: 'Your date secured with a 20% advance. Transparent terms.',
-    inc4_t: 'Travel included', inc4_d: 'Free within 50 km. Accommodation required over 100 km.',
-    tl_label: 'Your wedding day', tl_h2: 'What I document',
-    tl1_time: 'Morning', tl1_title: 'Preparation', tl1_text: 'The quiet moments before everything begins.',
-    tl2_time: 'Midday', tl2_title: 'Ceremony', tl2_text: 'The moment you become each other\'s.',
-    tl3_time: 'Afternoon', tl3_title: 'Portraits', tl3_text: 'Golden light, just the two of you.',
-    tl4_time: 'Evening', tl4_title: 'Party', tl4_text: 'Dancing, speeches, laughter.',
-    faq_label: 'Questions', faq_h2: 'Before you write to me',
-    faq1_q: 'How many photos will we receive?', faq1_a: 'It depends on the day. The average across a full-day package is 700–800 photographs.',
-    faq2_q: 'Do we need to know how to pose?', faq2_a: 'Not at all. I\'ll give you simple directions during the couple\'s session. The rest you live — I document.',
-    faq3_q: 'When do we receive our photos?', faq3_a: 'Preview gallery the day after. Full gallery within 2 months.',
-    faq4_q: 'Do you photograph destination weddings?', faq4_a: 'Yes — across Poland and throughout Europe. Get in touch and we\'ll work out the logistics.',
-    faq5_q: 'What if something unexpected happens?', faq5_a: 'I will arrange a replacement photographer of equivalent experience. Your day is never left uncovered.',
-    faq6_q: 'Is a contract required?', faq6_a: 'Always. It covers locations, schedule, payment and delivery terms — and protects both of us.',
-    testi_text: 'Alex made us forget he was there. We looked at the photos the next morning and couldn\'t believe someone had caught all those moments.',
-    testi_author: 'Marta & Tomasz',
-    cta_label: 'Reserve your date', cta_h2: 'Let\'s talk about<br><em>your day</em>',
-    cta_sub: 'Dates fill quickly. A short message is all it takes — tell me when and where.',
-    cta_btn1: 'Write to Alex', cta_btn2: 'View portfolio'
-  },
-  fr: {
-    hero_eyebrow: 'Photographie de mariage · Pologne & Europe',
-    hero_h1: 'Votre journée,<br>racontée <em>honnêtement.</em>',
-    hero_sub: 'Pas de poses forcées, pas de lumière manquée. Juste vous deux, les gens que vous aimez, et chaque moment entre eux.',
-    hero_scroll: 'Découvrir',
-    intro_label: 'À propos de cette offre',
-    intro_h2: 'Des tarifs transparents,<br><em>sans surprises.</em>',
-    meta1: 'Disponible en Pologne & en Europe', meta2: 'Tous styles & cérémonies acceptés',
-    meta3: 'En activité depuis 2020', meta4: 'Basé à Poznań · destination dans le monde entier',
-    intro_p1: 'Chaque couple que je photographie bénéficie <strong>du même niveau de soin et d\'attention,</strong> quelle que soit la formule. Ce qui change, c\'est le temps — et le temps, c\'est ce qui me permet de documenter l\'arc complet de votre journée.',
-    intro_p2: 'Je travaille dans un style documentaire : proche, calme, discret. Vous ne passerez pas votre journée à poser.',
-    intro_p3: 'Ci-dessous mes formules pour les mariages en Pologne. Pour les mariages à destination en Europe, contactez-moi.',
-    pkg_label: 'Formules', pkg_h2: 'Choisissez votre<br><em>couverture</em>',
-    pkg1_hours: '5 heures de couverture', pkg1_imgs: '300 – 400 photos retouchées',
-    pkg2_hours: '10 heures de couverture', pkg2_imgs: '600 – 800 photos retouchées',
-    pkg3_hours: '12 heures de couverture', pkg3_imgs: '700 – 900 photos retouchées',
-    pkg_badge: 'Le plus choisi',
-    pkg_li1: 'Préparatifs & habillage', pkg_li2: 'Documentation de la cérémonie',
-    pkg_li3: 'Portraits de famille', pkg_li4: 'Séance couple en lumière dorée',
-    pkg_li5: 'Galerie aperçu le lendemain', pkg_li6: 'Galerie complète sous 2 mois',
-    pkg_li7: 'Déplacement offert jusqu\'à 50 km', pkg2_li5: 'Réception & soirée',
-    pkg3_li5: 'Réception, danse & fin de soirée',
-    gal_h2: 'De vrais mariages', gal_link: 'Voir le portfolio complet →',
-    ao_label: 'Options', ao_h2: 'Complétez votre journée',
-    ao1_name: 'Livre photo premium', ao1_desc: 'Album 30×30 cm, impression musée. L\'objet qu\'on transmet.',
-    ao2_name: 'Séance couple', ao2_desc: 'Une séance outdoor séparée — l\'occasion d\'être vous-mêmes.',
-    ao2_note1: 'Région de Poznań', ao2_note2: 'Autres villes de Pologne',
-    inc1_t: 'Aperçu le lendemain', inc1_d: '50–60 images représentatives dans votre galerie privée sous 24h.',
-    inc2_t: 'Galerie complète retouchée', inc2_d: 'Chaque image livrée sous 2 mois. Haute résolution incluse.',
-    inc3_t: 'Contrat signé', inc3_d: 'Votre date réservée avec 20% d\'avance. Conditions transparentes.',
-    inc4_t: 'Déplacement inclus', inc4_d: 'Offert jusqu\'à 50 km. Hébergement requis au-delà de 100 km.',
-    tl_label: 'Votre journée de mariage', tl_h2: 'Ce que je documente',
-    tl1_time: 'Matin', tl1_title: 'Préparatifs', tl1_text: 'Les moments calmes avant que tout commence.',
-    tl2_time: 'Midi', tl2_title: 'Cérémonie', tl2_text: 'L\'instant où vous devenez l\'un à l\'autre.',
-    tl3_time: 'Après-midi', tl3_title: 'Portraits', tl3_text: 'La lumière dorée, rien que vous deux.',
-    tl4_time: 'Soirée', tl4_title: 'Fête', tl4_text: 'Danse, discours, rires.',
-    faq_label: 'Questions', faq_h2: 'Avant de m\'écrire',
-    faq1_q: 'Combien de photos recevrons-nous ?', faq1_a: 'Cela dépend de la journée. En moyenne, 700–800 photos pour une couverture journée complète.',
-    faq2_q: 'Faut-il savoir poser ?', faq2_a: 'Pas du tout. Vous vivez — je documente. Le reste, ce sont quelques indications simples lors de la séance couple.',
-    faq3_q: 'Quand recevrons-nous nos photos ?', faq3_a: 'Un aperçu le lendemain. La galerie complète sous 2 mois.',
-    faq4_q: 'Photographiez-vous des mariages à destination ?', faq4_a: 'Oui — en Pologne et dans toute l\'Europe. Contactez-moi et nous organisons la logistique ensemble.',
-    faq5_q: 'Que se passe-t-il si quelque chose d\'imprévu survient ?', faq5_a: 'Je trouverai un photographe remplaçant de niveau équivalent. Votre journée ne restera jamais sans couverture.',
-    faq6_q: 'Un contrat est-il nécessaire ?', faq6_a: 'Toujours. Il couvre les lieux, le planning, les modalités de paiement et de livraison.',
-    testi_text: 'Alex nous a fait oublier qu\'il était là. En regardant les photos le lendemain, on n\'arrivait pas à croire que quelqu\'un avait capturé tous ces moments.',
-    testi_author: 'Marta & Tomasz',
-    cta_label: 'Réservez votre date', cta_h2: 'Parlons de<br><em>votre journée</em>',
-    cta_sub: 'Les dates se remplissent vite. Dites-moi quand et où — je vous réponds sous 24h.',
-    cta_btn1: 'Écrire à Alex', cta_btn2: 'Voir le portfolio'
-  },
-  pl: {
-    hero_eyebrow: 'Fotografia ślubna · Polska i Europa',
-    hero_h1: 'Wasz dzień,<br>opowiedziany <em>szczerze.</em>',
-    hero_sub: 'Bez wymuszonego pozowania, bez straconego światła. Tylko wy dwoje, bliscy i każda chwila między nimi.',
-    hero_scroll: 'Odkryj',
-    intro_label: 'O tej ofercie',
-    intro_h2: 'Przejrzyste ceny,<br><em>żadnych niespodzianek.</em>',
-    meta1: 'Dostępny w całej Polsce i Europie', meta2: 'Wszystkie style i ceremonie',
-    meta3: 'Dokumentuję śluby od 2020', meta4: 'Baza w Poznaniu · destination na całym świecie',
-    intro_p1: 'Każda para, którą fotografuję, otrzymuje <strong>taki sam poziom troski i uwagi,</strong> niezależnie od pakietu. Zmienia się czas — a czas pozwala mi uchwycić pełen łuk waszego dnia.',
-    intro_p2: 'Pracuję w stylu dokumentalnym: blisko, spokojnie, nienachalnie. Nie spędzicie dnia na pozowaniu.',
-    intro_p3: 'Poniżej moje pakiety dla ślubów w Polsce. W sprawie wesel zagranicznych — skontaktujcie się ze mną.',
-    pkg_label: 'Pakiety', pkg_h2: 'Wybierz swój<br><em>zakres</em>',
-    pkg1_hours: '5 godzin dokumentacji', pkg1_imgs: '300 – 400 obrobionych zdjęć',
-    pkg2_hours: '10 godzin dokumentacji', pkg2_imgs: '600 – 800 obrobionych zdjęć',
-    pkg3_hours: '12 godzin dokumentacji', pkg3_imgs: '700 – 900 obrobionych zdjęć',
-    pkg_badge: 'Najczęściej wybierany',
-    pkg_li1: 'Przygotowania pary', pkg_li2: 'Dokumentacja ceremonii',
-    pkg_li3: 'Portrety rodzinne', pkg_li4: 'Sesja pary w złotej godzinie',
-    pkg_li5: 'Galeria podgląd następnego dnia', pkg_li6: 'Pełna galeria w ciągu 2 miesięcy',
-    pkg_li7: 'Dojazd do 50 km gratis', pkg2_li5: 'Wesele i wieczorne atrakcje',
-    pkg3_li5: 'Wesele, tańce i późna noc',
-    gal_h2: 'Z prawdziwych ślubów', gal_link: 'Zobacz pełne portfolio →',
-    ao_label: 'Opcje dodatkowe', ao_h2: 'Dopełnij swój dzień',
-    ao1_name: 'Album premium', ao1_desc: 'Album 30×30 cm, druk muzealnej jakości. Pamiątka na pokolenia.',
-    ao2_name: 'Sesja pary', ao2_desc: 'Oddzielna sesja plenerowa w innym dniu — tylko dla was dwojga.',
-    ao2_note1: 'Okolice Poznania', ao2_note2: 'Inne miasta w Polsce',
-    inc1_t: 'Podgląd następnego dnia', inc1_d: '50–60 zdjęć w prywatnej galerii w ciągu 24 godzin.',
-    inc2_t: 'Pełna obrobiona galeria', inc2_d: 'Każde zdjęcie dostarczone w ciągu 2 miesięcy.',
-    inc3_t: 'Podpisana umowa', inc3_d: 'Data zabezpieczona zadatkiem 20%. Przejrzyste warunki.',
-    inc4_t: 'Dojazd w cenie', inc4_d: 'Gratis do 50 km. Nocleg wymagany powyżej 100 km.',
-    tl_label: 'Wasz dzień ślubu', tl_h2: 'Co dokumentuję',
-    tl1_time: 'Rano', tl1_title: 'Przygotowania', tl1_text: 'Spokojne chwile zanim wszystko się zaczyna.',
-    tl2_time: 'Południe', tl2_title: 'Ceremonia', tl2_text: 'Moment, w którym stajecie się jednym.',
-    tl3_time: 'Popołudnie', tl3_title: 'Portrety', tl3_text: 'Złote światło, tylko wy dwoje.',
-    tl4_time: 'Wieczór', tl4_title: 'Wesele', tl4_text: 'Tańce, przemowy, śmiech.',
-    faq_label: 'Pytania', faq_h2: 'Zanim napiszecie',
-    faq1_q: 'Ile zdjęć otrzymamy?', faq1_a: 'To zależy od dnia. Średnio 700–800 zdjęć przy pełnodniowej dokumentacji.',
-    faq2_q: 'Czy musimy wiedzieć jak pozować?', faq2_a: 'Nie. Wy przeżywacie dzień — ja dokumentuję. Kilka prostych wskazówek podczas sesji pary i to wszystko.',
-    faq3_q: 'Kiedy dostaniemy zdjęcia?', faq3_a: 'Podgląd galerii następnego dnia. Pełna galeria w ciągu 2 miesięcy.',
-    faq4_q: 'Czy fotografujesz śluby za granicą?', faq4_a: 'Tak — w całej Polsce i Europie. Skontaktujcie się ze mną, a ustalimy szczegóły.',
-    faq5_q: 'Co się stanie, jeśli coś nieoczekiwanego się przydarzy?', faq5_a: 'Znajdę zastępczego fotografa na równoważnym poziomie. Wasz dzień nigdy nie zostanie bez dokumentacji.',
-    faq6_q: 'Czy umowa jest wymagana?', faq6_a: 'Zawsze. Obejmuje lokalizacje, harmonogram, warunki płatności i dostawy.',
-    testi_text: 'Alex sprawił, że zapomnieliśmy, że tam był. Patrząc na zdjęcia następnego dnia, nie mogliśmy uwierzyć, że ktoś uchwycił wszystkie te chwile.',
-    testi_author: 'Marta & Tomasz',
-    cta_label: 'Zarezerwuj datę', cta_h2: 'Porozmawiajmy o<br><em>waszym dniu</em>',
-    cta_sub: 'Daty szybko się wypełniają. Napisz kiedy i gdzie — odpiszę w ciągu 24 godzin.',
-    cta_btn1: 'Napisz do Alexa', cta_btn2: 'Zobacz portfolio'
-  }
-};
 
-function setLang(lang) {
-  const d = dict[lang];
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const k = el.getAttribute('data-i18n');
-    if (d[k] !== undefined) el.innerHTML = d[k];
-  });
-  document.querySelectorAll('.lang-sw button').forEach(b =>
-    b.classList.toggle('active', b.dataset.lang === lang));
-}
-
-document.querySelectorAll('.lang-sw button').forEach(btn =>
-  btn.addEventListener('click', () => setLang(btn.dataset.lang)));
-
-setLang('en');
 </script>
 
 </body>
