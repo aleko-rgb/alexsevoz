@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Photography — Alex Sevoz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+@font-face {
+  font-family: 'Backstreet';
+  src: url('fonts/Backstreet.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --ink:    #0e0e0e;
+  --paper:  #faf8f4;
+  --wine:   #6d1f2c;
+  --wine-lt:#9e3d4c;
+  --gold:   #c8a97a;
+  --muted:  #7a746e;
+  --line:   #e0dbd4;
+  --card:   #f3f0ea;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; flex-direction: column;
+  transition: background 0.4s ease;
+}
+.nav-main {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.6rem 5vw;
+  transition: padding 0.4s ease;
+}
+nav.scrolled .nav-main { padding: 1rem 5vw; }
+nav.scrolled { background: rgba(250,248,244,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+
+.logo {
+  font-family: 'Backstreet', 'Cormorant Garamond', serif;
+  font-size: 2.2rem; letter-spacing: 0.03em;
+  color: var(--paper);
+  transition: color 0.4s ease;
+}
+nav.scrolled .logo { color: var(--ink); }
+
+.nav-right { display: flex; align-items: center; gap: 2rem; }
+.nav-links { display: flex; gap: 1.8rem; }
+.nav-links a {
+  font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 400; color: rgba(250,248,244,0.8);
+  transition: color 0.3s ease;
+}
+nav.scrolled .nav-links a { color: var(--muted); }
+.nav-links a:hover { color: var(--wine) !important; }
+
+.nav-sub {
+  display: none;
+  background: var(--wine);
+  text-align: center;
+  padding: 0.45rem 5vw;
+  font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.9); font-weight: 400;
+  justify-content: center; align-items: center; gap: 1.5rem;
+}
+nav.scrolled .nav-sub { display: flex; }
+.nav-sub a { color: rgba(255,255,255,0.85); font-size: 0.65rem; letter-spacing: 0.12em; }
+.nav-sub a:hover { color: #fff; }
+.nav-sub .sep { color: rgba(255,255,255,0.4); }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  height: 100svh; min-height: 600px;
+  overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('images/wedding/slideshow-2.webp') center/cover no-repeat;
+  transform: scale(1.04);
+  animation: heroZoom 18s ease-in-out infinite alternate;
+}
+@keyframes heroZoom {
+  from { transform: scale(1.04); }
+  to   { transform: scale(1.10); }
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 7vw 6rem;
+  max-width: 900px;
+}
+.hero-eyebrow {
+  font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); font-weight: 400;
+  margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.hero-eyebrow::before {
+  content: ''; display: inline-block;
+  width: 2.5rem; height: 1px; background: var(--gold);
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  font-weight: 300; line-height: 1.0; letter-spacing: -0.01em;
+  color: #fff; margin-bottom: 1.5rem;
+}
+.hero-sub {
+  font-size: 1.2rem; line-height: 1.75; color: rgba(255,255,255,0.75);
+  max-width: 44ch; font-weight: 300; font-style: italic;
+  margin-bottom: 2.5rem;
+}
+.hero-scroll {
+  display: flex; align-items: center; gap: 0.8rem;
+  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+.hero-scroll::after {
+  content: ''; display: inline-block;
+  width: 1px; height: 3rem; background: rgba(255,255,255,0.3);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 0.9; }
+}
+
+/* ── INTRO ── */
+.intro-section {
+  padding: 7rem 7vw;
+  display: block;
+  max-width: 800px; margin: 0 auto;
+}
+.intro-label {
+  font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--wine); font-weight: 400; margin-bottom: 1.5rem;
+}
+.intro-left h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300; line-height: 1.15; color: var(--ink);
+}
+.intro-left h2 em { font-style: italic; }
+.intro-left-meta {
+  margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.meta-item {
+  display: flex; gap: 1rem; align-items: flex-start;
+  font-size: 1rem; color: var(--muted); line-height: 1.6;
+}
+.meta-dot { color: var(--wine); font-size: 0.75rem; margin-top: 0.3rem; flex-shrink: 0; }
+
+/* ── PACKAGES ── */
+.packages-section {
+  background: var(--card); padding: 7rem 7vw;
+}
+.packages-header {
+  text-align: center; margin-bottom: 5rem;
+}
+.packages-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300; color: var(--ink);
+  line-height: 1.05;
+}
+
+.pkg-table-wrap {
+  max-width: 900px; margin: 0 auto;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+}
+.pkg-table {
+  width: 100%; border-collapse: collapse;
+  font-family: 'Jost', sans-serif;
+}
+.pkg-table col.col-feature { width: 36%; }
+.pkg-table col.col-pkg     { width: 21.3%; }
+
+.pkg-table thead tr { border-bottom: 2px solid var(--ink); }
+.pkg-table thead th {
+  padding: 0 1.5rem 1.25rem;
+  text-align: center; vertical-align: bottom;
+}
+.pkg-table thead th:first-child { text-align: left; padding-left: 0; }
+
+.th-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 400; color: var(--ink);
+  display: block; line-height: 1;
+}
+.th-name.featured { color: var(--wine); }
+.th-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem; font-weight: 600; color: #a07840;
+  display: block; line-height: 1; margin-top: 0.2rem;
+}
+.th-price sup { font-size: 0.9rem; vertical-align: super; }
+.th-badge {
+  display: inline-block;
+  font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: #4a9e6b; border: 1px solid #4a9e6b;
+  padding: 0.2rem 0.5rem; margin-bottom: 0.5rem;
+}
+
+.pkg-table tbody tr {
+  border-bottom: 1px solid var(--line);
+  transition: background 0.15s;
+}
+.pkg-table tbody tr:last-child { border-bottom: none; }
+.pkg-table tbody tr:hover { background: rgba(200,169,122,0.05); }
+
+.pkg-table td {
+  padding: 0.9rem 1.5rem;
+  font-size: 0.95rem; color: var(--muted);
+  text-align: center; vertical-align: middle;
+  line-height: 1.4;
+}
+.pkg-table td:first-child {
+  text-align: left; padding-left: 0;
+  color: var(--ink); font-weight: 400;
+}
+.pkg-table td.featured-col { background: rgba(109,31,44,0.04); }
+
+.check::after  { content: '✓'; font-size: 1rem; color: #4a9e6b; }
+.dash::after   { content: '✕'; font-size: 0.85rem; color: #c0392b; }
+.partial::after { content: '—/partial'; font-size: 0.75rem; color: var(--muted); }
+.val { font-weight: 400; color: var(--ink); }
+.val.featured-col { color: var(--wine); font-weight: 500; }
+
+.pkg-note {
+  max-width: 900px; margin: 1.5rem auto 0;
+  font-size: 0.78rem; color: var(--muted);
+  text-align: center; font-style: italic;
+}
+
+/* ── GALLERY ── */
+.gallery-section {
+  padding: 4rem 7vw 0;
+  max-width: 1400px; margin: 0 auto;
+}
+.gallery-link-wrap {
+  text-align: right; margin-bottom: 1rem;
+}
+.gallery-link {
+  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--wine); border-bottom: 1px solid var(--wine);
+  padding-bottom: 2px; font-weight: 400;
+}
+.photo-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  height: 34vw; max-height: 420px;
+}
+.photo-strip figure { margin: 0; overflow: hidden; }
+.photo-strip figure img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  max-width: none; display: block;
+}
+
+/* ── INCLUDED STRIP ── */
+.included-strip {
+  padding: 5rem 7vw;
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; border: 1px solid var(--line);
+}
+.incl-item {
+  padding: 2.5rem 2rem;
+  border-right: 1px solid var(--line);
+}
+.incl-item:last-child { border-right: none; }
+.incl-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem; font-weight: 300; color: var(--line);
+  line-height: 1; margin-bottom: 1rem;
+}
+.incl-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; font-weight: 500; color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.incl-text { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+
+/* ── CTA ── */
+.cta-section {
+  position: relative; overflow: hidden;
+  min-height: 520px;
+  display: flex; align-items: flex-end;
+}
+.cta-bg {
+  position: absolute; inset: 0;
+  background: url('images/wedding/slideshow-3.webp') center/cover no-repeat;
+}
+.cta-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(14,14,14,0.88), rgba(14,14,14,0.3));
+}
+.cta-content {
+  position: relative; z-index: 2;
+  padding: 5rem 7vw; width: 100%;
+  display: flex; justify-content: space-between;
+  align-items: flex-end; gap: 3rem;
+}
+.cta-left .intro-label { color: var(--gold); }
+.cta-left h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; color: #fff;
+  line-height: 1.05; margin-top: 0.5rem;
+}
+.cta-left h2 em { font-style: italic; }
+.cta-left p {
+  margin-top: 1rem; font-size: 0.88rem; color: rgba(255,255,255,0.55);
+  max-width: 44ch; line-height: 1.7;
+}
+.cta-right { flex-shrink: 0; display: flex; flex-direction: column; gap: 1rem; align-items: flex-end; }
+.btn-secondary {
+  display: inline-block; border: 1px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.65); padding: 1.1rem 2.8rem;
+  font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+  font-weight: 400; font-family: 'Jost', sans-serif;
+  transition: border-color 0.25s, color 0.25s;
+}
+.btn-secondary:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink); padding: 2.5rem 7vw;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-logo {
+  font-family: 'Backstreet', 'Cormorant Garamond', serif;
+  font-size: 1.1rem; letter-spacing: 0.04em; color: var(--paper);
+}
+.footer-info {
+  font-size: 0.7rem; color: rgba(255,255,255,0.35);
+  text-align: right;
+}
+.footer-info a { color: var(--gold); }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .included-strip { grid-template-columns: repeat(2, 1fr); }
+  .incl-item:nth-child(2) { border-right: none; }
+  .incl-item:nth-child(3) { border-top: 1px solid var(--line); }
+  .incl-item:nth-child(4) { border-top: 1px solid var(--line); border-right: none; }
+  .cta-content { flex-direction: column; align-items: flex-start; }
+  footer { flex-direction: column; gap: 1rem; text-align: center; }
+  .footer-info { text-align: center; }
+}
+@media (max-width: 768px) {
+  .photo-strip { grid-template-columns: 1fr; height: auto; }
+  .photo-strip figure { height: 60vw; }
+  .photo-strip figure:nth-child(2), .photo-strip figure:nth-child(3) { display: none; }
+  .included-strip { grid-template-columns: 1fr; border: none; }
+  .incl-item { border-right: none; border-top: 1px solid var(--line); }
+  .incl-item:first-child { border-top: none; }
+  nav .nav-links { display: none; }
+  .packages-section { padding: 4rem 5vw; }
+  .pkg-table td, .pkg-table th { padding: 0.75rem 0.75rem; font-size: 0.78rem; }
+  .pkg-table td:first-child { padding-left: 0; }
+  .th-price { font-size: 1.5rem; }
+  .th-name { font-size: 1.2rem; }
+  .gallery-section, .intro-section { padding: 4rem 5vw 0; }
+  .hero-content { padding: 0 5vw 4rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-main">
+    <a href="https://alexsevoz.com" class="logo">Alex Sevoz</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="https://alexsevoz.com">Portfolio</a>
+        <a href="https://alexsevoz.com/wedding.html">Weddings</a>
+        <a href="mailto:alex.sevoz.photo@gmail.com">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-sub">
+    <span>Wedding Photographer — Poland &amp; Europe</span>
+    <span class="sep">·</span>
+    <a href="tel:+48720852075">+48 720 852 075</a>
+    <span class="sep">·</span>
+    <a href="mailto:alex.sevoz.photo@gmail.com">alex.sevoz.photo@gmail.com</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>Let the moments<br>happen.</h1>
+    <p class="hero-sub">Enjoy yourselves. Laugh loud. Cry if you do. Forget the camera is there. I'll take care of the rest.</p>
+    <div class="hero-scroll">Discover</div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro-section">
+  <div class="intro-left reveal">
+    <p class="intro-label">About this offer</p>
+    <h2>The day as it happened,<br><em>from beginning to end.</em></h2>
+    <div class="intro-left-meta">
+      <div class="meta-item"><span class="meta-dot">◆</span><span>Weddings across Poland &amp; Europe</span></div>
+      <div class="meta-item"><span class="meta-dot">◆</span><span>Bilingual · fluent in Polish &amp; English</span></div>
+      <div class="meta-item"><span class="meta-dot">◆</span><span>Next-day previews</span></div>
+      <div class="meta-item"><span class="meta-dot">◆</span><span>Private online gallery</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="packages-section">
+  <div class="packages-header reveal">
+    <h2>Wedding packages</h2>
+  </div>
+  <div class="packages-grid">
+    <div class="pkg-table-wrap reveal">
+      <table class="pkg-table">
+        <colgroup>
+          <col class="col-feature">
+          <col class="col-pkg">
+          <col class="col-pkg">
+          <col class="col-pkg">
+        </colgroup>
+        <thead>
+          <tr>
+            <th></th>
+            <th>
+              <span class="th-name">Standard</span>
+              <span class="th-price"><sup>PLN</sup> 3 000</span>
+            </th>
+            <th>
+              <span class="th-name featured">Plus</span>
+              <span class="th-price"><sup>PLN</sup> 3 500</span>
+            </th>
+            <th>
+              <span class="th-name">Premium</span>
+              <span class="th-price"><sup>PLN</sup> 4 000</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Duration</td>
+            <td class="val">5 h</td>
+            <td class="val featured-col">10 h</td>
+            <td class="val">12 h</td>
+          </tr>
+          <tr>
+            <td>Photographs</td>
+            <td class="val">300–400</td>
+            <td class="val featured-col">600–800</td>
+            <td class="val">700–900</td>
+          </tr>
+          <tr>
+            <td>Preparation</td>
+            <td class="dash"></td>
+            <td class="check featured-col"></td>
+            <td class="check"></td>
+          </tr>
+          <tr>
+            <td>Ceremony</td>
+            <td class="check"></td>
+            <td class="check featured-col"></td>
+            <td class="check"></td>
+          </tr>
+          <tr>
+            <td>Family portraits</td>
+            <td class="check"></td>
+            <td class="check featured-col"></td>
+            <td class="check"></td>
+          </tr>
+          <tr>
+            <td>Couple session</td>
+            <td class="check"></td>
+            <td class="check featured-col"></td>
+            <td class="check"></td>
+          </tr>
+          <tr>
+            <td>Reception</td>
+            <td class="check"></td>
+            <td class="check featured-col"></td>
+            <td class="check"></td>
+          </tr>
+          <tr>
+            <td>Late night</td>
+            <td class="dash"></td>
+            <td class="partial featured-col"></td>
+            <td class="check"></td>
+          </tr>
+          <tr>
+            <td>Next-day preview</td>
+            <td class="val">30 photos</td>
+            <td class="val featured-col">30 photos</td>
+            <td class="val">30 photos</td>
+          </tr>
+          <tr>
+            <td>Online gallery</td>
+            <td class="check"></td>
+            <td class="check featured-col"></td>
+            <td class="check"></td>
+          </tr>
+          <tr>
+            <td>Full gallery</td>
+            <td class="val">within 2 months</td>
+            <td class="val featured-col">within 2 months</td>
+            <td class="val">within 2 months</td>
+          </tr>
+          <tr>
+            <td>Travel</td>
+            <td class="val">free within 50 km<br><small>from Poznań</small></td>
+            <td class="val featured-col">free within 50 km<br><small>from Poznań</small></td>
+            <td class="val">free within 50 km<br><small>from Poznań</small></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="pkg-note">Accommodation at the client's expense for venues more than 150 km from Poznań.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+  <div class="gallery-link-wrap">
+    <a href="https://alexsevoz.com/wedding.html" class="gallery-link">View full portfolio →</a>
+  </div>
+  <div class="photo-strip">
+    <figure><img src="images/wedding/portfolio-6.webp" alt=""></figure>
+    <figure><img src="images/wedding/portfolio-10.webp" alt=""></figure>
+    <figure><img src="images/wedding/portfolio-5.webp" alt=""></figure>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<div class="included-strip">
+  <div class="incl-item reveal">
+    <div class="incl-num">01</div>
+    <div class="incl-title">Preview next day</div>
+    <div class="incl-text">30 images in your private gallery within 24 hours.</div>
+  </div>
+  <div class="incl-item reveal">
+    <div class="incl-num">02</div>
+    <div class="incl-title">Full edited gallery</div>
+    <div class="incl-text">Every professionally edited image delivered within 2 months. High-res + web versions, shareable with family.</div>
+  </div>
+  <div class="incl-item reveal">
+    <div class="incl-num">03</div>
+    <div class="incl-title">Signed contract</div>
+    <div class="incl-text">Your date is secured with a 20% advance payment. Transparent terms, no surprises.</div>
+  </div>
+  <div class="incl-item reveal">
+    <div class="incl-num">04</div>
+    <div class="incl-title">Travel included</div>
+    <div class="incl-text">Free travel within 50 km from Poznań. Accommodation at client's expense beyond 150 km.</div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-content">
+    <div class="cta-left reveal">
+      <p class="intro-label">Reserve your date</p>
+      <h2>Let's talk about<br><em>your day</em></h2>
+      <p>Dates fill quickly, especially for spring and summer. A short message is all it takes — tell me when and where, and I'll come back to you within 24 hours.</p>
+    </div>
+    <div class="cta-right reveal">
+      <a href="https://alexsevoz.com/wedding.html" class="btn-secondary">View portfolio</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="https://alexsevoz.com" class="footer-logo">Alex Sevoz</a>
+  <div class="footer-info">
+    © 2026 Alex Sevoz Photography · Poznań, Poland<br>
+    <a href="mailto:alex.sevoz.photo@gmail.com">alex.sevoz.photo@gmail.com</a> · <a href="tel:+48720852075">+48 720 852 075</a>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
