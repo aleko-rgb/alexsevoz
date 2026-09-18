@@ -45,7 +45,7 @@
     <loc>https://www.alexsevoz.com/dog-photography</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.alexsevoz.com/dog-photography"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.alexsevoz.com/photographe-chien"/>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://www.alexsevoz.com/sesje-ze-psem"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.alexsevoz.com/sesje-z-psem"/>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -55,17 +55,17 @@
     <loc>https://www.alexsevoz.com/photographe-chien</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.alexsevoz.com/dog-photography"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.alexsevoz.com/photographe-chien"/>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://www.alexsevoz.com/sesje-ze-psem"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.alexsevoz.com/sesje-z-psem"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Dog Photography — PL -->
   <url>
-    <loc>https://www.alexsevoz.com/sesje-ze-psem</loc>
+    <loc>https://www.alexsevoz.com/sesje-z-psem</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.alexsevoz.com/dog-photography"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.alexsevoz.com/photographe-chien"/>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://www.alexsevoz.com/sesje-ze-psem"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.alexsevoz.com/sesje-z-psem"/>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
