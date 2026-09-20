@@ -181,6 +181,36 @@
   .footer-cross{margin-top:0.7rem;}
   .footer-cross a{color:var(--grey);border-bottom:1px solid var(--line);padding-bottom:1px;transition:color .3s ease,border-color .3s ease;}
   .footer-cross a:hover{color:var(--wine);border-color:var(--wine);}
+  /* ── CENNIK POPUP ── */
+.cennik-popup{
+  position:fixed;bottom:1.6rem;right:1.6rem;z-index:1000;
+  width:340px;max-width:calc(100vw - 3.2rem);
+  background:#fff;
+  border:1px solid var(--line);
+  box-shadow:0 12px 40px rgba(0,0,0,0.15);
+  padding:2rem 1.8rem 1.6rem;
+  transform:translateY(20px);opacity:0;pointer-events:none;
+  transition:transform .4s ease,opacity .4s ease;
+  font-family:'Jost',sans-serif;
+}
+.cennik-popup.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+.cp-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.4rem;color:var(--grey);cursor:pointer;line-height:1;padding:0;transition:color .2s;}
+.cp-close:hover{color:var(--ink);}
+.cp-eyebrow{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--wine);font-weight:400;margin-bottom:0.8rem;}
+.cp-title{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.5rem;line-height:1.15;color:var(--ink);margin-bottom:0.9rem;}
+.cp-desc{font-size:0.85rem;line-height:1.6;color:var(--grey);margin-bottom:1.4rem;}
+.cp-form{display:flex;flex-direction:column;gap:0.6rem;}
+.cp-form input{width:100%;border:1px solid var(--line);padding:0.7rem 0.9rem;font-family:'Jost',sans-serif;font-size:0.9rem;background:#faf8f4;color:var(--ink);transition:border-color .2s;}
+.cp-form input:focus{outline:none;border-color:var(--wine);}
+.cp-btn{width:100%;padding:0.85rem;background:var(--wine);color:#fff;border:none;font-family:'Jost',sans-serif;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:0.4rem;}
+.cp-btn:hover{background:#4a1420;}
+.cp-btn:disabled{opacity:0.6;cursor:not-allowed;}
+.cp-msg{font-size:0.8rem;padding:0.5rem 0;display:none;text-align:center;}
+.cp-msg.success{color:#2a6e3f;display:block;}
+.cp-msg.error{color:#a83232;display:block;}
+.cp-dismiss{display:block;text-align:center;font-size:0.72rem;color:var(--grey);text-decoration:none;margin-top:1rem;transition:color .2s;cursor:pointer;}
+.cp-dismiss:hover{color:var(--wine);}
+@media(max-width:520px){.cennik-popup{width:calc(100vw - 2rem);bottom:1rem;right:1rem;}}
 </style>
 </head>
 <body>
@@ -393,6 +423,146 @@ let current=0;
 for(let i=0;i<total;i++){const dot=document.createElement('button');dot.className='testi-dot'+(i===0?' active':'');dot.addEventListener('click',()=>goTo(i));testiNav.appendChild(dot);}
 function goTo(i){current=i;const w=track.parentElement.offsetWidth;track.style.transform=`translateX(-${w*i}px)`;[...testiNav.children].forEach((d,idx)=>d.classList.toggle('active',idx===i));}
 setInterval(()=>goTo((current+1)%total),6000);
+</script>
+<!-- Cennik capture popup -->
+<div id="cennikPopup" class="cennik-popup" role="dialog" aria-labelledby="cpTitle" aria-hidden="true">
+  <button class="cp-close" aria-label="Close" id="cpClose">&times;</button>
+  <div class="cp-eyebrow" data-cp="eyebrow"></div>
+  <h3 class="cp-title" id="cpTitle" data-cp="title"></h3>
+  <p class="cp-desc" data-cp="desc"></p>
+  <form class="cp-form" id="cpForm">
+    <input type="email" name="email" required data-cp-ph="email_ph">
+    <input type="text" name="names" data-cp-ph="names_ph">
+    <button type="submit" class="cp-btn" data-cp="btn"></button>
+    <div class="cp-msg" id="cpMsg"></div>
+  </form>
+  <a href="#" class="cp-dismiss" id="cpDismiss" data-cp="dismiss"></a>
+</div>
+<script>
+(function(){
+  const POPUP_KEY='as_cennik_popup';
+  const SHOW_DELAY_MS=25000; // 25s
+
+  const CENNIK_URL={
+    en:'https://www.alexsevoz.com/photographer-wedding-pricing.html',
+    fr:'https://www.alexsevoz.com/photographer-wedding-pricing.html',
+    pl:'https://www.alexsevoz.com/fotograf-slubny-cennik.html'
+  };
+
+  const COPY={
+    en:{
+      eyebrow:'FOR COUPLES',
+      title:'See our wedding<br>packages and pricing.',
+      desc:'Leave your email and Alex will send you the full offer within 24 hours.',
+      email_ph:'Your email',
+      names_ph:'Your first names (optional)',
+      btn:'REQUEST THE PRICES',
+      dismiss:"Don't show this again",
+      success:"Sent! Alex will reply within 24h with the pricing.",
+      error:'Error — please contact alex.sevoz.photo@gmail.com directly.'
+    },
+    fr:{
+      eyebrow:'POUR LES FUTURS MARIÉS',
+      title:"Découvrez nos<br>formules et tarifs.",
+      desc:"Laissez votre email et Alex vous envoie l'offre complète sous 24h.",
+      email_ph:'Votre email',
+      names_ph:'Vos prénoms (optionnel)',
+      btn:'DEMANDER LES TARIFS',
+      dismiss:'Ne plus afficher',
+      success:"Envoyé ! Alex vous répondra sous 24h avec le cennik.",
+      error:'Erreur — contactez alex.sevoz.photo@gmail.com directement.'
+    },
+    pl:{
+      eyebrow:'DLA NARZECZONYCH',
+      title:'Zobacz nasze pakiety<br>i cennik ślubny.',
+      desc:'Zostawcie swój email — Alex prześle pełną ofertę w ciągu 24 godzin.',
+      email_ph:'Twój email',
+      names_ph:'Wasze imiona (opcjonalnie)',
+      btn:'POPROŚ O CENNIK',
+      dismiss:'Nie pokazuj więcej',
+      success:"Wysłane! Alex odezwie się z cennikiem w ciągu 24h.",
+      error:'Błąd — napisz na alex.sevoz.photo@gmail.com.'
+    }
+  };
+
+  const lang=(document.documentElement.getAttribute('lang')||'en').slice(0,2);
+  const dict=COPY[lang]||COPY.en;
+  const cennikUrl=CENNIK_URL[lang]||CENNIK_URL.en;
+
+  try{
+    const state=localStorage.getItem(POPUP_KEY);
+    if(state==='dismissed'||state==='submitted')return;
+  }catch(e){}
+
+  document.querySelectorAll('#cennikPopup [data-cp]').forEach(el=>{
+    const k=el.getAttribute('data-cp');
+    if(dict[k])el.innerHTML=dict[k];
+  });
+  document.querySelectorAll('#cennikPopup [data-cp-ph]').forEach(el=>{
+    const k=el.getAttribute('data-cp-ph');
+    if(dict[k])el.setAttribute('placeholder',dict[k]);
+  });
+
+  const popup=document.getElementById('cennikPopup');
+  const closeBtn=document.getElementById('cpClose');
+  const dismissBtn=document.getElementById('cpDismiss');
+  const form=document.getElementById('cpForm');
+  const msg=document.getElementById('cpMsg');
+  const submitBtn=form.querySelector('.cp-btn');
+
+  function openPopup(){popup.classList.add('open');popup.setAttribute('aria-hidden','false');}
+  function closePopup(persistent){
+    popup.classList.remove('open');popup.setAttribute('aria-hidden','true');
+    if(persistent){try{localStorage.setItem(POPUP_KEY,'dismissed');}catch(e){}}
+  }
+
+  closeBtn.addEventListener('click',()=>closePopup(false));
+  dismissBtn.addEventListener('click',e=>{e.preventDefault();closePopup(true);});
+
+  let triggered=false;
+  function trigger(){if(triggered)return;triggered=true;openPopup();}
+  setTimeout(trigger,SHOW_DELAY_MS);
+  window.addEventListener('scroll',function onScroll(){
+    const pct=(window.scrollY+window.innerHeight)/document.documentElement.scrollHeight;
+    if(pct>0.5){trigger();window.removeEventListener('scroll',onScroll);}
+  },{passive:true});
+
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    submitBtn.disabled=true;msg.className='cp-msg';msg.style.display='none';
+    const email=form.email.value.trim();
+    const names=form.names.value.trim()||'—';
+
+    const histoire='🎯 DEMANDE DE CENNIK via pop-up ('+lang.toUpperCase()+')\n'+
+      '\n'+
+      '📧 Email prospect : '+email+'\n'+
+      '👥 Prénoms : '+names+'\n'+
+      '🌍 Langue : '+lang+'\n'+
+      '📄 Cennik à envoyer : '+cennikUrl+'\n'+
+      '📍 Page : '+location.pathname;
+
+    try{
+      await emailjs.send('service_47o5cwb','template_9zidq8r',{
+        from_names:'[CENNIK] '+names+' <'+email+'>',
+        wedding_date:'—',
+        lieu:'—',
+        ceremonie:'—',
+        ambiance:'—',
+        source:'Cennik popup ['+lang+']',
+        histoire:histoire
+      });
+      msg.textContent=dict.success;
+      msg.className='cp-msg success';
+      try{localStorage.setItem(POPUP_KEY,'submitted');}catch(e){}
+      setTimeout(()=>closePopup(true),3500);
+    }catch(err){
+      console.error(err);
+      msg.textContent=dict.error;
+      msg.className='cp-msg error';
+    }
+    submitBtn.disabled=false;
+  });
+})();
 </script>
 </body>
 </html>
