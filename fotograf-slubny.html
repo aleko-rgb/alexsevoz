@@ -166,6 +166,41 @@
   .footer-cross{margin-top:0.7rem;}
   .footer-cross a{color:var(--grey);border-bottom:1px solid var(--line);padding-bottom:1px;transition:color .3s ease,border-color .3s ease;}
   .footer-cross a:hover{color:var(--wine);border-color:var(--wine);}
+
+  /* ── CENNIK POPUP ── */
+  .cennik-popup{
+    position:fixed;bottom:1.6rem;right:1.6rem;z-index:1000;
+    width:340px;max-width:calc(100vw - 3.2rem);
+    background:#fff;
+    border:1px solid var(--line);
+    box-shadow:0 12px 40px rgba(0,0,0,0.15);
+    padding:2rem 1.8rem 1.6rem;
+    transform:translateY(20px);opacity:0;pointer-events:none;
+    transition:transform .4s ease,opacity .4s ease;
+    font-family:'Jost',sans-serif;
+  }
+  .cennik-popup.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+  .cp-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.4rem;color:var(--grey);cursor:pointer;line-height:1;padding:0;transition:color .2s;z-index:2;}
+  .cp-close:hover{color:var(--ink);}
+  .cp-view{display:block;}
+  .cp-view[hidden]{display:none;}
+  .cp-eyebrow{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--wine);font-weight:400;margin-bottom:0.8rem;}
+  .cp-title{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.5rem;line-height:1.15;color:var(--ink);margin-bottom:0.9rem;}
+  .cp-desc{font-size:0.85rem;line-height:1.6;color:var(--grey);margin-bottom:1.4rem;}
+  .cp-form{display:flex;flex-direction:column;gap:0.6rem;}
+  .cp-form input{width:100%;border:1px solid var(--line);padding:0.7rem 0.9rem;font-family:'Jost',sans-serif;font-size:0.9rem;background:#faf8f4;color:var(--ink);transition:border-color .2s;}
+  .cp-form input:focus{outline:none;border-color:var(--wine);}
+  .cp-btn{width:100%;padding:0.85rem;background:var(--wine);color:#fff;border:none;font-family:'Jost',sans-serif;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:0.4rem;display:block;text-align:center;text-decoration:none;box-sizing:border-box;}
+  .cp-btn:hover{background:#4a1420;}
+  .cp-btn:disabled{opacity:0.6;cursor:not-allowed;}
+  .cp-dismiss{display:block;text-align:center;font-size:0.72rem;color:var(--grey);text-decoration:none;margin-top:1rem;transition:color .2s;cursor:pointer;}
+  .cp-dismiss:hover{color:var(--wine);}
+  .cp-view-success{text-align:center;padding:0.5rem 0 0;}
+  .cp-check{width:52px;height:52px;border-radius:50%;background:#2a6e3f;color:#fff;font-size:1.8rem;line-height:52px;text-align:center;margin:0 auto 1.2rem;font-weight:600;}
+  .cp-view-success .cp-title{margin-bottom:0.6rem;}
+  .cp-view-success .cp-desc{margin-bottom:1.4rem;}
+  .cp-note{font-size:0.7rem;color:var(--grey);margin-top:0.8rem;font-style:italic;}
+  @media(max-width:520px){.cennik-popup{width:calc(100vw - 2rem);bottom:1rem;right:1rem;}}
 </style>
 </head>
 <body>
@@ -373,5 +408,98 @@ for(let i=0;i<total;i++){const dot=document.createElement('button');dot.classNam
 function goTo(i){current=i;const w=track.parentElement.offsetWidth;track.style.transform=`translateX(-${w*i}px)`;[...testiNav.children].forEach((d,idx)=>d.classList.toggle('active',idx===i));}
 setInterval(()=>goTo((current+1)%total),6000);
 </script>
+
+<!-- Cennik capture popup -->
+<div id="cennikPopup" class="cennik-popup" role="dialog" aria-labelledby="cpTitle" aria-hidden="true">
+  <button class="cp-close" aria-label="Close" id="cpClose">&times;</button>
+  <div class="cp-view cp-view-form" id="cpViewForm">
+    <div class="cp-eyebrow" data-cp="eyebrow"></div>
+    <h3 class="cp-title" id="cpTitle" data-cp="title"></h3>
+    <p class="cp-desc" data-cp="desc"></p>
+    <form class="cp-form" id="cpForm">
+      <input type="email" name="email" required data-cp-ph="email_ph">
+      <input type="text" name="names" data-cp-ph="names_ph">
+      <button type="submit" class="cp-btn" data-cp="btn"></button>
+    </form>
+    <a href="#" class="cp-dismiss" id="cpDismiss" data-cp="dismiss"></a>
+  </div>
+  <div class="cp-view cp-view-success" id="cpViewSuccess" hidden>
+    <div class="cp-check">✓</div>
+    <h3 class="cp-title" data-cp="success_title"></h3>
+    <p class="cp-desc" data-cp="success_desc"></p>
+    <a href="#" class="cp-btn" id="cpCennikBtn" target="_blank" rel="noopener" data-cp="success_btn"></a>
+    <p class="cp-note" data-cp="success_note"></p>
+  </div>
+</div>
+<script>
+(function(){
+  const GAS_URL='https://script.google.com/macros/s/AKfycbxiKHMH-yR4bXzKRN5x_acBHU4DqkCoDmZL5UNe20dhxEPr0Hyc_Fb_OLZDSy0Skz4/exec';
+  const POPUP_KEY='as_cennik_popup';
+  const SHOW_DELAY_MS=25000;
+
+  const CENNIK_URL={
+    en:'https://www.alexsevoz.com/photographer-wedding-pricing.html',
+    fr:'https://www.alexsevoz.com/photographer-wedding-pricing.html',
+    pl:'https://www.alexsevoz.com/fotograf-slubny-cennik.html'
+  };
+
+  const COPY={
+    en:{eyebrow:'FOR COUPLES',title:'See our wedding<br>packages and pricing.',desc:"Leave your email — you'll see the full offer instantly.",email_ph:'Your email',names_ph:'Your first names (optional)',btn:'SHOW ME THE PRICES',dismiss:"Don't show this again",success_title:"You're all set!",success_desc:'Alex will personally follow up within 24h.',success_btn:'VIEW THE CENNIK →',success_note:'Opens in a new tab.'},
+    fr:{eyebrow:'POUR LES FUTURS MARIÉS',title:"Découvrez nos<br>formules et tarifs.",desc:"Laissez votre email — vous voyez l'offre complète instantanément.",email_ph:'Votre email',names_ph:'Vos prénoms (optionnel)',btn:'VOIR LES TARIFS',dismiss:'Ne plus afficher',success_title:"C'est prêt !",success_desc:'Alex vous relancera personnellement sous 24h.',success_btn:'VOIR LE CENNIK →',success_note:"S'ouvre dans un nouvel onglet."},
+    pl:{eyebrow:'DLA NARZECZONYCH',title:'Zobacz nasze pakiety<br>i cennik ślubny.',desc:'Zostawcie swój email — natychmiast zobaczycie pełną ofertę.',email_ph:'Twój email',names_ph:'Wasze imiona (opcjonalnie)',btn:'POKAŻ CENNIK',dismiss:'Nie pokazuj więcej',success_title:'Gotowe!',success_desc:'Alex osobiście odezwie się w ciągu 24 godzin.',success_btn:'ZOBACZ CENNIK →',success_note:'Otwiera się w nowej karcie.'}
+  };
+
+  const lang=(document.documentElement.getAttribute('lang')||'en').slice(0,2);
+  const dict=COPY[lang]||COPY.en;
+  const cennikUrl=CENNIK_URL[lang]||CENNIK_URL.en;
+
+  try{const state=localStorage.getItem(POPUP_KEY);if(state==='dismissed'||state==='submitted')return;}catch(e){}
+
+  document.querySelectorAll('#cennikPopup [data-cp]').forEach(el=>{const k=el.getAttribute('data-cp');if(dict[k])el.innerHTML=dict[k];});
+  document.querySelectorAll('#cennikPopup [data-cp-ph]').forEach(el=>{const k=el.getAttribute('data-cp-ph');if(dict[k])el.setAttribute('placeholder',dict[k]);});
+  document.getElementById('cpCennikBtn').setAttribute('href',cennikUrl);
+
+  const popup=document.getElementById('cennikPopup');
+  const viewForm=document.getElementById('cpViewForm');
+  const viewSuccess=document.getElementById('cpViewSuccess');
+  const closeBtn=document.getElementById('cpClose');
+  const dismissBtn=document.getElementById('cpDismiss');
+  const form=document.getElementById('cpForm');
+  const submitBtn=form.querySelector('.cp-btn');
+
+  function openPopup(){popup.classList.add('open');popup.setAttribute('aria-hidden','false');}
+  function closePopup(persistent){popup.classList.remove('open');popup.setAttribute('aria-hidden','true');if(persistent){try{localStorage.setItem(POPUP_KEY,'dismissed');}catch(e){}}}
+  function showSuccess(){viewForm.hidden=true;viewSuccess.hidden=false;try{localStorage.setItem(POPUP_KEY,'submitted');}catch(e){}}
+
+  closeBtn.addEventListener('click',()=>closePopup(false));
+  dismissBtn.addEventListener('click',e=>{e.preventDefault();closePopup(true);});
+
+  let triggered=false;
+  function trigger(){if(triggered)return;triggered=true;openPopup();}
+  setTimeout(trigger,SHOW_DELAY_MS);
+  window.addEventListener('scroll',function onScroll(){
+    const pct=(window.scrollY+window.innerHeight)/document.documentElement.scrollHeight;
+    if(pct>0.5){trigger();window.removeEventListener('scroll',onScroll);}
+  },{passive:true});
+
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    submitBtn.disabled=true;
+    const payload={
+      email:form.email.value.trim(),
+      names:form.names.value.trim()||'—',
+      lang:lang,
+      cennik_url:cennikUrl,
+      page:location.pathname
+    };
+    try{
+      await fetch(GAS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+    }catch(err){console.error('GAS fetch failed:',err);}
+    showSuccess();
+    submitBtn.disabled=false;
+  });
+})();
+</script>
+
 </body>
 </html>
