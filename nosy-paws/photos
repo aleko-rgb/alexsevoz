@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nosy Paws — Galeria</title>
+<link rel="icon" href="/favicon-32.png">
+<meta name="robots" content="noindex">
+<style>
+  html,body{margin:0;height:100%;background:#0a0f17;overflow:hidden}
+  #np{border:0;width:100%;height:100dvh;display:block;background:#0a0f17}
+</style>
+</head>
+<body>
+  <iframe id="np" title="Nosy Paws — Galeria" allow="clipboard-write; fullscreen"></iframe>
+  <script>
+    // URL de l'appli Apps Script (déploiement /exec d'EYE C U)
+    var EXEC = "https://script.google.com/a/macros/eyecu-irisphoto.com/s/AKfycbxqzFHikNqETereGA8_U9CNr0jd-rmtV7O28qvVY7CSlP4ZXLabkcfdYHcToDiO1Fyx/exec";
+    // recopie le ?d=<jeton> (page de téléchargement) dans le cadre
+    var d = (location.search.match(/[?&]d=([^&]+)/) || [])[1];
+    document.getElementById("np").src = EXEC + (d ? "?d=" + encodeURIComponent(d) : "");
+  </script>
+</body>
+</html>
